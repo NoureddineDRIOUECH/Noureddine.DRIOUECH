@@ -1,0 +1,24 @@
+---
+import LetterPullup from "@/components/magicui/letter-pullup";
+---
+
+<div>
+  <div class="avatar online">
+    <div
+      class="w-24 rounded-full ring-primary ring-offset-base-100 ring ring-offset-2"
+    >
+      <img src="/public/me.jpg" />
+    </div>
+  </div>
+
+  <LetterPullup
+    words={"Noureddine DRIOUECH"}
+    className={"text-lg"}
+    delay={0.05}
+    client:load
+  />
+  <div class="flex flex-col gap-2">
+    <p>Software Developer Based in Morocco 🇲🇦</p>
+    <p class="text-sm">Available for new opportunities</p>
+  </div>
+</div>
