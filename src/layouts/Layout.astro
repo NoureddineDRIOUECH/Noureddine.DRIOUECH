@@ -1,4 +1,11 @@
 ---
+import { Lamp } from "@/components/pages/lamp";
+import { Dock } from "@/components/pages/dock";
+import { Stack } from "@/components/pages/stack";
+import { Profile } from "@/components/pages/profile";
+import { Work } from "@/components/pages/work";
+import Footer from "@/components/pages/footer";
+
 interface Props {
   title: string;
 }
@@ -29,7 +36,7 @@ const { title } = Astro.props;
     });
   }
 </script>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
@@ -39,30 +46,37 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
+    <Lamp client:load />
+    <Profile client:load />
+    <Work client:load />
     <slot />
+    <Stack client:load />
+    <Footer client:load />
+    <Dock client:load />
+    <style is:global>
+      :root {
+        --accent: 136, 58, 234;
+        --accent-light: 224, 204, 250;
+        --accent-dark: 49, 10, 101;
+        --accent-gradient: linear-gradient(
+          45deg,
+          rgb(var(--accent)),
+          rgb(var(--accent-light)) 30%,
+          white 60%
+        );
+        scroll-behavior: smooth;
+      }
+      code {
+        font-family:
+          Menlo,
+          Monaco,
+          Lucida Console,
+          Liberation Mono,
+          DejaVu Sans Mono,
+          Bitstream Vera Sans Mono,
+          Courier New,
+          monospace;
+      }
+    </style>
   </body>
 </html>
-<style is:global>
-  :root {
-    --accent: 136, 58, 234;
-    --accent-light: 224, 204, 250;
-    --accent-dark: 49, 10, 101;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
-      white 60%
-    );
-  }
-  code {
-    font-family:
-      Menlo,
-      Monaco,
-      Lucida Console,
-      Liberation Mono,
-      DejaVu Sans Mono,
-      Bitstream Vera Sans Mono,
-      Courier New,
-      monospace;
-  }
-</style>
