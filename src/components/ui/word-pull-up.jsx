@@ -24,7 +24,7 @@ export default function WordPullUp({
   className
 }) {
   return (
-    (<motion.h1
+    (<motion.p
       variants={wrapperFramerProps}
       initial="hidden"
       animate="show"
@@ -40,6 +40,6 @@ export default function WordPullUp({
           {word === "" ? <span>&nbsp;</span> : word}
         </motion.span>
       ))}
-    </motion.h1>)
+    </motion.p>)
   );
 }

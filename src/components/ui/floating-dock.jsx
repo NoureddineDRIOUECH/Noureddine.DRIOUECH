@@ -59,13 +59,45 @@ const FloatingDockMobile = ({
                 }}
                 transition={{ delay: (items.length - 1 - idx) * 0.05 }}>
                 <a
-                  href={item.href}
+                  target={item.blank ? "_blank" : ""} href={item.mail ? "mailto:" + item.href : item.href}
                   key={item.title}
                   className="h-10 w-10 rounded-full bg-gray-50 dark:bg-neutral-900 flex items-center justify-center">
                   <div className="h-4 w-4">{item.icon}</div>
                 </a>
               </motion.div>
             ))}
+            <motion.div
+              key={"Theme"}
+
+              initial={{ opacity: 0, y: 10 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              exit={{
+                opacity: 0,
+                y: 10,
+                transition: {
+                  delay: 0.05,
+                },
+              }}
+              transition={{ delay: (1) * 0.05 }}>
+              <a
+
+                onClick={toggleTheme}
+                key={"Theme"}
+                className="h-10 w-10 rounded-full bg-gray-50 dark:bg-neutral-900 flex items-center justify-center">
+                <div className="h-10 self-center p-2 w-10">
+                  {
+                    theme === "light" ? (
+                      <MoonIcon className=" h-[1.2rem] w-[1.2rem]  dark:block dark:text-neutral-200" />
+                    ) : (
+                      <SunIcon className="h-[1.2rem] w-[1.2rem]  dark:block dark:text-neutral-200" />
+                    )
+                  }
+                </div>
+              </a>
+            </motion.div>
             {remainingItems.map((item, idx) => (
               <motion.div
                 key={item.title}
@@ -83,7 +115,7 @@ const FloatingDockMobile = ({
                 }}
                 transition={{ delay: (items.length - 1 - idx) * 0.05 }}>
                 <a
-                  href={item.href}
+                  target={item.blank ? "_blank" : ""} href={item.mail ? "mailto:" + item.href : item.href}
                   key={item.title}
                   className="h-10 w-10 rounded-full bg-gray-50 dark:bg-neutral-900 flex items-center justify-center">
                   <div className="h-10 self-center p-2 w-10">{item.icon}</div>

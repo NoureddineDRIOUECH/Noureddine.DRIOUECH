@@ -12,7 +12,7 @@ export function Profile() {
                 <ContainerScroll
                     titleComponent={
                         <>
-                            <h1 className="text-4xl font-semibold text-black dark:text-white">
+                            <div className="text-4xl font-semibold text-black dark:text-white">
                                 Build
                                 <FlipWords words={words} />
                                 <br />
@@ -20,7 +20,7 @@ export function Profile() {
                                 <span className="text-4xl text-cyan-500/50  md:text-[4rem] font-bold mt-1 leading-none">
                                     websites with Me
                                 </span>
-                            </h1>
+                            </div>
                         </>
                     }>
                     <MyComponent />
