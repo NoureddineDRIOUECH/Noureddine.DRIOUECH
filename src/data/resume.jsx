@@ -19,7 +19,7 @@ export const DATA = {
       badges: ["Laravel", "React js", "Python", "Web Scraping"],
       location: "Casablanca, Morocco",
       title: "Software Developer",
-      logoUrl: "/public/whdagency_logo.jpeg",
+      logoUrl: "../../public/whdagency_logo.jpeg",
       start: "April 2024",
       end: "June 2022",
       description:
