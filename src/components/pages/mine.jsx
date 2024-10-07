@@ -13,7 +13,7 @@ const MyComponent = () => {
       <div className='flex flex-col md-space-y-0 space-y-3 justify-between px-1 md:px-3 items-center'>
         <div className="avatar mt-6 md:mt-0">
           <div className="w-40 rounded-full ring-primary">
-            <img src="../../../public/me.jpg" alt="Noureddine DRIOUECH" />
+            <img src="../../public/me.jpg" alt="Noureddine DRIOUECH" />
           </div>
         </div>
 
