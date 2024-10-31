@@ -11,7 +11,7 @@ const content = [
         content: (
             <div className="h-full w-full  flex items-center justify-center text-white">
                 <img
-                    src="/public/opendentaleSoftware.png"
+                    src="/opendentaleSoftware.png"
                     width={300}
                     height={300}
                     className="h-full w-full object-cover"
@@ -32,7 +32,7 @@ Client Site (Front-end): The Client Site allows car owners to book services,...`
         content: (
             <div className="h-full w-full  flex  items-center justify-center text-white">
                 <img
-                    src="/public/carRepairManagement.png"
+                    src="/carRepairManagement.png"
                     width={300}
                     height={300}
                     className="h-full w-full object-cover"
@@ -48,7 +48,7 @@ Client Site (Front-end): The Client Site allows car owners to book services,...`
         content: (
             <div className="h-full w-full  flex items-center justify-center text-white">
                 <img
-                    src="/public/cofeeStore.png"
+                    src="/cofeeStore.png"
                     width={300}
                     height={300}
                     className="h-full w-full object-cover"

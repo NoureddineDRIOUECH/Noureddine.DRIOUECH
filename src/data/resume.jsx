@@ -7,7 +7,7 @@ export const DATA = {
       badges: ["React js", "Tailwind CSS", "Shadcn UI", "APIs"],
       location: "Casablanca, Morocco",
       title: "Front End Developer",
-      logoUrl: "/public/garistaofficial_logo.jpeg",
+      logoUrl: "/garistaofficial_logo.jpeg",
       start: "April 2024",
       end: "August 2024",
       description:
@@ -19,7 +19,7 @@ export const DATA = {
       badges: ["Laravel", "React js", "Python", "Web Scraping"],
       location: "Casablanca, Morocco",
       title: "Software Developer",
-      logoUrl: "../../public/whdagency_logo.jpeg",
+      logoUrl: "/whdagency_logo.jpeg",
       start: "April 2024",
       end: "June 2022",
       description:
@@ -33,7 +33,7 @@ export const DATA = {
       badges: ["Python", "Web Automation"],
       location: "Casablanca, Morocco",
       title: "Developer",
-      logoUrl: "/public/digimperial.jpeg",
+      logoUrl: "/digimperial.jpeg",
       start: "August 2023",
       end: "September 2023",
       description:
