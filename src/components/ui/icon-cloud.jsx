@@ -10,7 +10,9 @@ export const cloudProps = {
       justifyContent: "center",
       alignItems: "center",
       width: "100%",
+      id: `cloud-`,
       paddingTop: 40,
+      position: 'relative',
     },
   },
   options: {
@@ -26,7 +28,7 @@ export const cloudProps = {
     outlineColour: "#0000",
     maxSpeed: 0.04,
     minSpeed: 0.02,
-    // dragControl: false,
+    dragControl: false,
   },
 };
 
@@ -60,17 +62,25 @@ export default function IconCloud({
     fetchSimpleIcons({ slugs: iconSlugs }).then(setData);
   }, [iconSlugs]);
 
+
   const renderedIcons = useMemo(() => {
     if (!data) return null;
 
     return Object.values(data.simpleIcons).map((icon) =>
       renderCustomIcon(icon, theme || "light"));
+
+
   }, [data, theme]);
+
+
 
   return (
     // @ts-ignore
-    (<Cloud {...cloudProps}>
+    (<Cloud {...cloudProps}
+      id={`cloud-`}
+    >
       <>{renderedIcons}</>
     </Cloud>)
   );
+
 }

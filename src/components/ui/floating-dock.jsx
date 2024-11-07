@@ -3,6 +3,7 @@ import { IconLayoutNavbarCollapse } from "@tabler/icons-react";
 import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 
 export const FloatingDock = ({
@@ -11,6 +12,7 @@ export const FloatingDock = ({
   mobileClassName
 }) => {
   const [theme, setTheme] = useState("light");
+  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
@@ -19,8 +21,11 @@ export const FloatingDock = ({
 
   return (
     <>
-      <FloatingDockDesktop items={items} className={desktopClassName} toggleTheme={toggleTheme} theme={theme} />
-      <FloatingDockMobile items={items} className={mobileClassName} toggleTheme={toggleTheme} theme={theme} />
+      {isDesktop ?
+        <FloatingDockDesktop items={items} className={desktopClassName} toggleTheme={toggleTheme} theme={theme} />
+        :
+        <FloatingDockMobile items={items} className={mobileClassName} toggleTheme={toggleTheme} theme={theme} />
+      }
     </>
   );
 };

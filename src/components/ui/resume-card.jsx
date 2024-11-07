@@ -76,7 +76,7 @@ export const ResumeCard = ({
               className="my-2 text-base text-justify md:text-left px-6 sm:text-base"
             >
               {badges && (
-                <span className="md:flex block mb-3 md:gap-x-1">
+                <span className="md:flex space-x-1 space-y-1 lg:block block mb-3 md:gap-x-1">
                   {badges.map((badge, index) => (
                     <Badge
                       variant="secondary"
