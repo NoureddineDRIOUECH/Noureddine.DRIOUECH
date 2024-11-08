@@ -22,7 +22,7 @@ const MyComponent = () => {
             className="text-3xl font-bold tracking-[-0.02em] text-black dark:text-white md:text-5xl md:leading-[5rem]"
             words="Noureddine DRIOUECH"
           />
-          <div className="flex flex-col text-base gap-2 text-muted-foreground">
+          <div className="flex items-center justify-center text-center flex-col text-base gap-2 text-muted-foreground">
             <p>Software Engineer Based in Morocco 🇲🇦</p>
             <div className="flex mx-auto items-center">
               <span className="flex w-2 h-2 me-2 bg-green-400 rounded-full pulsing-shadow"></span>

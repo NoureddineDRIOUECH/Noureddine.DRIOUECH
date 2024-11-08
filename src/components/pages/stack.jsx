@@ -24,8 +24,8 @@ export function Stack() {
           words="Work Experience and Skills"
         />
       </motion.div>
-      <div className="flex rounded-[30px] dark:border-[#6C6C6C] border-cyan-500 shadow-2xl p-5 md:p-10 md:flex-row flex-col lg:flex-col md:w-[75%] w-full justify-center gap-8 md:gap-20 text-center m-auto items-center">
-        <div className="flex min-h-0 w-full md:w-1/2 flex-col gap-y-5">
+      <div className="flex rounded-[30px] dark:border-[#6C6C6C] border-cyan-500 shadow-2xl p-5 md:p-10 xl:flex-row md:flex-col flex-col lg:flex-col md:w-[75%] w-full justify-center gap-8 md:gap-12 xl:gap-20 text-center m-auto items-center">
+        <div className="flex min-h-0 w-full xl:w-1/2 flex-col gap-y-5">
           <BlurFade delay={BLUR_FADE_DELAY * 5}>
           </BlurFade>
           {DATA.work.map((work, id) =>

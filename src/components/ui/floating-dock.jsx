@@ -92,7 +92,7 @@ const FloatingDockMobile = ({
                 onClick={toggleTheme}
                 key={"Theme"}
                 className="h-10 w-10 rounded-full bg-gray-50 dark:bg-neutral-900 flex items-center justify-center">
-                <div className="h-10 self-center p-2 w-10">
+                <div className="self-center">
                   {
                     theme === "light" ? (
                       <MoonIcon className=" h-[1.2rem] w-[1.2rem]  dark:block dark:text-neutral-200" />
