@@ -162,7 +162,8 @@ const IconCloudDemo = () => {
         {icons.map((icon, index) => (
           <img
             key={index}
-            src={`https://camo.githubusercontent.com/2cc57dd1e2173ce17e0b836ee7babbdc142d541e92656027df18e94f7b8a91a9/68747470733a2f2f63646e2e73696d706c6569636f6e732e6f72672f6a6176617363726970743f76696577626f783d6175746f`}
+            src={`https://cdn.simpleicons.org/${icon.slug}t?viewbox=auto`}
+            // src={`https://cdn.simpleicons.org/${icon.slug}/256/${icon.hex}`}
             alt={icon.title}
             width="42"
             height="42"
