@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import IconCloud from "@/components/ui/icon-cloud";
 
 const slugs = [
@@ -11,9 +12,9 @@ const slugs = [
   "html5",
   "css3",
   "nodedotjs",
-  "express",
+  // "express",
   // "nextdotjs",
-  "prisma",
+  // "prisma",
   "amazonaws",
   // "postgresql",
   "firebase",

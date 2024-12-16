@@ -1,9 +1,9 @@
-"use client";
-import { IconCloudDemo } from './iconCloud'
+
 import { ResumeCard } from '@/components/ui/resume-card';
 import WordPullUp from "@/components/ui/word-pull-up";
 import { motion } from "framer-motion";
 import BlurFade from "@/components/ui/blur-fade";
+import IconCloudDemo from "@/components/ui/icon-cloud.jsx";
 import { DATA } from "@/data/resume.jsx";
 
 const BLUR_FADE_DELAY = 0.04;
@@ -15,10 +15,6 @@ export function Stack() {
         whileInView={{ opacity: 1, y: -15 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
-
-        {/* <span className="text-3xl  md:text-[3rem] font-bold  leading-none">
-          Work Experience
-        </span> */}
         <WordPullUp
           className="text-3xl font-bold tracking-[-0.02em] text-black dark:text-white md:text-5xl md:leading-[5rem]"
           words="Work Experience and Skills"
@@ -49,7 +45,7 @@ export function Stack() {
           )
           )}
         </div>
-        <IconCloudDemo />
+        <IconCloudDemo client:load />
       </div>
     </div>
   )
