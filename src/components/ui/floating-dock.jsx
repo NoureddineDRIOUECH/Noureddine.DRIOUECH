@@ -16,7 +16,6 @@ export const FloatingDock = ({
 
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
-    console.log("suucess");
 
     document.body.classList.toggle("dark", theme === "light");
   };
