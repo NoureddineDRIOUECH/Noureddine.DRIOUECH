@@ -3,25 +3,34 @@ import { IconCloud } from "@/components/ui/icon-cloud";
 const slugs = [
   "typescript",
   "javascript",
-  "dart",
+  // "dart",
   "java",
   "react",
-  "flutter",
+  "laravel",
+  "python",
+  "selenium",
+  "mysql",
+  "linux",
+  "fedora",
+  "scrapy",
+  "tailwindcss",
+  "shadcnui",
+  // "flutter",
   "android",
   "html5",
   "css3",
   "nodedotjs",
-  "express",
+  // "express",
   "nextdotjs",
-  "prisma",
-  "amazonaws",
-  "postgresql",
-  "firebase",
-  "nginx",
+  // "prisma",
+  // "amazonaws",
+  // "postgresql",
+  // "firebase",
+  // "nginx",
   "vercel",
-  "testinglibrary",
-  "jest",
-  "cypress",
+  // "testinglibrary",
+  // "jest",
+  // "cypress",
   "docker",
   "git",
   "jira",
@@ -29,7 +38,7 @@ const slugs = [
   "gitlab",
   "visualstudiocode",
   "androidstudio",
-  "sonarqube",
+  // "sonarqube",
   "figma",
 ];
 
@@ -39,8 +48,10 @@ export function IconCloudDemo() {
   );
 
   return (
-    <div className="relative flex size-full max-w-lg items-center justify-center overflow-hidden rounded-lg bg-background">
+    <div className="relative flex items-center justify-center overflow-hidden rounded-lg bg-background w-full md:w-full lg:w-full xl:w-1/2">
       <IconCloud images={images} />
     </div>
   );
 }
+
+export default IconCloudDemo;
