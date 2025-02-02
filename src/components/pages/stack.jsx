@@ -3,7 +3,7 @@ import { ResumeCard } from '@/components/ui/resume-card';
 import WordPullUp from "@/components/ui/word-pull-up";
 import { motion } from "framer-motion";
 import BlurFade from "@/components/ui/blur-fade";
-import IconCloudDemo from "@/components/ui/icon-cloud.jsx";
+import { IconCloudDemo } from "@/components/pages/iconCloud.jsx";
 import { DATA } from "@/data/resume.jsx";
 
 const BLUR_FADE_DELAY = 0.04;

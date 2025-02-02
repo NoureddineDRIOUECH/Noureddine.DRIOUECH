@@ -29,7 +29,7 @@ export function Dock() {
     {
       title: "EMail",
       icon: (
-        <CiMail className="h-full w-full text-neutral-900 dark:text-neutral-300" />
+        <CiMail className="h-full w-full text-neutral-900 dark:text-neutral-100" />
       ),
 
       href: "nourddinedriouech@gmail.com",

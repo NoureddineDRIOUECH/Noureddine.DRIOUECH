@@ -1,5 +1,4 @@
-export const dynamic = 'force-dynamic'
-import IconCloud from "@/components/ui/icon-cloud";
+import { IconCloud } from "@/components/ui/icon-cloud";
 
 const slugs = [
   "typescript",
@@ -12,32 +11,36 @@ const slugs = [
   "html5",
   "css3",
   "nodedotjs",
-  // "express",
-  // "nextdotjs",
-  // "prisma",
+  "express",
+  "nextdotjs",
+  "prisma",
   "amazonaws",
-  // "postgresql",
+  "postgresql",
   "firebase",
-  // "nginx",
+  "nginx",
   "vercel",
   "testinglibrary",
-  // "jest",
-  // "cypress",
+  "jest",
+  "cypress",
   "docker",
   "git",
-  // "jira",
+  "jira",
   "github",
   "gitlab",
   "visualstudiocode",
   "androidstudio",
-  // "sonarqube",
+  "sonarqube",
   "figma",
 ];
 
 export function IconCloudDemo() {
+  const images = slugs.map(
+    (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`,
+  );
+
   return (
-    <div className="relative flex  max-w-[32rem] items-center justify-center overflow-hidden rounded-lg p-3  md:p-6 ">
-      <IconCloud iconSlugs={slugs} />
+    <div className="relative flex size-full max-w-lg items-center justify-center overflow-hidden rounded-lg bg-background">
+      <IconCloud images={images} />
     </div>
   );
 }

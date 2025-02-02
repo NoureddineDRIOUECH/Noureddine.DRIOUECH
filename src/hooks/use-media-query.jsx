@@ -12,10 +12,10 @@ export function useMediaQuery(query) {
             setMatches(mediaQuery.matches)
         }
 
-        mediaQuery.addListener(handleChange)
+        mediaQuery.addEventListener('change', handleChange)
 
         return () => {
-            mediaQuery.removeListener(handleChange)
+            mediaQuery.removeEventListener('change', handleChange)
         }
     }, [query])
 

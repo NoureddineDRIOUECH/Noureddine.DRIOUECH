@@ -16,7 +16,6 @@ const content = [
                     height={300}
                     className="h-full w-full object-cover"
                     alt="opendentaleSoftware" />
-                {/* <img src="/opendentaleSoftware.png/me.jpg" alt="Avatar" /> */}
             </div>
         ),
     },
