@@ -7,7 +7,7 @@ const content = [
     {
         title: "Opendental Software",
         description:
-            "esponsive table component using React that displays data in a tabular format and incorporates a calendar view feature. The table should have key features like sorting, filtering, pagination, and column customization. Additionally, the calendar view will allow users to navigate between months, select dates, and integrate data with specific days.",
+            "A responsive React-based table component with a built-in calendar view, enabling sorting, filtering, pagination, and column customization. The calendar integration allows users to navigate between months, select dates, and associate data with specific days.",
         content: (
             <div className="h-full w-full  flex items-center justify-center text-white">
                 <img

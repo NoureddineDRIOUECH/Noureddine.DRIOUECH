@@ -27,7 +27,7 @@ export function Dock() {
       mail: false
     },
     {
-      title: "EMail",
+      title: "Email",
       icon: (
         <CiMail className="h-full w-full text-neutral-900 dark:text-neutral-100" />
       ),

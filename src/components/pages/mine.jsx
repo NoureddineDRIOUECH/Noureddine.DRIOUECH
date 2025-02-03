@@ -34,15 +34,9 @@ const MyComponent = () => {
 
       <div className="card-body text-justify text-lg">
         <p>
-          Passionate software engineer with a robust foundation in various programming languages
-          including JavaScript, PHP, Java, and Python. My expertise extends to modern frameworks such as
-          Laravel and React.js, and I have hands-on experience with web development and automation tools.
-          I thrive in dynamic environments, continually seeking opportunities to expand my skills
-          and contribute to innovative projects. {isExpanded && (
+          I am a passionate and results-driven Software Engineer with expertise in JavaScript, PHP, Java, and Python. My skill set spans modern frameworks such as React.js and Laravel, enabling me to build high-performance web applications. I specialize in frontend development, state management, API integration, and automation, with a keen focus on delivering scalable and user-friendly solutions. {isExpanded && (
             <>
-              My professional journey includes successfully developing and optimizing web applications
-              and automating testing processes. Fluent in Arabic and advanced in French, I am equipped
-              to collaborate effectively in diverse, multilingual teams.
+              With a background in SaaS development, web scraping, and process automation, I thrive in dynamic environments where I can innovate, optimize, and push technical boundaries. Fluent in Arabic and French, I seamlessly collaborate in multilingual teams and global projects.
             </>
           )}
         </p>

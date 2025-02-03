@@ -1,6 +1,5 @@
 
 import BlurFade from "@/components/ui/blur-fade";
-import TextReveal from "@/components/ui/text-reveal";
 
 export default function Footer() {
 
@@ -10,19 +9,18 @@ export default function Footer() {
             <BlurFade delay={BLUR_FADE_DELAY * 16}>
                 <div className="space-y-3">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                        Get in Touch
+                        Let’s Connect!
                     </h2>
                     <p className="mx-auto max-w-[600px] text-muted-foreground text-lg/relaxed md:text-xl/relaxed lg:text-xl/relaxed xl:text-xl/relaxed">
-                        Want to chat? Just shoot me a dm{" "}
+                        Looking to collaborate or discuss a project? {" "}
                         <a
                             href="https://www.linkedin.com/in/noureddinedriouech"
                             target="_blank"
                             className="text-cyan-500 hover:underline hover:cursor-pointer	"
                         >
-                            with a direct question on Linkedin
+                            Feel free to reach out via LinkedIn.
                         </a>{" "}
-                        and I&apos;ll respond whenever I can. I will ignore all
-                        soliciting.
+                        I prioritize meaningful connections and technical discussions.
                     </p>
                 </div>
             </BlurFade>
