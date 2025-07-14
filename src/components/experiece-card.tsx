@@ -7,7 +7,16 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { ChevronRightIcon } from "lucide-react";
 import React from "react";
-
+interface ExperinceProps {
+    logoUrl: string;
+    altText: string;
+    title: string;
+    subtitle: string;
+    href: string;
+    badges: string[];
+    period: string;
+    description: string;
+}
 export const ExpericenCard = ({
                                logoUrl,
                                altText,
@@ -17,10 +26,10 @@ export const ExpericenCard = ({
                                badges,
                                period,
                                description,
-                           }) => {
+                           } : ExperinceProps) => {
     const [isExpanded, setIsExpanded] = React.useState(false);
 
-    const handleClick = (e) => {
+    const handleClick = (e : React.MouseEvent<HTMLAnchorElement>) => {
         if (description) {
             e.preventDefault();
             setIsExpanded(!isExpanded);

@@ -4,6 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import { HeroSection } from "../components/home_sections/HeroSection";
 import {ProjectSection} from "../components/home_sections/ProjectSection";
 import {AboutSection} from "../components/home_sections/AboutSection";
+import {FooterSection} from "../components/home_sections/FooterSection";
 ---
 
 <Layout>
@@ -11,6 +12,7 @@ import {AboutSection} from "../components/home_sections/AboutSection";
     <HeroSection client:load />
     <ProjectSection client:load />
     <AboutSection client:load />
+    <FooterSection client:load/>
   </main>
 </Layout>
 <style>
