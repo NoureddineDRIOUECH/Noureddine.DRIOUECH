@@ -2,11 +2,13 @@
 import "@/styles/global.css";
 import Layout from "../layouts/Layout.astro";
 import { HeroSection } from "../components/home_sections/HeroSection";
+import {ProjectSection} from "../components/home_sections/ProjectSection";
 ---
 
 <Layout>
   <main>
     <HeroSection client:load />
+    <ProjectSection client:load />
   </main>
 </Layout>
 <style>
