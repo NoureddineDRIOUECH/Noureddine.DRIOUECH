@@ -1,104 +1,144 @@
+---
+// import StarsCanvas from "@/components/ui/StarBackground";
+// import { MouseTrail } from "@/components/ui/mouse-trail";
+// import { DockBar } from "@/components/DockBar";
+---
 
----
-import StarsCanvas from '@/components/ui/StarBackground';
-import {MouseTrail} from '@/components/ui/mouse-trail';
-import {DockBar} from '@/components/DockBar';
----
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="description" content="Software Engineer specializing in SaaS development, modern web frameworks, and full-stack solutions. Portfolio of Noureddine DRIOUECH.">
-		<meta
-			name="keywords"
-			content="Noureddine DRIOUECH, Software Engineer, Frontend Developer, SaaS Developer, Full-Stack Development, Portfolio, Software Developer "
-		/>
-		<meta name="author" content="Noureddine DRIOUECH" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="description"
+      content="Software Engineer specializing in SaaS development, modern web frameworks, and full-stack solutions. Portfolio of Noureddine DRIOUECH."
+    />
+    <meta
+      name="keywords"
+      content="Noureddine DRIOUECH, Software Engineer, Frontend Developer, SaaS Developer, Full-Stack Development, Portfolio, Software Developer "
+    />
+    <meta name="author" content="Noureddine DRIOUECH" />
 
-		<meta
-			property="og:title"
-			content="Noureddine DRIOUECH | Software Engineer"
-		/>
-		<meta property="og:description" content="Software Engineer specializing in SaaS development, modern web frameworks, and full-stack solutions. Portfolio of Noureddine DRIOUECH.">
-		<meta property="og:image" content="https://noureddine-driouech.vercel.app/Noureddine%20DRIOUECH.jpg">
-		<meta property="og:url" content="https://noureddine-driouech.vercel.app/" />
+    <meta
+      property="og:title"
+      content="Noureddine DRIOUECH | Software Engineer"
+    />
+    <meta
+      property="og:description"
+      content="Software Engineer specializing in SaaS development, modern web frameworks, and full-stack solutions. Portfolio of Noureddine DRIOUECH."
+    />
+    <meta
+      property="og:image"
+      content="https://noureddine-driouech.vercel.app/Noureddine%20DRIOUECH.jpg"
+    />
+    <meta property="og:url" content="https://noureddine-driouech.vercel.app/" />
 
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/Noureddine%20DRIOUECH.jpg" />
-		<link rel="preload" href="/_astro/index.BCqPceo8.css" as="style" />
-		<meta name="generator" content={Astro.generator} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/Noureddine%20DRIOUECH.jpg" />
+    <link rel="preload" href="/_astro/index.BCqPceo8.css" as="style" />
+    <meta name="generator" content={Astro.generator} />
 
-		<!-- Open Graph / Facebook -->
-		<meta property="og:type" content="website">
-		<meta property="og:url" content="https://noureddine-driouech.vercel.app/">
-		<meta property="og:title" content="Noureddine DRIOUECH | Software Engineer">
-		<meta property="og:description" content="Software Engineer specializing in SaaS development, modern web frameworks, and full-stack solutions. Portfolio of Noureddine DRIOUECH.">
-		<meta property="og:image" content="https://noureddine-driouech.vercel.app/Noureddine%20DRIOUECH.jpg">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://noureddine-driouech.vercel.app/" />
+    <meta
+      property="og:title"
+      content="Noureddine DRIOUECH | Software Engineer"
+    />
+    <meta
+      property="og:description"
+      content="Software Engineer specializing in SaaS development, modern web frameworks, and full-stack solutions. Portfolio of Noureddine DRIOUECH."
+    />
+    <meta
+      property="og:image"
+      content="https://noureddine-driouech.vercel.app/Noureddine%20DRIOUECH.jpg"
+    />
 
-		<!-- Twitter -->
-		<meta property="twitter:card" content="summary_large_image">
-		<meta property="twitter:url" content="https://noureddine-driouech.vercel.app/">
-		<meta property="twitter:title" content="Noureddine DRIOUECH | Software Engineer">
-		<meta property="twitter:description" content="Software Engineer specializing in SaaS development, modern web frameworks, and full-stack solutions. Portfolio of Noureddine DRIOUECH.">
-		<meta property="twitter:image" content="https://noureddine-driouech.vercel.app/Noureddine%20DRIOUECH.jpg">
-		<!-- Structured Data for SEO -->
-		<script type="application/ld+json">
-			{
-				"@context": "https://schema.org",
-				"@type": "Person",
-				"name": "Noureddine DRIOUECH",
-				"url": "https://noureddine-driouech.vercel.app/",
-				"image": "https://noureddine-driouech.vercel.app/Noureddine%20DRIOUECH.jpg",
-				"sameAs": [
-					"https://linkedin.com/in/noureddinedriouech",
-					"https://github.com/NoureddineDRIOUECH"
-				],
-				"jobTitle": "Software Engineer",
-				"worksFor": {
-					"@type": "Organization",
-					"name": "Self-Employed"
-				},
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:url"
+      content="https://noureddine-driouech.vercel.app/"
+    />
+    <meta
+      property="twitter:title"
+      content="Noureddine DRIOUECH | Software Engineer"
+    />
+    <meta
+      property="twitter:description"
+      content="Software Engineer specializing in SaaS development, modern web frameworks, and full-stack solutions. Portfolio of Noureddine DRIOUECH."
+    />
+    <meta
+      property="twitter:image"
+      content="https://noureddine-driouech.vercel.app/Noureddine%20DRIOUECH.jpg"
+    />
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Noureddine DRIOUECH",
+        "url": "https://noureddine-driouech.vercel.app/",
+        "image": "https://noureddine-driouech.vercel.app/Noureddine%20DRIOUECH.jpg",
+        "sameAs": [
+          "https://linkedin.com/in/noureddinedriouech",
+          "https://github.com/NoureddineDRIOUECH"
+        ],
+        "jobTitle": "Software Engineer",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Self-Employed"
+        },
 
-				"description": "Software Engineer building scalable SaaS applications",
-				"alumniOf": "ENSIASD",
-				"knowsAbout": ["Frontend Development", "SaaS Architecture", "Cloud Engineering"]
+        "description": "Software Engineer building scalable SaaS applications",
+        "alumniOf": "ENSIASD",
+        "knowsAbout": [
+          "Frontend Development",
+          "SaaS Architecture",
+          "Cloud Engineering"
+        ]
+      }
+    </script>
+    <script is:inline>
+      const getThemePreference = () => {
+        if (
+          typeof localStorage !== "undefined" &&
+          localStorage.getItem("theme")
+        ) {
+          return localStorage.getItem("theme");
+        }
+        return window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+      };
+      const isDark = getThemePreference() === "dark";
+      document.documentElement.classList[isDark ? "add" : "remove"]("dark");
 
-			}
-		</script>
-		<script is:inline>
-			const getThemePreference = () => {
-				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-					return localStorage.getItem('theme');
-				}
-				return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-			};
-			const isDark = getThemePreference() === 'dark';
-			document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
+      if (typeof localStorage !== "undefined") {
+        const observer = new MutationObserver(() => {
+          const isDark = document.documentElement.classList.contains("dark");
+          localStorage.setItem("theme", isDark ? "dark" : "light");
+        });
+        observer.observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ["class"],
+        });
+      }
+    </script>
+    <title>Noureddine DRIOUECH</title>
+  </head>
+  <body>
+    <!-- <MouseTrail client:load/> -->
+    <!-- <StarsCanvas client:load /> -->
 
-			if (typeof localStorage !== 'undefined') {
-				const observer = new MutationObserver(() => {
-					const isDark = document.documentElement.classList.contains('dark');
-					localStorage.setItem('theme', isDark ? 'dark' : 'light');
-				});
-				observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-			}
-		</script>
-		<title>Noureddine DRIOUECH</title>
-	</head>
-	<body>
-
-	<MouseTrail client:load/>
-	<StarsCanvas client:load />
-
-		<slot />
-		<DockBar client:load />
-	</body>
+    <slot />
+    <!-- <DockBar client:load /> -->
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		text-align: center;
-	}
+  html,
+  body {
+    text-align: center;
+  }
 </style>

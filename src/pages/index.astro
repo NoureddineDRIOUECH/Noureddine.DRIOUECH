@@ -1,9 +1,20 @@
 ---
-import '@/styles/global.css';
-import Layout from '../layouts/Layout.astro';
-import HeroSection from "../components/home_sections/HeroSection.astro";
+import "@/styles/global.css";
+import Layout from "../layouts/Layout.astro";
+import { HeroSection } from "../components/home_sections/HeroSection";
 ---
 
 <Layout>
-    <HeroSection/>
+  <main>
+    <HeroSection client:load />
+  </main>
 </Layout>
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+</style>
