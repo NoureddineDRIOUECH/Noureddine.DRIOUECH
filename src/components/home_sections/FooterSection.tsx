@@ -11,9 +11,9 @@ export function FooterSection() {
     }
 
     return (
-        <footer className="border-t py-16 relative">
-            <div className="absolute inset-0 -z-10 overflow-hidden">
-                <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+        <footer className=" py-16 w-full relative">
+            <div className="absolute inset-0 w-full -z-10 overflow-hidden">
+                <div className="absolute w-full bottom-0 left-1/4  h-96 bg-primary/5 rounded-full blur-3xl" />
             </div>
 
             <div className="container">
@@ -53,7 +53,7 @@ export function FooterSection() {
                             <span className="sr-only">GitHub</span>
                         </motion.a>
                         <motion.a
-                            href="https://linkedin.com"
+                            href="https://www.linkedin.com/in/noureddinedriouech/"
                             target="_blank"
                             className="h-10 w-10 rounded-full bg-muted/80 flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
                             whileHover={{ y: -5 }}
@@ -62,18 +62,18 @@ export function FooterSection() {
                             <Linkedin className="h-5 w-5" />
                             <span className="sr-only">LinkedIn</span>
                         </motion.a>
+                        {/*<motion.a*/}
+                        {/*    href="https://x.com/NoureddineDRIOUECH"*/}
+                        {/*    target="_blank"*/}
+                        {/*    className="h-10 w-10 rounded-full bg-muted/80 flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"*/}
+                        {/*    whileHover={{ y: -5 }}*/}
+                        {/*    rel="noreferrer"*/}
+                        {/*>*/}
+                        {/*    <SiX className="h-5 w-5" />*/}
+                        {/*    <span className="sr-only">X</span>*/}
+                        {/*</motion.a>*/}
                         <motion.a
-                            href="https://x.com/NoureddineDRIOUECH"
-                            target="_blank"
-                            className="h-10 w-10 rounded-full bg-muted/80 flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-                            whileHover={{ y: -5 }}
-                            rel="noreferrer"
-                        >
-                            <SiX className="h-5 w-5" />
-                            <span className="sr-only">X</span>
-                        </motion.a>
-                        <motion.a
-                            href="https://www.instagram.com/NoureddineDRIOUECH/"
+                            href="https://www.instagram.com/noureddine.driouech/"
                             target="_blank"
                             className="h-10 w-10 rounded-full bg-muted/80 flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
                             whileHover={{ y: -5 }}

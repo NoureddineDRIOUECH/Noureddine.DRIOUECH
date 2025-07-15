@@ -153,7 +153,7 @@ export function ContactSection() {
                                         <div className="h-12 w-12 rounded-full bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center shrink-0 mt-1 group-hover:bg-indigo-200 dark:group-hover:bg-indigo-800/50 transition-colors">
                                             <MapPin className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
                                         </div>
-                                        <div>
+                                        <div className={'w-full'}>
                                             <p className="text-sm text-muted-foreground">Location</p>
                                             <p className="font-medium text-base">Casablanca, MA</p>
                                         </div>

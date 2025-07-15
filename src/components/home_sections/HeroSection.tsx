@@ -1,9 +1,10 @@
 "use client";
 import { motion } from "framer-motion";
-import { Github, Linkedin } from "lucide-react";
+import { Github, Linkedin ,Instagram} from "lucide-react";
 import { ProjectButton } from "@/components/ui/glow-effect-button.tsx";
 import { TextLoop } from "@/components/ui/text-loop";
 import { HeroStars } from "@/components/ui/stars";
+import {SparklesText} from "@/components/ui/sparkles-text.tsx";
 
 export function HeroSection() {
     return (
@@ -41,15 +42,15 @@ export function HeroSection() {
                         </div>
 
                         <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight drop-shadow-[0_0_13px_rgba(59,59,59,1)] dark:drop-shadow-[0_0_20px_rgba(200,200,200,1)] leading-tight">
-                            Creating digital experiences that matter
+                            Noureddine DRIOUECH
                         </h1>
 
-                        <p className="text-base md:text-lg text-muted-foreground max-w-lg">
-                            I design and build exceptional digital experiences that are fast,
-                            accessible, and visually appealing.
+                        <p >
+                            <SparklesText className="text-lg md:text-2xl text-muted-foreground max-w-full">Software Enginner</SparklesText>
+
                         </p>
 
-                        <div className="flex items-center gap-6 pt-2">
+                        <div className="flex justify-center items-center gap-6 pt-2">
                             <ProjectButton />
 
                             <div className="flex gap-6">
@@ -72,6 +73,16 @@ export function HeroSection() {
                                 >
                                     <Linkedin className="h-5 w-5" />
                                     <span className="sr-only">LinkedIn</span>
+                                </motion.a>
+                                <motion.a
+                                    href="https://www.instagram.com/noureddine.driouech/"
+                                    target="_blank"
+                                    whileHover={{ y: -5, scale: 1.1 }}
+                                    className="text-muted-foreground hover:text-foreground transition-colors"
+                                    rel="noreferrer"
+                                >
+                                    <Instagram className="h-5 w-5" />
+                                    <span className="sr-only">Instagram</span>
                                 </motion.a>
                             </div>
                         </div>

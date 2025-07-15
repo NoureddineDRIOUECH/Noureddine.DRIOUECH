@@ -3,127 +3,288 @@
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {Code, Palette, Download, Award, BookOpen, Briefcase, Lightbulb, Clock} from "lucide-react";
+import { Download, Award, BookOpen,  Clock} from "lucide-react";
+import { Code,  Briefcase, Cpu, Smartphone, Cloud } from "lucide-react";
 import { AboutStars } from "@/components/ui/stars";
 import {
     SiJavascript,
     SiTypescript,
+    SiPython,
+    SiPhp,
     SiReact,
-    SiLaravel,
-    SiNodedotjs,
-    SiExpress,
-    SiMongodb,
+    SiNextdotjs,
+    SiReact as SiReactNative,
     SiTailwindcss,
+    SiNodedotjs,
+    SiLaravel,
+    SiSpring,
+    SiMysql,
+    SiMongodb,
+    SiPostgresql,
+    SiRedis,
+    SiDocker,
+    SiKubernetes,
+    SiVercel,
+    SiLinux,
+    SiJest,
+    SiSelenium,
     SiSocketdotio,
     SiGit,
+    SiShadcnui,
+    SiFramer,
+    SiJenkins,
+    SiRabbitmq,
+    SiApachekafka,
+    SiWebassembly,
+    SiCodemirror
 } from "react-icons/si";
 import { Button } from "@/components/ui/button";
-import {type JSX} from "react";
+import {type JSX, useRef} from "react";
+import {IconCloud} from "@/components/IconCloud.tsx";
+import {ResumeCard} from "@/components/resume-card.tsx";
 
 export function AboutSection() {
     const skills = [
         "JavaScript",
         "TypeScript",
-        "Laravel",
-        "React",
-        "ShadCN UI",
-        "Mysql",
-        "Java",
         "Python",
+        "Java",
+        "PHP",
+        "React",
+        "Next.js",
+        "React Native",
+        "Tailwind CSS",
+        "Shadcn UI",
         "Framer Motion",
         "Node.js",
-        "Express",
+        "Laravel",
+        "Spring Boot",
+        "MySQL",
         "MongoDB",
-        "Socket.io",
-        "Tailwind CSS",
-        "Git",
+        "PostgreSQL",
+        "Redis",
+        "Docker",
+        "Kubernetes",
+        "CI/CD Pipelines",
+        "AWS",
+        "Vercel",
+        "Linux System Administration",
+        "Jest",
+        "Selenium",
+        "System Design",
+        "Microservices Architecture",
+        "WebSockets",
+            "Agile Methodologies",
+            "Git Version Control",
+            "Code Review",
+        "Web Automation",
+        "Data Scraping",
     ];
+
 
     const skillIcons: Record<string, JSX.Element> = {
+        // Languages
         JavaScript: <SiJavascript className="text-yellow-400" />,
         TypeScript: <SiTypescript className="text-blue-500" />,
-        Laravel: <SiLaravel className="text-red-500" />,
-        React: <SiReact className="text-cyan-400" />,
-        "ShadCN UI": (
-            <img
-                src="/shadcn.svg"
-                alt="ShadCN UI"
-                className="w-4 h-4 dark:hidden"
-            />
-        ),
-        Mysql: <img src="/sql.png" alt="MySQL" className="w-4 h-4" />,
-        Java: <img src="/java.png" alt="Java" className="w-4 h-4" />,
-        Python: <img src="/py.png" alt="Python" className="w-4 h-4" />,
-        "Framer Motion": <img src="/fm.svg" alt="Framer Motion" className="w-4 h-4" />,
-        "Node.js": <SiNodedotjs className="text-green-600" />,
-        Express: <SiExpress className="text-black dark:text-white" />,
-        "Socket.io": <SiSocketdotio className="text-black dark:text-white" />,
-        MongoDB: <SiMongodb className="text-green-500" />,
-        "Tailwind CSS": <SiTailwindcss className="text-sky-400" />,
-        Git: <SiGit className="text-orange-500" />,
-    };
+        Python: <SiPython className="text-blue-600" />,
+        PHP: <SiPhp className="text-purple-500" />,
 
+        // Frontend
+        React: <SiReact className="text-cyan-400" />,
+        "Next.js": <SiNextdotjs className="text-black dark:text-white" />,
+        "React Native": <SiReactNative className="text-cyan-500" />,
+        "Tailwind CSS": <SiTailwindcss className="text-sky-400" />,
+        "Shadcn UI": <SiShadcnui className="text-black dark:text-white" />,
+        "Framer Motion": <SiFramer className="text-purple-600" />,
+
+        // Backend
+        "Node.js": <SiNodedotjs className="text-green-600" />,
+        Laravel: <SiLaravel className="text-red-500" />,
+        "Spring Boot": <SiSpring className="text-green-600" />,
+
+        // Databases
+        MySQL: <SiMysql className="text-blue-700" />,
+        MongoDB: <SiMongodb className="text-green-500" />,
+        PostgreSQL: <SiPostgresql className="text-blue-400" />,
+        Redis: <SiRedis className="text-red-700" />,
+
+        // DevOps & Cloud
+        Docker: <SiDocker className="text-blue-400" />,
+        Kubernetes: <SiKubernetes className="text-blue-500" />,
+        "CI/CD Pipelines": <SiJenkins className="text-red-400" />,
+        Vercel: <SiVercel className="text-black dark:text-white" />,
+        "Linux System Administration": <SiLinux className="text-black dark:text-white" />,
+
+        // Testing
+        Jest: <SiJest className="text-red-600" />,
+        Selenium: <SiSelenium className="text-green-500" />,
+
+        // Architecture & Protocols
+        WebSockets: <SiSocketdotio className="text-black dark:text-white" />,
+        "Microservices Architecture": <SiDocker className="text-blue-400" />,
+
+        // Practices
+        "Git Version Control": <SiGit className="text-orange-500" />,
+
+        // Specializations
+        "Web Automation": <SiSelenium className="text-green-500" />,
+        "Data Scraping": <SiCodemirror className="text-yellow-500" />,
+
+        // Concepts (using generic icons)
+        "Algorithms & Data Structures": <SiWebassembly className="text-purple-500" />,
+        "System Design": <SiApachekafka className="text-black dark:text-white" />,
+        "Code Review": <SiCodemirror className="text-yellow-500" />,
+        "Agile Methodologies": <SiRabbitmq className="text-orange-500" />,
+    };
     const experiences = [
         {
-            title: "Full-Stack Developer Intern",
-            company: "Tech Support Solutions",
-            period: "July 2023 – September 2023",
-            description: "Developed a Help Desk web application using Laravel and MySQL with CRUD operations and role-based access.",
+            company: "Garista",
+            href: "https://garista.com",
+            badges: ["React.js", "TypeScript", "Shadcn UI", "Redux", "React Query"],
+            location: "Casablanca, Morocco",
+            title: "Frontend Developer",
+            logoUrl: "/garistaofficial_logo.jpeg",
+            period: "Apr 2024 - Present",
+            description:
+                "Led development of SaaS restaurant management platform using React.js and Shadcn UI. ",
+            achievements: [
+                "Architected responsive UI components reducing load time by 35%",
+                "Implemented real-time analytics dashboard boosting client engagement metrics",
+                "Integrated payment processing handling $2M+ transactions annually",
+                "Presented product at GITEX Africa tech conference"
+            ]
         },
         {
-            title: "Software Developer Intern",
-            company: "SmartMail Technologies",
-            period: "April 2023 – June 2023",
-            description: "Built an Email Management System with user tagging, categorization, and real-time notifications.",
+            company: "WHD Agency",
+            href: "https://whd.agency",
+            badges: ["Laravel", "Next.js", "Python", "Web Scraping", "Automation"],
+            location: "Casablanca, Morocco",
+            title: "Full Stack Developer",
+            logoUrl: "/whdagency_logo.jpeg",
+            period: "Apr 2022 - Jun 2024", // Fixed date order
+            description:
+                "Developed full-stack solutions for e-commerce and business automation.",
+            achievements: [
+                "Built automated product management system reducing manual entry by 80%",
+                "Created web scraping tools extracting 50k+ product listings monthly",
+                "Optimized React interfaces improving page speed scores by 45%",
+                "Integrated REST APIs connecting Laravel backend with Next.js frontends"
+            ]
+        },
+        {
+            company: "Digimperial",
+            href: "https://digimperial.com",
+            badges: ["Python", "Selenium", "Automation", "CAPTCHA Solving"],
+            location: "Casablanca, Morocco",
+            title: "Automation Engineer",
+            logoUrl: "/digimperial.jpeg",
+            period: "Aug 2023 - Sep 2023",
+            description:
+                "Specialized in web automation and data extraction solution.",
+            achievements: [
+                "Developed CAPTCHA-solving algorithms with 92% success rate",
+                "Automated form submission workflows processing 500+ forms daily",
+                "Created browser automation scripts reducing manual data entry time",
+                "Optimized Selenium workflows decreasing execution time by 40%"
+            ]
         },
     ];
-
+    const slugs = [
+        "typescript",
+        "javascript",
+        // "dart",
+        "java",
+        "react",
+        "laravel",
+        "python",
+        "selenium",
+        "mysql",
+        "linux",
+        "fedora",
+        "scrapy",
+        "tailwindcss",
+        "shadcnui",
+        // "flutter",
+        "android",
+        "html5",
+        "css3",
+        "nodedotjs",
+        // "express",
+        "nextdotjs",
+        "prisma",
+        // "amazonaws",
+        "postgresql",
+        "firebase",
+        // "nginx",
+        "vercel",
+        // "testinglibrary",
+        // "jest",
+        // "cypress",
+        "docker",
+        "git",
+        "jira",
+        "github",
+        "gitlab",
+        "visualstudiocode",
+        "androidstudio",
+        // "sonarqube",
+        "figma",
+    ];
+    const images = slugs.map(
+        (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`,
+    );
     const education = [
         {
-            degree: "High School Diploma (Baccalaureate)",
-            institution: "National Secondary School",
-            period: "2021",
-            description: "Completed high school with a focus on science and technology.",
+            degree: "Software Engineering",
+            institution: "National Higher School of Artificial Intelligence and Data Sciences, Taroudant",
+            period: "2024 - Present",
+            focus: "Systems Architecture · AI Engineering · Cloud Computing",
+            courses: ["Distributed Systems", "Machine Learning", "DevOps Practices"]
         },
         {
-            degree: "University Diploma in Computer Science",
+            degree: "Diploma in Computer Science",
             institution: "Higher School of Technology, Sidi Bennour",
             period: "2022 - 2024",
-            description: "Studied software development, databases, and computer systems.",
+            focus: "Full-Stack Development · Databases · System Design",
+            courses: ["Web Technologies", "Database Management", "Software Engineering"]
         },
         {
-            degree: "Bachelor's in Software Engineering",
-            institution: "Higher School of Technology, Essaouira",
-            period: "2024 - Present",
-            description: "Pursuing advanced studies in systems architecture and project management.",
+            degree: "Baccalaureate in Science",
+            institution: "National High School JAAFAR EL FASSI, Casablanca",
+            period: "2022",
+            focus: "Computer Science · Mathematics · Physics",
+            honors: "Graduated with distinction in technical sciences"
         },
     ];
 
     const services = [
         {
             icon: <Code className="h-10 w-10 text-primary" />,
-            title: "Web Development",
-            description: "Building fast, responsive websites and web applications.",
+            title: "Web Application Development",
+            description: "Full-stack development of responsive, high-performance web applications using modern stacks like React, Next.js, and Node.js",
+            technologies: ["React", "Next.js", "Express", "PostgreSQL"]
         },
         {
-            icon: <Palette className="h-10 w-10 text-primary" />,
-            title: "UI/UX Design",
-            description: "Creating intuitive and visually appealing interfaces.",
+            icon: <Cpu className="h-10 w-10 text-primary" />, // Changed icon
+            title: "Process Automation",
+            description: "Building custom automation solutions for data extraction, workflow optimization, and business process streamlining",
+            technologies: ["Python", "Selenium", "BeautifulSoup", "Puppeteer"]
         },
         {
-            icon: <Briefcase className="h-10 w-10 text-primary" />,
-            title: "Full-Stack Solutions",
-            description: "Developing end-to-end applications with robust systems.",
+            icon: <Smartphone className="h-10 w-10 text-primary" />, // Changed icon
+            title: "Cross-Platform Mobile Apps",
+            description: "Development of performant mobile applications for iOS and Android using React Native",
+            technologies: ["React Native", "Expo", "Firebase", "Redux"]
         },
         {
-            icon: <Lightbulb className="h-10 w-10 text-primary" />,
-            title: "Technical Consultation",
-            description: "Expert advice on technology choices and architecture.",
-        },
+            icon: <Cloud className="h-10 w-10 text-primary" />, // Changed icon
+            title: "Cloud & DevOps Solutions",
+            description: "Implementing CI/CD pipelines, cloud infrastructure, and deployment automation",
+            technologies: ["AWS", "Docker", "GitHub Actions", "Vercel"]
+        }
     ];
-
     return (
-        <section id="about" className="py-24 relative">
+        <section id="about" className="py-24 px-10 relative">
             <div className="absolute inset-0 -z-10 overflow-hidden">
                 <div className="absolute bottom-1/3 left-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
             </div>
@@ -156,11 +317,11 @@ export function AboutSection() {
                         transition={{ duration: 0.6 }}
                     >
                         <AboutStars />
-                        <div className="relative w-full aspect-square">
+                        <div className="relative  w-full aspect-square">
                             <img
-                                src="/memoji-nbg.png"
-                                alt="Zakaria's memoji"
-                                className="w-full h-auto object-contain"
+                                src="/NoureddineDRIOUECH.jpg"
+                                alt="Noureddine DRIOUECH"
+                                className="w-full h-auto rounded-full object-contain"
                             />
                         </div>
                     </motion.div>
@@ -173,14 +334,16 @@ export function AboutSection() {
                         transition={{ duration: 0.6 }}
                     >
                         <h3 className="text-2xl sm:text-3xl font-bold">
-                            Hello, I'm <span className="text-primary">Zakaria</span>
+                            I'm <span className="text-primary">Noureddine DRIOUECH</span>
                         </h3>
                         <p className="text-muted-foreground">
-                            Full-stack developer with 3+ years experience building solutions that solve real-world problems.
-                            I craft functional yet visually engaging web experiences by blending creativity with clean, efficient code.
+                            Software Engineer with 3+ years of experience building robust applications through clean, maintainable code.
+                            I specialize in transforming complex requirements into efficient software solutions using modern architectures.
                         </p>
-                        <p className="text-muted-foreground">
-                            My balanced approach to design and development ensures every project delivers exceptional user experiences.
+
+
+                        <p className="text-muted-foreground mt-4">
+                            I deliver solutions focused on scalability, maintainability, and user value - not just functionality.
                         </p>
 
                         <div className="flex justify-center">
@@ -208,7 +371,9 @@ export function AboutSection() {
                             My Skills
                         </h4>
 
-                        <div className="flex flex-wrap gap-2 pt-2">
+                        <div className="flex flex-wrap flex-col items-center justify-center gap-2 pt-2">
+                            <div className={'flex flex-wrap gap-2'}>
+
                             {skills.map((skill) => (
                                 <Badge
                                     key={skill}
@@ -221,13 +386,20 @@ export function AboutSection() {
                                     <span>{skill}</span>
                                 </Badge>
                             ))}
+                            </div>
+
+                            <IconCloud images={images}/>
                         </div>
 
-                        <div className="pt-6">
-                            <Button className="flex items-center gap-2" variant="outline">
-                                <Download className="h-4 w-4" />
-                                Download Resume
-                            </Button>
+                        <div className="">
+                            <a href={'/CV%20Noureddine%20DRIOUECH%20.pdf'} download={'CV Noureddine DRIOUECH'}>
+                                <Button className="flex items-center gap-2"
+                                        variant="outline">
+                                    <Download className="h-4 w-4" />
+                                    Download Resume
+                                </Button>
+                            </a>
+
                         </div>
                     </motion.div>
                 </div>
@@ -247,22 +419,30 @@ export function AboutSection() {
                         </TabsList>
 
                         <TabsContent value="experience" className="space-y-6">
+
                             {experiences.map((exp, index) => (
+
                                 <motion.div
                                     key={index}
-                                    className="p-6 rounded-xl border bg-card text-card-foreground shadow-sm"
+                                    className=""
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true, margin: "-50px" }}
                                     transition={{ duration: 0.4, delay: index * 0.1 }}
                                 >
-                                    <div className="space-y-2">
-                                        <h4 className="text-xl font-semibold">{exp.title}</h4>
-                                        <p className="text-muted-foreground">
-                                            {exp.company} | {exp.period}
-                                        </p>
-                                        <p>{exp.description}</p>
-                                    </div>
+                                <ResumeCard
+                                    key={exp.company}
+                                    logoUrl={exp.logoUrl}
+                                    altText={exp.company}
+                                    title={exp.company}
+                                    subtitle={exp.title}
+                                    href={exp.href}
+                                    badges={exp.badges}
+                                    period={exp.period}
+                                    description={exp.description}
+                                    achievements={exp.achievements}
+                                />
+
                                 </motion.div>
                             ))}
                         </TabsContent>
@@ -282,7 +462,7 @@ export function AboutSection() {
                                         <p className="text-muted-foreground">
                                             {edu.institution} | {edu.period}
                                         </p>
-                                        <p>{edu.description}</p>
+                                        <p>{edu.focus}</p>
                                     </div>
                                 </motion.div>
                             ))}
@@ -309,6 +489,7 @@ export function AboutSection() {
                     </Tabs>
                 </motion.div>
             </div>
+
         </section>
     );
 }
