@@ -30,7 +30,8 @@ import {
     SiScrapy
 } from "react-icons/si";
 import {Lens} from "@/components/ui/lens.tsx";
-import {AchievementCard} from "@/components/achievement-card.tsx";
+import Component from "@/components/achievement-card.tsx";
+// import Component, {AchievementCard} from "@/components/achievement-card.tsx";
 
 export function ProjectSection() {
     const [activeFilter, setActiveFilter] = useState("All");
@@ -287,13 +288,14 @@ export function ProjectSection() {
                     </div>
 
                     <div className="max-w-4xl mx-auto">
-                        <AchievementCard
+                        {/* <AchievementCard
                             title="Garista SaaS Platform"
                             description="Cloud-based restaurant management suite serving 50+ clients across Morocco. Contributed as a core developer building real-time analytics and payment systems."
                             badges={["Next.js", "TypeScript","React.js", "Laravel", "MySQL", "Stripe", "Real-time Analytics"]}
                             impact="95% client retention | $2M+ transactions processed"
                             link="https://garista.com"
-                        />
+                        /> */}
+                        <Component />
                     </div>
                 </div>
             </section>

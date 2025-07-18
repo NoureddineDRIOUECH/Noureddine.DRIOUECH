@@ -1,4 +1,3 @@
-// floating-dock-demo.tsx
 import React, { useState, useEffect } from "react";
 import { FloatingDock } from "@/components/ui/floating-dock";
 import {
@@ -69,7 +68,7 @@ export function DockBar() {
     return (
         <div className="flex items-center md:justify-center justify-end fixed bottom-8 z-40 w-[98%] md:w-full">
             <FloatingDock
-                mobileClassName="translate-y-20"
+                // mobileClassName="translate-y-20"
                 items={items}
             />
         </div>

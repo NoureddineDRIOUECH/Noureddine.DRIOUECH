@@ -63,16 +63,16 @@ const FloatingDockMobile = ({
                                 {item.href ? (
                                     <a
                                         href={item.href}
-                                        className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900"
+                                        className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900"
                                     >
-                                        <div className="h-4 w-4">{item.icon}</div>
+                                        <div className="h-6 w-6">{item.icon}</div>
                                     </a>
                                 ) : (
                                     <button
                                         onClick={item.onClick}
-                                        className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900"
+                                        className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900"
                                     >
-                                        <div className="h-4 w-4">{item.icon}</div>
+                                        <div className="h-6 w-6">{item.icon}</div>
                                     </button>
                                 )}
                             </motion.div>

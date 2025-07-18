@@ -5,6 +5,7 @@ import { ProjectButton } from "@/components/ui/glow-effect-button.tsx";
 import { TextLoop } from "@/components/ui/text-loop";
 import { HeroStars } from "@/components/ui/stars";
 import {SparklesText} from "@/components/ui/sparkles-text.tsx";
+import Magnet from "@/ui/Animations/Magnet/Magnet.tsx";
 
 export function HeroSection() {
     return (
@@ -22,7 +23,7 @@ export function HeroSection() {
                         transition={{ duration: 0.8 }}
                     >
                         <div className="inline-block whitespace-pre-wrap text-sm md:text-base rounded-full bg-transparent px-4 py-1.5 font-semibold text-gray-900 dark:text-gray-100 border border-gray-300 dark:border-gray-700">
-                            Hello I'm{" "}
+                            Hello, You, I'm{" "}
                             <TextLoop
                                 transition={{
                                     type: "spring",
@@ -51,7 +52,11 @@ export function HeroSection() {
                         </p>
 
                         <div className="flex justify-center items-center gap-6 pt-2">
+                            <Magnet padding={50} disabled={false} magnetStrength={5}>
+
+
                             <ProjectButton />
+                            </Magnet>
 
                             <div className="flex gap-6">
                                 <motion.a
