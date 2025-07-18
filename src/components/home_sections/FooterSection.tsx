@@ -16,7 +16,7 @@ export function FooterSection() {
                 <div className="absolute w-full bottom-0 left-1/4  h-96 bg-primary/5 rounded-full blur-3xl" />
             </div>
 
-            <div className="container">
+            <div >
                 <div className="flex flex-col items-center">
                     <motion.div
                         className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-500 mb-8"

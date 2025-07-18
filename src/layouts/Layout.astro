@@ -1,10 +1,11 @@
 ---
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import StarsCanvas from "@/components/ui/StarBackground";
-import { MouseTrail } from "@/components/ui/mouse-trail";
+// import { MouseTrail } from "@/components/ui/mouse-trail";
 import { DockBar } from "@/components/DockBar";
 import { Toaster } from "@/components/ui/sonner"
 import  SpeedInsights  from "@vercel/speed-insights/astro"
+import SplashCursor from "../ui/Animations/SplashCursor/SplashCursor";
 ---
 
 <!doctype html>
@@ -132,7 +133,8 @@ import  SpeedInsights  from "@vercel/speed-insights/astro"
   </head>
   <body>
       <ScrollProgress client:load />
-     <MouseTrail client:load/>
+     <!--<MouseTrail client:load/>-->
+      <SplashCursor client:load/>
      <StarsCanvas client:load />
 
     <slot />
