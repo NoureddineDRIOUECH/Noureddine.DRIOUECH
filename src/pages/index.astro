@@ -1,20 +1,20 @@
 ---
 import "@/styles/global.css";
 import Layout from "../layouts/Layout.astro";
-// import { HeroSection } from "../components/home_sections/HeroSection";
+import { HeroSection } from "../components/home_sections/HeroSection";
 import {ProjectSection} from "../components/home_sections/ProjectSection";
-// import {AboutSection} from "../components/home_sections/AboutSection";
-// import {ContactSection} from "../components/home_sections/Contactsection";
-// import {FooterSection} from "../components/home_sections/FooterSection";
+import {AboutSection} from "../components/home_sections/AboutSection";
+import {ContactSection} from "../components/home_sections/Contactsection";
+import {FooterSection} from "../components/home_sections/FooterSection";
 ---
 
 <Layout>
   <main>
-    <!--<HeroSection client:load />-->
+    <HeroSection client:load />
     <ProjectSection client:load />
-    <!--<AboutSection client:load />-->
-    <!--<ContactSection client:load/>-->
-    <!--<FooterSection client:load/>-->
+    <AboutSection client:load />
+    <ContactSection client:load/>
+    <FooterSection client:load/>
   </main>
 </Layout>
 <style>

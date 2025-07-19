@@ -1,10 +1,10 @@
 ---
-// import { ScrollProgress } from "@/components/ui/scroll-progress";
-// import StarsCanvas from "@/components/ui/StarBackground";
-// import { DockBar } from "@/components/DockBar";
-// import { Toaster } from "@/components/ui/sonner"
-// import SplashCursor from "../ui/Animations/SplashCursor/SplashCursor";
-// import  SpeedInsights  from "@vercel/speed-insights/astro"
+import { ScrollProgress } from "@/components/ui/scroll-progress";
+import StarsCanvas from "@/components/ui/StarBackground";
+import { DockBar } from "@/components/DockBar";
+import { Toaster } from "@/components/ui/sonner"
+import SplashCursor from "../ui/Animations/SplashCursor/SplashCursor";
+import  SpeedInsights  from "@vercel/speed-insights/astro"
 ---
 
 <!doctype html>
@@ -131,14 +131,14 @@
     <title>Noureddine DRIOUECH</title>
   </head>
   <body>
-     <!-- <ScrollProgress client:load />-->
-     <!-- <SplashCursor client:load/>-->
-     <!--<StarsCanvas client:load />-->
+      <ScrollProgress client:load />
+      <SplashCursor client:load/>
+     <StarsCanvas client:load />
 
     <slot />
-     <!--<DockBar client:load />-->
-     <!--<Toaster client:load/>-->
-     <!-- <SpeedInsights  client:load/>-->
+     <DockBar client:load />
+     <Toaster client:load/>
+      <SpeedInsights  client:load/>
   </body>
 </html>
 
