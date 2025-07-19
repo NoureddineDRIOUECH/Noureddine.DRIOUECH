@@ -30,8 +30,9 @@ import {
     SiScrapy
 } from "react-icons/si";
 import {Lens} from "@/components/ui/lens.tsx";
-import Component from "@/components/achievement-card.tsx";
-// import Component, {AchievementCard} from "@/components/achievement-card.tsx";
+// import Component from "@/components/achievement-card.tsx";
+import SplitText from "@/ui/TextAnimations/SplitText/SplitText.tsx";
+import {AchievementCard} from "@/components/achievement-card.tsx";
 
 export function ProjectSection() {
     const [activeFilter, setActiveFilter] = useState("All");
@@ -130,19 +131,42 @@ export function ProjectSection() {
 
             <div className="container px-4 sm:px-6">
                 <motion.div
-                    className="max-w-3xl mx-auto text-center mb-16"
+                    className="max-w-3xl mx-auto text-center flex flex-col gap-3 items-center justify-center md:mb-12 mb-10"
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                 >
-                    <Badge className="mb-4 px-4 py-1 text-sm" variant="secondary">
+                    <Badge className=" mb-4 px-4 py-1 text-sm" variant="secondary">
                         Projects
                     </Badge>
-                    <h2 className="text-3xl drop-shadow-[0_0_13px_rgba(59,59,59,1)] dark:drop-shadow-[0_0_20px_rgba(200,200,200,1)] sm:text-4xl md:text-5xl font-bold tracking-tight mb-4">
-                        Featured Projects
-                    </h2>
 
+                    <SplitText
+
+                        text="Featured Projects"
+
+                        className="text-3xl drop-shadow-[0_0_13px_rgba(59,59,59,1)] dark:drop-shadow-[0_0_20px_rgba(200,200,200,1)] sm:text-4xl md:text-5xl font-bold tracking-tight mb-4"
+
+                        delay={100}
+
+                        duration={0.6}
+
+                        ease="power3.out"
+
+                        splitType="chars"
+
+                        from={{ opacity: 0, y: 40 }}
+
+                        to={{ opacity: 1, y: 0 }}
+
+                        threshold={0.1}
+
+                        rootMargin="-100px"
+
+                        textAlign="center"
+
+
+                    />
                     <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
                         Explore my recent work and discover how I bring ideas to life through code and design.
                     </p>
@@ -277,10 +301,33 @@ export function ProjectSection() {
                         <Badge className="mb-4 px-4 py-1 text-sm" variant="secondary">
                             Industry Recognition
                         </Badge>
-                        <h2 className="text-3xl drop-shadow-[0_0_13px_rgba(59,59,59,1)] dark:drop-shadow-[0_0_20px_rgba(200,200,200,1)] sm:text-4xl md:text-5xl font-bold tracking-tight mb-4">
-                            Professional Contributions
-                        </h2>
 
+                        <SplitText
+
+                            text="Professional Contributions"
+
+                            className="text-3xl drop-shadow-[0_0_13px_rgba(59,59,59,1)] dark:drop-shadow-[0_0_20px_rgba(200,200,200,1)] sm:text-4xl md:text-5xl font-bold tracking-tight mb-4"
+
+                            delay={100}
+
+                            duration={0.6}
+
+                            ease="power3.out"
+
+                            splitType="chars"
+
+                            from={{ opacity: 0, y: 40 }}
+
+                            to={{ opacity: 1, y: 0 }}
+
+                            threshold={0.1}
+
+                            rootMargin="-100px"
+
+                            textAlign="center"
+
+
+                        />
                         <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
                             Key solutions I helped build as part of professional teams
                         </p>
@@ -288,14 +335,14 @@ export function ProjectSection() {
                     </div>
 
                     <div className="max-w-4xl mx-auto">
-                        {/* <AchievementCard
+                        <AchievementCard
                             title="Garista SaaS Platform"
-                            description="Cloud-based restaurant management suite serving 50+ clients across Morocco. Contributed as a core developer building real-time analytics and payment systems."
+                            description="Cloud-based restaurant management. Contributed as a core developer building real-time analytics."
                             badges={["Next.js", "TypeScript","React.js", "Laravel", "MySQL", "Stripe", "Real-time Analytics"]}
-                            impact="95% client retention | $2M+ transactions processed"
+                            impact="UN World Forum on Gastronomy Tourism ,SelectUSA Investment Summit"
                             link="https://garista.com"
-                        /> */}
-                        <Component />
+                        />
+                        {/*<Component />*/}
                     </div>
                 </div>
             </section>
