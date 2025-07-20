@@ -43,14 +43,9 @@ export function DockBar() {
             href: "#home",
         },
         {
-            title: "GitHub",
-            icon: <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
-            href: "https://github.com/NoureddineDRIOUECH",
-        },
-        {
-            title: "LinkedIn",
-            icon: <IconBrandLinkedin className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
-            href: "https://www.linkedin.com/in/noureddinedriouech/",
+            title: "Email",
+            icon: <IconMail className="h-full w-full text-neutral-900 dark:text-neutral-100" />,
+            href: "mailto:nourddinedriouech@gmail.com",
         },
         {
             title: theme === "light"
@@ -60,21 +55,26 @@ export function DockBar() {
             onClick: cycleTheme,
         },
         {
-                title: "Email",
-            icon: <IconMail className="h-full w-full text-neutral-900 dark:text-neutral-100" />,
-            href: "mailto:nourddinedriouech@gmail.com",
+            title: "LinkedIn",
+            icon: <IconBrandLinkedin className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
+            href: "https://www.linkedin.com/in/noureddinedriouech/",
         },
 
         {
-            title: "Resume",
-            icon: <IconFileText className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
-            href: "/resume",
+            title: "GitHub",
+            icon: <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
+            href: "https://github.com/NoureddineDRIOUECH",
         },
-        {
-            title: "Blog",
-            icon: <IconRss className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
-            href: "/blog",
-        },
+        // {
+        //     title: "Resume",
+        //     icon: <IconFileText className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
+        //     href: "/resume",
+        // },
+        // {
+        //     title: "Blog",
+        //     icon: <IconRss className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
+        //     href: "/blog",
+        // },
 
     ];
 
