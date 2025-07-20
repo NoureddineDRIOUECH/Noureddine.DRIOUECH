@@ -8,7 +8,7 @@ import {
     useSpring,
     useTransform,
 } from "framer-motion";
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 
 export const FloatingDock = ({
                                  items,

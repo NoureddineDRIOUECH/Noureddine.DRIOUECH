@@ -8,6 +8,8 @@ import {
     IconSun,
     IconMoon,
     IconDeviceLaptop,
+    IconFileText,
+    IconRss,
 } from "@tabler/icons-react";
 
 export function DockBar() {
@@ -46,6 +48,11 @@ export function DockBar() {
             href: "https://github.com/NoureddineDRIOUECH",
         },
         {
+            title: "LinkedIn",
+            icon: <IconBrandLinkedin className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
+            href: "https://www.linkedin.com/in/noureddinedriouech/",
+        },
+        {
             title: theme === "light"
                 ? "Switch to dark mode"
                 :  "Switch to light mode",
@@ -57,16 +64,22 @@ export function DockBar() {
             icon: <IconMail className="h-full w-full text-neutral-900 dark:text-neutral-100" />,
             href: "mailto:nourddinedriouech@gmail.com",
         },
+
         {
-            title: "LinkedIn",
-            icon: <IconBrandLinkedin className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
-            href: "https://www.linkedin.com/in/noureddinedriouech/",
+            title: "Resume",
+            icon: <IconFileText className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
+            href: "/resume",
+        },
+        {
+            title: "Blog",
+            icon: <IconRss className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
+            href: "/blog",
         },
 
     ];
 
     return (
-        <div className="flex items-center md:justify-center justify-end fixed bottom-8 z-40 w-[98%] md:w-full">
+        <div className="flex items-center md:justify-center pr-3 md:pr-0 justify-end fixed bottom-8 z-40 w-[98%] md:w-full">
             <FloatingDock
                 // mobileClassName="translate-y-20"
                 items={items}

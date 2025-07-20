@@ -1,38 +1,34 @@
+import React from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { motion } from "framer-motion";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent } from "@/components/ui/card";
+import { toast } from "sonner";
+import { cn } from "@/lib/utils.ts";
+import { Label } from "@/components/ui/label.tsx";
 
-"use client"
-
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { Badge } from "@/components/ui/badge"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent } from "@/components/ui/card"
-import { toast } from "sonner"
-import {Dribbble, Github, Linkedin, Mail, MapPin, Twitter} from "lucide-react"
-import {cn} from "@/lib/utils.ts";
-import {Label} from "@/components/ui/label.tsx";
+const formSchema = z.object({
+    name: z.string().min(1, { message: "Name is required." }),
+    email: z.string().email({ message: "Invalid email address." }),
+    subject: z.string().min(5, { message: "Subject must be at least 5 characters." }),
+    message: z.string().min(5, { message: "Message must be at least 5 characters." }),
+});
 
 export function ContactSection() {
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isSubmitting },
+        reset,
+    } = useForm({
+        resolver: zodResolver(formSchema),
+    });
 
-    })
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
-    };
-    const [isSubmitting, setIsSubmitting] = useState(false);
-
-
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-
+    const onSubmit = async (data: z.infer<typeof formSchema>) => {
         const toastId = toast.loading("Sending your message...");
 
         try {
@@ -43,26 +39,21 @@ export function ContactSection() {
                     'Accept': 'application/json'
                 },
                 body: JSON.stringify({
-                    name: formData.name,
-                    email: formData.email,
-                    _subject: formData.subject,
-                    message: formData.message,
+                    ...data,
                     _captcha: "false",
                     _template: "table",
                     _honey: ""
                 })
             });
 
-            const data = await response.json();
+            const result = await response.json();
 
-            if (data.success === "true") {
+            if (result.success === "true") {
                 toast.success("Message sent successfully! I'll get back to you soon.", {
                     id: toastId,
                     duration: 5000
                 });
-                setFormData({ name: "", email: "", subject: "", message: "" });
-            } else {
-                throw new Error(data.message || "Submission failed");
+                reset();
             }
         } catch (error) {
             console.error("Submission error:", error);
@@ -70,26 +61,23 @@ export function ContactSection() {
                 id: toastId,
                 duration: 5000
             });
-        } finally {
-            setIsSubmitting(false);
         }
     };
 
-
     return (
-        <section id="contact" className="py-24 relative">
+        <section id="contact" className="py-24 relative px-5">
             <div className="absolute inset-0 -z-10 overflow-hidden">
-                <div className="absolute top-1/4 right-1/3 w-96 h-96 bg-primary/5 rounded-full blur-3xl"/>
-                <div className="absolute bottom-1/3 left-1/3 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"/>
+                <div className="absolute top-1/4 right-1/3 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+                <div className="absolute bottom-1/3 left-1/3 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
             </div>
 
             <div className="container">
                 <motion.div
                     className="max-w-xl mx-auto text-center mb-16"
-                    initial={{opacity: 0, y: 50}}
-                    whileInView={{opacity: 1, y: 0}}
-                    viewport={{once: true}}
-                    transition={{duration: 0.6}}
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
                 >
                     <Badge className="mb-4" variant="secondary">Get In Touch</Badge>
                     <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 drop-shadow-[0_0_13px_rgba(59,59,59,1)] dark:drop-shadow-[0_0_20px_rgba(200,200,200,1)]">Let's
@@ -99,107 +87,39 @@ export function ContactSection() {
                     </p>
                 </motion.div>
 
-                <div className="grid lg:grid-cols-5 gap-8 max-w-5xl mx-auto">
-                    {/* Contact Info Section */}
+                <div className=" max-w-5xl mx-auto">
+
                     <motion.div
-                        className="lg:col-span-2 space-y-8"
-                        initial={{ opacity: 0, x: -50 }}
+                        className="w-full"
+                        initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        <div className="space-y-5">
-                            <h3 className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                                Contact Information
-                            </h3>
-                            <p className="text-muted-foreground">
-                                Feel free to reach out through any of these channels or fill out the contact form.
-                            </p>
-                        </div>
-
-                        <div className="space-y-5">
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.4, delay: 0.2 }}
-                            >
-                                <Card className="hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden group hover:border-indigo-500">
-                                    <CardContent className="p-5 flex items-start gap-4">
-                                        <div className="h-12 w-12 rounded-full bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center shrink-0 mt-1 group-hover:bg-indigo-200 dark:group-hover:bg-indigo-800/50 transition-colors">
-                                            <Mail className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
-                                        </div>
-                                        <div>
-                                            <p className="text-sm text-muted-foreground">Email</p>
-                                            <a
-                                                href="mailto:nourddinedriouech@gmail.com"
-                                                className="font-medium hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors break-all text-base"
-                                            >
-                                                nourddinedriouech@gmail.com
-                                            </a>
-                                        </div>
-                                    </CardContent>
-                                </Card>
-                            </motion.div>
-
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.4, delay: 0.4 }}
-                            >
-                                <Card className="hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden group hover:border-indigo-500">
-                                    <CardContent className="p-5 flex items-start gap-4">
-                                        <div className="h-12 w-12 rounded-full bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center shrink-0 mt-1 group-hover:bg-indigo-200 dark:group-hover:bg-indigo-800/50 transition-colors">
-                                            <MapPin className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
-                                        </div>
-                                        <div className={'w-full'}>
-                                            <p className="text-sm text-muted-foreground">Location</p>
-                                            <p className="font-medium text-base">Casablanca, MA</p>
-                                        </div>
-                                    </CardContent>
-                                </Card>
-                            </motion.div>
-
-                        </div>
-                    </motion.div>
-
-                    {/* Form Section */}
-                    <motion.div
-                        className="lg:col-span-3"
-                        initial={{opacity: 0, x: 50}}
-                        whileInView={{opacity: 1, x: 0}}
-                        viewport={{once: true}}
-                        transition={{duration: 0.6}}
-                    >
                         <Card className="h-full">
                             <CardContent className="p-6">
-                                <form onSubmit={handleSubmit} className="space-y-6">
+                                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <LabelInputContainer>
                                             <Label htmlFor="name">Your name</Label>
                                             <Input
                                                 id="name"
-                                                name={'name'}
-                                                placeholder="Your name"
+                                                placeholder="Nour DRC"
                                                 type="text"
-                                                required
-                                                value={formData.name}
-                                                onChange={handleChange}
+                                                {...register("name")}
                                             />
+                                            {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
                                         </LabelInputContainer>
 
                                         <LabelInputContainer>
                                             <Label htmlFor="email">Email</Label>
                                             <Input
                                                 id="email"
-                                                name="email"
                                                 placeholder="name@example.com"
                                                 type="email"
-                                                value={formData.email}
-                                                onChange={handleChange}
-                                                required
+                                                {...register("email")}
                                             />
+                                            {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
                                         </LabelInputContainer>
                                     </div>
 
@@ -207,30 +127,23 @@ export function ContactSection() {
                                         <Label htmlFor="subject">Subject</Label>
                                         <Input
                                             id="subject"
-                                            name="subject"
                                             placeholder="Ex. Contrat Freelance..."
                                             type="text"
-                                            value={formData.subject}
-                                            onChange={handleChange}
-                                            required
+                                            {...register("subject")}
                                         />
+                                        {errors.subject && <p className="text-red-500 text-sm">{errors.subject.message}</p>}
                                     </LabelInputContainer>
 
                                     <LabelInputContainer>
                                         <Label htmlFor="message">Message</Label>
                                         <Textarea
                                             id="message"
-                                            name="message"
                                             placeholder="Your Message"
-                                            value={formData.message}
-                                            onChange={handleChange}
                                             className="min-h-[150px]"
-                                            required
+                                            {...register("message")}
                                         />
+                                        {errors.message && <p className="text-red-500 text-sm">{errors.message.message}</p>}
                                     </LabelInputContainer>
-                                    {/*<input type="hidden" name="_captcha" value="false"/>*/}
-                                    {/*<input type="hidden" name="_template" value="table"/>*/}
-                                    {/*<input type="text" name="_honey" className="hidden"/>*/}
                                     <button
                                         disabled={isSubmitting}
                                         className="group/btn relative block h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset]"
@@ -247,7 +160,7 @@ export function ContactSection() {
                                         ) : (
                                             "Send Message →"
                                         )}
-                                        <BottomGradient/>
+                                        <BottomGradient />
                                     </button>
                                 </form>
                             </CardContent>
@@ -270,9 +183,9 @@ const BottomGradient = () => {
 };
 
 const LabelInputContainer = ({
-                                 children,
-                                 className,
-                             }: {
+    children,
+    className,
+}: {
     children: React.ReactNode;
     className?: string;
 }) => {

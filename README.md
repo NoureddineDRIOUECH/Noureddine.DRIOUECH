@@ -1,52 +1,87 @@
-# Astro Starter Kit: Basics
+# Noureddine DRIOUECH | Software Engineer Portfolio
 
-```sh
-npm create astro@latest -- --template basics
+Welcome to the official portfolio of Noureddine DRIOUECH, a passionate Software Engineer specializing in building modern, high-performance, and scalable web applications.
+
+This portfolio showcases my skills, projects, and experience in full-stack development, with a strong focus on cutting-edge frontend technologies and robust backend solutions.
+
+## ✨ Features
+
+*   **Modern & Responsive UI:** Built with Astro and React, styled with Tailwind CSS for a seamless experience across all devices.
+*   **Interactive Elements:** Engaging animations and interactive components powered by Framer Motion and GSAP.
+*   **Dynamic Project Showcase:** Detailed sections for showcasing personal and professional projects.
+*   **SEO Optimized:** Enhanced with structured data, meta tags, and a sitemap for better search engine visibility.
+*   **Contact Form:** A functional contact form with Zod validation and React Hook Form for robust user input.
+*   **Integrated Blog:** A dedicated blog section to share insights, technical articles, and project updates.
+*   **Dark Mode Toggle:** User-friendly dark mode for improved accessibility and aesthetics.
+*   **Interactive Star Background:** A captivating 3D starfield background using React Three Fiber.
+*   **Resume Page:** An accessible HTML version of my resume for easy viewing and indexing.
+
+## 🚀 Live Demo
+
+Explore the live version of my portfolio here: [https://noureddine-driouech.vercel.app/](https://noureddine-driouech.vercel.app/)
+
+## 🛠️ Technologies Used
+
+This project is built using a modern and robust tech stack:
+
+*   **Framework:** [Astro](https://astro.build/) (for content-focused websites and static site generation)
+*   **Frontend:** [React](https://react.dev/) (for interactive UI components)
+*   **Styling:** [Tailwind CSS](https://tailwindcss.com/) (for utility-first CSS)
+*   **Animations:** [Framer Motion](https://www.framer.com/motion/) & [GSAP](https://gsap.com/)
+*   **3D Graphics:** [@react-three/fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction) & [@react-three/drei](https://github.com/pmndrs/drei)
+*   **Form Management:** [React Hook Form](https://react-hook-form.com/) & [Zod](https://zod.dev/) (for schema validation)
+*   **Icons:** [Lucide React](https://lucide.dev/) & [@tabler/icons-react](https://tabler-icons.io/)
+*   **Deployment:** [Vercel](https://vercel.com/)
+
+## ⚙️ Installation & Local Development
+
+To get a local copy up and running, follow these simple steps.
+
+### Prerequisites
+
+Make sure you have Node.js (v18 or higher) and npm installed on your machine.
+
+### Clone the repository
+
+```bash
+git clone https://github.com/NoureddineDRIOUECH/noureddine-driouech-portfolio.git
+cd noureddine-driouech-portfolio
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+### Install dependencies
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```bash
+npm install
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+### Run the development server
 
-## 🧞 Commands
+```bash
+npm run dev
+```
 
-All commands are run from the root of the project, from a terminal:
+This will start the development server at `http://localhost:4321`.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+### Build for production
 
-## 👀 Want to learn more?
+```bash
+npm run build
+```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+This command will build your production site to the `./dist/` directory.
+
+### Preview the production build
+
+```bash
+npm run preview
+```
+
+## 📞 Contact
+
+Feel free to reach out to me through the contact form on my portfolio or connect with me on:
+
+*   **LinkedIn:** [https://www.linkedin.com/in/noureddinedriouech/](https://www.linkedin.com/in/noureddinedriouech/)
+*   **GitHub:** [https://github.com/NoureddineDRIOUECH](https://github.com/NoureddineDRIOUECH)
+*   **Email:** nourddinedriouech@gmail.com
+
+Thank you for visiting my portfolio!

@@ -1,11 +1,9 @@
-"use client";
-
 import { useState, type JSX } from "react";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Github, ExternalLink, ArrowRight } from "lucide-react";
+import { Github, ExternalLink } from "lucide-react";
 import {
     SiJavascript,
     SiTypescript,

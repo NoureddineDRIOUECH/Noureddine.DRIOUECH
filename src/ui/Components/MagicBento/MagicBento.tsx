@@ -544,7 +544,7 @@ const BentoCardGrid: React.FC<{
   </div>
 );
 
-const useMobileDetection = () => {
+export const useMobileDetection = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {

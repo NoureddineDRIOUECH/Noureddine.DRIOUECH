@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Github, Linkedin, Instagram, ArrowUp } from "lucide-react"
-import { SiX } from "react-icons/si"
+// import { SiX } from "react-icons/si"
 
 export function FooterSection() {
     const scrollToTop = () => {

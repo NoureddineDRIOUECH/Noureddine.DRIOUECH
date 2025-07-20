@@ -1,10 +1,8 @@
-"use client";
-
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Download, Award, BookOpen,  Clock} from "lucide-react";
-import { Code,  Briefcase, Cpu, Smartphone, Cloud } from "lucide-react";
+import { Download, Award, BookOpen,  Clock, Code,  Briefcase, Cpu, Smartphone, Cloud, GraduationCap as GraduationCapIcon,
+    School as UniversityIcon } from "lucide-react";
 import { AboutStars } from "@/components/ui/stars";
 import {
     SiJavascript,
@@ -39,7 +37,7 @@ import {
     SiCodemirror
 } from "react-icons/si";
 import { Button } from "@/components/ui/button";
-import {type JSX, useRef} from "react";
+import {type JSX} from "react";
 import {IconCloud} from "@/components/IconCloud.tsx";
 import {ResumeCard} from "@/components/resume-card.tsx";
 
@@ -317,13 +315,37 @@ export function AboutSection() {
                         transition={{ duration: 0.6 }}
                     >
                         <AboutStars />
-                        <div className="relative  w-full aspect-square">
+                        <div className="relative p-5 w-full aspect-square">
                             <img
                                 src="/NoureddineDRIOUECH.jpg"
                                 alt="Noureddine DRIOUECH"
                                 className="w-full h-auto rounded-full object-contain"
                             />
                         </div>
+
+                        <h4 className="text-lg hidden md:block sm:text-xl font-semibold mt-6">
+                            My Skills
+                        </h4>
+
+                        <div className="md:flex  hidden flex-wrap flex-col items-center justify-center gap-2 pt-2">
+                            <div className={'flex flex-wrap gap-2'}>
+
+                                {skills.map((skill) => (
+                                    <Badge
+                                        key={skill}
+                                        variant="secondary"
+                                        className="flex items-center gap-1 rounded-full px-3 py-1 bg-background/30 backdrop-blur-sm border border-border text-xs"
+                                    >
+                  <span className="flex-shrink-0">
+                    {skillIcons[skill]}
+                  </span>
+                                        <span>{skill}</span>
+                                    </Badge>
+                                ))}
+                            </div>
+
+                        </div>
+
                     </motion.div>
 
                     <motion.div
@@ -337,7 +359,7 @@ export function AboutSection() {
                             I'm <span className="text-primary">Noureddine DRIOUECH</span>
                         </h3>
                         <p className="text-muted-foreground">
-                            Software Engineer with 3+ years of experience building robust applications through clean, maintainable code.
+                            Software Engineer From Morocco 🇲🇦 with 3+ years of experience building robust applications through clean, maintainable code.
                             I specialize in transforming complex requirements into efficient software solutions using modern architectures.
                         </p>
 
@@ -366,32 +388,32 @@ export function AboutSection() {
                                 </div>
                             </div>
                         </div>
-
-                        <h4 className="text-lg sm:text-xl font-semibold mt-6">
+                        <h4 className="text-lg md:hidden block sm:text-xl font-semibold mt-6">
                             My Skills
                         </h4>
 
-                        <div className="flex flex-wrap flex-col items-center justify-center gap-2 pt-2">
+                        <div className="flex p-5 md:hidden flex-wrap flex-col items-center justify-center gap-2 pt-2">
                             <div className={'flex flex-wrap gap-2'}>
 
-                            {skills.map((skill) => (
-                                <Badge
-                                    key={skill}
-                                    variant="secondary"
-                                    className="flex items-center gap-1 rounded-full px-3 py-1 bg-background/30 backdrop-blur-sm border border-border text-xs"
-                                >
+                                {skills.map((skill) => (
+                                    <Badge
+                                        key={skill}
+                                        variant="secondary"
+                                        className="flex items-center gap-1 rounded-full px-3 py-1 bg-background/30 backdrop-blur-sm border border-border text-xs"
+                                    >
                   <span className="flex-shrink-0">
                     {skillIcons[skill]}
                   </span>
-                                    <span>{skill}</span>
-                                </Badge>
-                            ))}
+                                        <span>{skill}</span>
+                                    </Badge>
+                                ))}
                             </div>
 
-                            <IconCloud images={images}/>
                         </div>
 
-                        <div className="">
+
+                        <IconCloud images={images}/>
+                        <div>
                             <a href={'/CV%20Noureddine%20DRIOUECH%20.pdf'} download={'CV Noureddine DRIOUECH'}>
                                 <Button className="flex items-center gap-2"
                                         variant="outline">
@@ -409,7 +431,7 @@ export function AboutSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="max-w-4xl mx-auto"
+                    className="max-w-4xl mx-auto p-5"
                 >
                     <Tabs defaultValue="experience" className="w-full">
                         <TabsList className="grid grid-cols-3 w-full mb-8 bg-background">
@@ -451,18 +473,47 @@ export function AboutSection() {
                             {education.map((edu, index) => (
                                 <motion.div
                                     key={index}
-                                    className="p-6 rounded-xl border bg-card text-card-foreground shadow-sm"
-                                    initial={{ opacity: 0, y: 20 }}
+                                    className="relative p-6 rounded-2xl border border-transparent bg-gradient-to-br from-card to-[#f0f4ff] dark:to-[#0f172a] shadow-sm group overflow-hidden"
+                                    initial={{ opacity: 0, y: 30 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true, margin: "-50px" }}
-                                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                                    transition={{
+                                        duration: 0.6,
+                                        delay: index * 0.15,
+                                        type: "spring",
+                                        stiffness: 100
+                                    }}
+                                    whileHover={{
+                                        y: -5,
+                                        boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)"
+                                    }}
                                 >
-                                    <div className="space-y-2">
-                                        <h4 className="text-xl font-semibold">{edu.degree}</h4>
-                                        <p className="text-muted-foreground">
-                                            {edu.institution} | {edu.period}
-                                        </p>
-                                        <p>{edu.focus}</p>
+                                    {/* Animated background element */}
+                                    <div className="absolute inset-0 w-1 bg-gradient-to-b from-blue-500 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                                    <div className="relative z-10 space-y-3">
+                                        <div className="flex items-start gap-4">
+                                            <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-2 rounded-lg shadow-md">
+                                                <GraduationCapIcon className="h-6 w-6 text-white" />
+                                            </div>
+                                            <div>
+                                                <h4 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-800 dark:from-white to-gray-600 dark:to-gray-300">
+                                                    {edu.degree}
+                                                </h4>
+                                                <p className="text-muted-foreground mt-1 flex items-center gap-2">
+                                                    <UniversityIcon className="h-4 w-4" />
+                                                    {edu.institution} | {edu.period}
+                                                </p>
+                                            </div>
+                                        </div>
+
+            {/*                            {edu.focus && (*/}
+            {/*                                <div className="mt-3 flex flex-wrap gap-2">*/}
+            {/*<span className="px-3 py-1 bg-blue-100/50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm">*/}
+            {/*  Focus: {edu.focus}*/}
+            {/*</span>*/}
+            {/*                                </div>*/}
+            {/*                            )}*/}
                                     </div>
                                 </motion.div>
                             ))}
@@ -472,21 +523,53 @@ export function AboutSection() {
                             {services.map((service, index) => (
                                 <motion.div
                                     key={index}
-                                    className="p-6 rounded-xl border bg-card text-card-foreground shadow-sm"
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
+                                    className="relative p-6 rounded-2xl bg-gradient-to-br from-card to-[#f8fafc] dark:to-[#0f172a] border border-gray-100 dark:border-gray-800 shadow-sm group overflow-hidden"
+                                    initial={{ opacity: 0, scale: 0.95 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true, margin: "-50px" }}
-                                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                                    transition={{
+                                        duration: 0.5,
+                                        delay: index * 0.15,
+                                        type: "spring"
+                                    }}
+                                    whileHover={{
+                                        y: -8,
+                                        scale: 1.02,
+                                        boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                                    }}
                                 >
-                                    <div className="space-y-4">
-                                        <div>{service.icon}</div>
-                                        <h4 className="text-xl font-semibold">{service.title}</h4>
-                                        <p className="text-muted-foreground">{service.description}</p>
+                                    {/* Animated hover effect */}
+                                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                                    <div className="relative z-10 space-y-4">
+                                        <div className="flex items-center gap-4">
+                                            <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-3 rounded-xl shadow-lg">
+                                                {service.icon}
+                                            </div>
+                                            <h4 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-800 dark:from-white to-gray-600 dark:to-gray-300">
+                                                {service.title}
+                                            </h4>
+                                        </div>
+
+                                        <p className="text-muted-foreground pl-2 border-l-2 border-blue-500/30 dark:border-purple-500/30 transition-all duration-500 group-hover:border-blue-500 dark:group-hover:border-purple-500">
+                                            {service.description}
+                                        </p>
+
+            {/*                            <div className="mt-4 flex flex-wrap gap-2">*/}
+            {/*                                {service.technologies?.map((tech, i) => (*/}
+            {/*                                    <span*/}
+            {/*                                        key={i}*/}
+            {/*                                        className="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full text-sm font-medium shadow-inner"*/}
+            {/*                                    >*/}
+            {/*  {tech}*/}
+            {/*</span>*/}
+            {/*                                ))}*/}
+            {/*                            </div>*/}
                                     </div>
                                 </motion.div>
                             ))}
                         </TabsContent>
-                    </Tabs>
+                           </Tabs>
                 </motion.div>
             </div>
 
