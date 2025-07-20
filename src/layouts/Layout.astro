@@ -20,6 +20,7 @@ import SpeedInsights from "@vercel/speed-insights/astro"
     <link rel="canonical" href="https://noureddinedriouech.vercel.app/" />
     <link rel="icon" type="image/svg+xml" href="/Noureddine%20DRIOUECH.jpg" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://cdn.simpleicons.org">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -106,12 +107,12 @@ import SpeedInsights from "@vercel/speed-insights/astro"
   </head>
   <body>
       <ScrollProgress client:load />
-      <SplashCursor client:load/>
-     <StarsCanvas client:load />
+      <SplashCursor client:idle/>
+     <StarsCanvas client:idle />
 
     <slot />
      <DockBar client:load />
-     <Toaster client:load/>
+     <Toaster client:idle/>
       <SpeedInsights />
   </body>
 </html>

@@ -107,6 +107,7 @@ export function HeroSection() {
                                     src="/mainIcons.svg"
                                     alt="Light mode illustration"
                                     className="w-full h-auto object-contain mx-auto block dark:hidden"
+                                    fetchpriority="high"
                                 />
                                 <img
                                     src="/mainIconsdark.svg"

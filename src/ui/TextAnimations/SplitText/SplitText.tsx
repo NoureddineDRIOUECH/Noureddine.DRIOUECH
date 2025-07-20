@@ -155,7 +155,7 @@ const SplitText: React.FC<SplitTextProps> = ({
   ]);
 
   return (
-    <p
+    <h2
       ref={ref}
       className={`split-parent overflow-hidden inline-block whitespace-normal ${className}`}
       style={{
@@ -164,7 +164,7 @@ const SplitText: React.FC<SplitTextProps> = ({
       }}
     >
       {text}
-    </p>
+    </h2>
   );
 };
 
