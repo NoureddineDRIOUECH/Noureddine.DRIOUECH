@@ -191,7 +191,7 @@ export function AboutSection() {
         "typescript",
         "javascript",
         // "dart",
-        "java",
+        // "java",
         "react",
         "laravel",
         "python",

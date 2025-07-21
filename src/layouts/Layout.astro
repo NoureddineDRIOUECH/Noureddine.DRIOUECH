@@ -3,9 +3,9 @@ import "@/styles/global.css";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import StarsCanvas from "@/components/ui/StarBackground";
 import { DockBar } from "@/components/DockBar";
-import { Toaster } from "@/components/ui/sonner"
+import { Toaster } from "@/components/ui/sonner";
 import SplashCursor from "../ui/Animations/SplashCursor/SplashCursor";
-import SpeedInsights from "@vercel/speed-insights/astro"
+import SpeedInsights from "@vercel/speed-insights/astro";
 ---
 
 <!doctype html>
@@ -14,27 +14,73 @@ import SpeedInsights from "@vercel/speed-insights/astro"
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Noureddine DRIOUECH | Software Engineerr</title>
-    <meta name="description" content="Portfolio of Noureddine DRIOUECH, a Software Engineer specializing in building modern, full-stack web applications and scalable SaaS solutions. Let's connect and build something amazing." />
-    <meta name="keywords" content="Noureddine DRIOUECH, Software Engineer, Web Developer, Frontend Developer, Full-Stack Developer, React Developer, Astro Developer, SaaS, Portfolio, Casablanca" />
+    <meta
+      name="description"
+      content="Portfolio of Noureddine DRIOUECH, a Software Engineer specializing in building modern, full-stack web applications and scalable SaaS solutions. Let's connect and build something amazing."
+    />
+    <meta
+      name="keywords"
+      content="Noureddine DRIOUECH, Software Engineer, Web Developer, Frontend Developer, Full-Stack Developer, React Developer, Astro Developer, SaaS, Portfolio, Casablanca"
+    />
+    <style>
+      html,
+      body {
+        text-align: center;
+        scroll-behavior: smooth;
+      }
+    </style>
+    <link rel="preload" href="/_astro/react.DF5ADMvu.js" as="script" />
+    <link rel="preload" href="/_astro/three.B_VjDKY3.js" as="script" />
+    <link rel="modulepreload" href="/_astro/utils.CBfrqCZ4.js" />
     <meta name="author" content="Noureddine DRIOUECH" />
     <link rel="canonical" href="https://noureddinedriouech.vercel.app/" />
     <link rel="icon" type="image/svg+xml" href="/Noureddine%20DRIOUECH.jpg" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="preconnect" href="https://cdn.simpleicons.org">
+    <link rel="preconnect" href="https://cdn.simpleicons.org" />
+    <link
+      rel="preload"
+      href="/_astro/_slug_.BDH7c58n.css"
+      as="style"
+      onload="this.rel='stylesheet'"
+    />
+    <noscript
+      ><link rel="stylesheet" href="/_astro/_slug_.BDH7c58n.css" /></noscript
+    >
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://noureddinedriouech.vercel.app/" />
-    <meta property="og:title" content="Noureddine DRIOUECH | Software Engineer & Web Developer" />
-    <meta property="og:description" content="Portfolio of Noureddine DRIOUECH, a Software Engineer specializing in building modern, full-stack web applications and scalable SaaS solutions." />
-    <meta property="og:image" content="https://noureddinedriouech.vercel.app/NoureddineDRIOUECH.jpg" />
+    <meta
+      property="og:title"
+      content="Noureddine DRIOUECH | Software Engineer & Web Developer"
+    />
+    <meta
+      property="og:description"
+      content="Portfolio of Noureddine DRIOUECH, a Software Engineer specializing in building modern, full-stack web applications and scalable SaaS solutions."
+    />
+    <meta
+      property="og:image"
+      content="https://noureddinedriouech.vercel.app/NoureddineDRIOUECH.jpg"
+    />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://noureddinedriouech.vercel.app/" />
-    <meta property="twitter:title" content="Noureddine DRIOUECH | Software Engineer & Web Developer" />
-    <meta property="twitter:description" content="Portfolio of Noureddine DRIOUECH, a Software Engineer specializing in building modern, full-stack web applications and scalable SaaS solutions." />
-    <meta property="twitter:image" content="https://noureddinedriouech.vercel.app/NoureddineDRIOUECH.jpg" />
+    <meta
+      property="twitter:url"
+      content="https://noureddinedriouech.vercel.app/"
+    />
+    <meta
+      property="twitter:title"
+      content="Noureddine DRIOUECH | Software Engineer & Web Developer"
+    />
+    <meta
+      property="twitter:description"
+      content="Portfolio of Noureddine DRIOUECH, a Software Engineer specializing in building modern, full-stack web applications and scalable SaaS solutions."
+    />
+    <meta
+      property="twitter:image"
+      content="https://noureddinedriouech.vercel.app/NoureddineDRIOUECH.jpg"
+    />
 
     <!-- Structured Data for SEO -->
     <script type="application/ld+json">
@@ -55,8 +101,8 @@ import SpeedInsights from "@vercel/speed-insights/astro"
         },
         "description": "Software Engineer specializing in building modern, full-stack web applications and scalable SaaS solutions using technologies like React, Astro, and Node.js.",
         "alumniOf": {
-            "@type": "CollegeOrUniversity",
-            "name": "ENSIASD"
+          "@type": "CollegeOrUniversity",
+          "name": "ENSIASD"
         },
         "knowsAbout": [
           "Software Development",
@@ -72,9 +118,9 @@ import SpeedInsights from "@vercel/speed-insights/astro"
           "SEO"
         ],
         "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Casablanca",
-            "addressCountry": "MA"
+          "@type": "PostalAddress",
+          "addressLocality": "Casablanca",
+          "addressCountry": "MA"
         }
       }
     </script>
@@ -106,21 +152,13 @@ import SpeedInsights from "@vercel/speed-insights/astro"
     </script>
   </head>
   <body>
-      <ScrollProgress client:load />
-      <SplashCursor client:idle/>
-     <StarsCanvas client:idle />
+    <ScrollProgress client:load />
+    <SplashCursor client:idle />
+    <StarsCanvas client:idle />
 
     <slot />
-     <DockBar client:load />
-     <Toaster client:idle/>
-      <SpeedInsights />
+    <DockBar client:load />
+    <Toaster client:idle />
+    <SpeedInsights />
   </body>
 </html>
-
-<style>
-  html,
-  body {
-    text-align: center;
-    scroll-behavior: smooth;
-  }
-</style>
