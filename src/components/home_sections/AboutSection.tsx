@@ -323,12 +323,12 @@ export function AboutSection() {
                             />
                         </div>
 
-                        <h4 className="text-lg hidden md:block sm:text-xl font-semibold mt-6">
+                        <h3 className="text-lg hidden md:block sm:text-xl font-semibold mt-6">
                             My Skills
-                        </h4>
+                        </h3>
 
-                        <div className="md:flex  hidden flex-wrap flex-col items-center justify-center gap-2 pt-2">
-                            <div className={'flex flex-wrap gap-2'}>
+                        <div className="md:flex  hidden  flex-col items-center justify-center gap-2 pt-2">
+                            <div className={'grid grid-cols-5 items-center justify-center gap-2'}>
 
                                 {skills.map((skill) => (
                                     <Badge
@@ -412,7 +412,7 @@ export function AboutSection() {
                         </div>
 
 
-                        <IconCloud images={images}/>
+                        <IconCloud images={images} aria-label="My Skills"/>
                         <div>
                             <a href={'/CV%20Noureddine%20DRIOUECH%20.pdf'} download={'CV Noureddine DRIOUECH'}>
                                 <Button className="flex items-center gap-2"

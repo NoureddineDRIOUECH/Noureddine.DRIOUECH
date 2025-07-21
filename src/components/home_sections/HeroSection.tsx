@@ -113,6 +113,7 @@ export function HeroSection() {
                                     src="/mainIconsdark.svg"
                                     alt="Dark mode illustration"
                                     className="w-full h-auto object-contain mx-auto hidden dark:block"
+                                    fetchpriority="high"
                                 />
                             </div>
                         </div>

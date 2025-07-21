@@ -295,7 +295,7 @@ export function ProjectSection() {
         </section>
             <section id="industry-contributions" className="py-16">
                 <div className="container px-4 sm:px-6">
-                    <div className="max-w-3xl mx-auto text-center mb-12">
+                    <div className="max-w-3xl flex flex-col items-center justify-center mx-auto text-center mb-12">
                         <Badge className="mb-4 px-4 py-1 text-sm" variant="secondary">
                             Industry Recognition
                         </Badge>
