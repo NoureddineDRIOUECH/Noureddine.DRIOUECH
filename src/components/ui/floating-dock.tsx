@@ -169,7 +169,7 @@ function IconContainer({
                     )}
                 </AnimatePresence>
                 {href ? (
-                    <a href={href} target={title === 'LinkedIn' || title === 'GitHub' ? '_blank' : ''}>
+                    <a href={href} target={title === 'LinkedIn' || title === 'GitHub' ? '_blank' : '_self'}>
                         <motion.div
                             style={{ width: widthIcon, height: heightIcon }}
                             className="flex items-center justify-center"
