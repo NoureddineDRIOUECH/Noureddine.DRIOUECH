@@ -63,6 +63,7 @@ const FloatingDockMobile = ({
                                 {item.href ? (
                                     <a
                                         href={item.href}
+                                        aria-label={item.title}
                                         className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900"
                                     >
                                         <div className="h-6 w-6">{item.icon}</div>
@@ -70,6 +71,7 @@ const FloatingDockMobile = ({
                                 ) : (
                                     <button
                                         onClick={item.onClick}
+                                        aria-label="change theme"
                                         className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900"
                                     >
                                         <div className="h-6 w-6">{item.icon}</div>
@@ -83,6 +85,7 @@ const FloatingDockMobile = ({
             <button
                 onClick={() => setOpen(!open)}
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-800"
+                aria-label='change theme'
             >
                 <IconLayoutNavbarCollapse className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />
             </button>
@@ -169,7 +172,7 @@ function IconContainer({
                     )}
                 </AnimatePresence>
                 {href ? (
-                    <a href={href} target={title === 'LinkedIn' || title === 'GitHub' ? '_blank' : '_self'}>
+                    <a href={href} target={title === 'LinkedIn' || title === 'GitHub' ? '_blank' : '_self'} aria-label={title}>
                         <motion.div
                             style={{ width: widthIcon, height: heightIcon }}
                             className="flex items-center justify-center"
@@ -178,7 +181,7 @@ function IconContainer({
                         </motion.div>
                     </a>
                 ) : (
-                    <button onClick={onClick}>
+                    <button onClick={onClick} aria-label='change theme' >
                         <motion.div
                             style={{ width: widthIcon, height: heightIcon }}
                             className="flex items-center justify-center"

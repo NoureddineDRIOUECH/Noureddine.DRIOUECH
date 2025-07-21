@@ -56,7 +56,6 @@ export function ContactSection() {
                 reset();
             }
         } catch (error) {
-            console.error("Submission error:", error);
             toast.error("Failed to send message. Please try again later.", {
                 id: toastId,
                 duration: 5000
