@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { FloatingDock } from "@/components/ui/floating-dock";
 import {
     IconBrandGithub,
@@ -7,13 +7,10 @@ import {
     IconHome,
     IconSun,
     IconMoon,
-    IconDeviceLaptop,
-    IconFileText,
-    IconRss,
 } from "@tabler/icons-react";
 
 export function DockBar() {
-    const [theme, setTheme] = useState<"light" | "dark" | "system">("system");
+    const [theme, setTheme] = useState<"light" | "dark" | "system">("dark");
 
     useEffect(() => {
         const isDark =
@@ -33,7 +30,7 @@ export function DockBar() {
     const getThemeIcon = () => {
         if (theme === "light") return <IconSun className="h-full w-full text-neutral-900 dark:text-neutral-100" />;
         if (theme === "dark") return <IconMoon className="h-full w-full text-neutral-500 dark:text-neutral-300" />;
-        return <IconDeviceLaptop className="h-full w-full text-neutral-500 dark:text-neutral-300" />;
+        return <IconMoon className="h-full w-full text-neutral-500 dark:text-neutral-300" />;
     };
 
     const items = [

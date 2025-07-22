@@ -319,7 +319,7 @@ export function AboutSection() {
                             <img
                                 src="/NoureddineDRIOUECH.jpg"
                                 alt="Noureddine DRIOUECH"
-                                className="w-full h-auto rounded-full object-contain"
+                                className="w-full px-5 h-auto rounded-full object-contain"
                             />
                         </div>
 
