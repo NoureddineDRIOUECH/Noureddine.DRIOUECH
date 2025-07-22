@@ -301,7 +301,7 @@ export function AboutSection() {
                     <h2 className="text-3xl sm:text-4xl drop-shadow-[0_0_13px_rgba(59,59,59,1)] dark:drop-shadow-[0_0_20px_rgba(200,200,200,1)] md:text-5xl font-bold tracking-tight mb-4">
                         My Journey & Expertise
                     </h2>
-                    <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
+                    <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto px-10">
                         A passionate developer creating exceptional digital experiences through design and code.
                     </p>
                 </motion.div>
@@ -358,7 +358,7 @@ export function AboutSection() {
                         <h3 className="text-2xl sm:text-3xl font-bold">
                             I'm <span className="text-primary">Noureddine DRIOUECH</span>
                         </h3>
-                        <p className="text-muted-foreground">
+                        <p className="text-muted-foreground px-10">
                             Software Engineer From Morocco 🇲🇦 with 3+ years of experience building robust applications through clean, maintainable code.
                             I specialize in transforming complex requirements into efficient software solutions using modern architectures.
                         </p>
@@ -392,8 +392,8 @@ export function AboutSection() {
                             My Skills
                         </h4>
 
-                        <div className="flex p-5 md:hidden flex-wrap flex-col items-center justify-center gap-2 pt-2">
-                            <div className={'flex flex-wrap gap-2'}>
+                        <div className="flex md:hidden flex-wrap flex-col items-center justify-center gap-2 pt-2 px-10">
+                            <div className={'grid grid-cols-3 gap-2'}>
 
                                 {skills.map((skill) => (
                                     <Badge
@@ -431,7 +431,7 @@ export function AboutSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="max-w-4xl mx-auto p-5"
+                    className="max-w-4xl mx-auto p-5 px-10"
                 >
                     <Tabs defaultValue="experience" className="w-full">
                         <TabsList className="grid grid-cols-3 w-full mb-8 bg-background">

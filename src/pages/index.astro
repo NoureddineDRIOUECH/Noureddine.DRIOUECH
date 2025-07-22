@@ -1,14 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { HeroSection } from "../components/home_sections/HeroSection";
-import {ProjectSection} from "../components/home_sections/ProjectSection";
-import {AboutSection} from "../components/home_sections/AboutSection";
-import {ContactSection} from "../components/home_sections/Contactsection";
-import {FooterSection} from "../components/home_sections/FooterSection";
+import { ProjectSection } from "../components/home_sections/ProjectSection";
+import { AboutSection } from "../components/home_sections/AboutSection";
+import { ContactSection } from "../components/home_sections/Contactsection";
+import { FooterSection } from "../components/home_sections/FooterSection";
 ---
 
 <Layout>
-  <main>
+  <main class="px-5 md:px-10">
     <HeroSection client:load />
     <ProjectSection client:visible />
     <AboutSection client:visible />
