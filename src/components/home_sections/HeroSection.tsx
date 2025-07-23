@@ -47,7 +47,7 @@ export function HeroSection() {
                         </h1>
 
                         <p >
-                            <SparklesText className="text-lg md:text-2xl text-muted-foreground max-w-full">Software Enginner</SparklesText>
+                            <SparklesText className="text-lg md:text-2xl text-muted-foreground max-w-full">Software Engineer</SparklesText>
 
                         </p>
 
