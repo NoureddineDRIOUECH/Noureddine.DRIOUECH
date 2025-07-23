@@ -5,6 +5,7 @@ import StarsCanvas from "@/components/ui/StarBackground";
 import { DockBar } from "@/components/DockBar";
 import { Toaster } from "@/components/ui/sonner";
 import SplashCursor from "../ui/Animations/SplashCursor/SplashCursor";
+import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from "@vercel/speed-insights/astro";
 ---
 
@@ -148,5 +149,6 @@ import SpeedInsights from "@vercel/speed-insights/astro";
     <DockBar client:load />
     <Toaster client:idle />
     <SpeedInsights />
+    <Analytics/>
   </body>
 </html>
