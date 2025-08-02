@@ -317,7 +317,7 @@ export function AboutSection() {
                         <AboutStars />
                         <div className="relative p-5 w-full aspect-square">
                             <img
-                                src="/NoureddineDRIOUECH.jpg"
+                                src="/NoureddineDRIOUECH.png"
                                 alt="Noureddine DRIOUECH"
                                 className="w-full px-5 h-auto rounded-full object-contain"
                             />

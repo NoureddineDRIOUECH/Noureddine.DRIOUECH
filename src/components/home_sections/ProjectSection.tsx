@@ -3,7 +3,9 @@ import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Github, ExternalLink } from "lucide-react";
+import {  ExternalLink } from "lucide-react";
+import { FaGithub as Github } from "react-icons/fa";
+import { TbSettingsAutomation } from "react-icons/tb";
 import {
     SiJavascript,
     SiTypescript,
@@ -25,7 +27,8 @@ import {
     SiCss3,
     SiClerk,
     SiShadcnui,
-    SiScrapy
+    SiScrapy,
+    SiAppwrite
 } from "react-icons/si";
 import {Lens} from "@/components/ui/lens.tsx";
 // import Component from "@/components/achievement-card.tsx";
@@ -44,19 +47,19 @@ export function ProjectSection() {
             description: "a platform where you can create, manage, and interact with personalized AI-powered companions designed to help you learn and explore various subjects.",
             image: "companions.webp",
             category: "Web",
-            tags: ["Next.js", "TypeScript", "Tailwind CSS","Shadcn UI", "Git", "Figma",],
+            tags: ["Next.js", "TypeScript", "Tailwind CSS","Shadcn UI", "Git", "Figma","UI/UX"],
             liveUrl: "https://companions-nine.vercel.app/",
             githubUrl: "https://github.com/NoureddineDRIOUECH/Companions",
         },
         {
             id: 3,
-            title: "Mobile App",
-            description: "Soon",
-            image: "coming-soon.jpg",
+            title: "Fast Food Ordering",
+            description: "This is a mobile application for ordering fast food, built with React Native and Expo. It allows users to browse a menu, add items to their cart, and place orders. The app uses Appwrite for its backend services and Zustand for state management.",
+            image: "fastFoodMobileApp.svg",
             category: "Mobile",
-            tags: ["Figma", "UI/UX", "React Native"],
+            tags: ["Figma", "UI/UX", "React Native", "Appwrite" ,"Git"],
             liveUrl: "",
-            githubUrl: "",
+            githubUrl: "https://github.com/NoureddineDRIOUECH/Fast-Food.git",
         },
         {
             id: 1,
@@ -64,7 +67,7 @@ export function ProjectSection() {
             description: "A Coffee Store Website with an E-commerce Platform that allows customers to browse coffee products, add items to their cart, place orders, and track them. The website should also include an Admin Panel to manage products, inventory, and customer orders.",
             image: "cofeeStore.webp",
             category: "Web",
-            tags: ["HTML", "CSS", "JavaScript", "MySQL","PHP"],
+            tags: ["HTML", "CSS", "JavaScript", "MySQL","PHP", "Git"],
             liveUrl: "",
             githubUrl: "https://github.com/NoureddineDRIOUECH/DRCoofee---Coffee-Srore",
         },
@@ -74,7 +77,7 @@ export function ProjectSection() {
             description: "Hands-on experience in automation and data scraping using tools like Python and Selenium. Skilled in building efficient scripts to extract, process, and manage web data.",
             image: "dataScraping.webp",
             category: "Scripts",
-            tags: ["Python", "Selenium", "Scrapy"],
+            tags: ["Python", "Selenium", "Scrapy", "Automation"],
             liveUrl: "",
             githubUrl: "https://github.com/NoureddineDRIOUECH/-wordpress-product-automation",
         },
@@ -113,6 +116,8 @@ export function ProjectSection() {
         Figma: <SiFigma className="text-pink-600" />,
         "UI/UX": <SiTailwindcss className="text-sky-400" />,
         "Design System": <SiTailwindcss className="text-sky-400" />,
+        Appwrite: <SiAppwrite className="text-red-500" />,
+        Automation: <TbSettingsAutomation className="text-green-500" />,
     };
 
     const filteredProjects =
@@ -202,10 +207,6 @@ export function ProjectSection() {
                                                 src={`/${project.image}`}
                                                 alt={project.title}
                                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                                onError={(e) => {
-                                                    e.currentTarget.src = "/coming-soon.jpg";
-                                                    e.currentTarget.alt = "Coming soon";
-                                                }}
                                             />
                                         </Lens>
                                     </div>
