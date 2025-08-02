@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { ChevronRightIcon } from "lucide-react";
 import React from "react";
-interface ExperienceProps {
+interface ExperinceProps {
     logoUrl: string;
     altText: string;
     title: string;
@@ -24,7 +24,7 @@ export const ExpericenCard = ({
                                badges,
                                period,
                                description,
-                           } : ExperienceProps) => {
+                           } : ExperinceProps) => {
     const [isExpanded, setIsExpanded] = React.useState(false);
 
     const handleClick = (e : React.MouseEvent<HTMLAnchorElement>) => {

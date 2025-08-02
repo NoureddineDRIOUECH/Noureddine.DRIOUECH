@@ -1,5 +1,3 @@
-"use client";
-
 import { AnimatePresence, motion, useMotionTemplate } from "motion/react";
 import React, { useCallback, useMemo, useRef, useState } from "react";
 
