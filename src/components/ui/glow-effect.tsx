@@ -130,6 +130,8 @@ export function GlowEffect({
         return presets[blur as keyof typeof presets];
     };
 
+    // @ts-ignore
+    // @ts-ignore
     return (
         <motion.div
             style={

@@ -1,6 +1,7 @@
-"use client";
 import { motion } from "framer-motion";
-import { Github, Linkedin ,Instagram} from "lucide-react";
+import { FiGithub as Github } from "react-icons/fi";
+import { FiLinkedin as Linkedin } from "react-icons/fi";
+import { FaInstagram as Instagram } from "react-icons/fa";
 import { ProjectButton } from "@/components/ui/glow-effect-button.tsx";
 import { TextLoop } from "@/components/ui/text-loop";
 import { HeroStars } from "@/components/ui/stars";

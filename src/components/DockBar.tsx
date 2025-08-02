@@ -3,11 +3,12 @@ import { FloatingDock } from "@/components/ui/floating-dock";
 import {
     IconBrandGithub,
     IconMail,
-    IconBrandLinkedin,
     IconHome,
     IconSun,
     IconMoon,
 } from "@tabler/icons-react";
+
+import { FiLinkedin as IconBrandLinkedin } from "react-icons/fi";
 
 export function DockBar() {
     const [theme, setTheme] = useState<"light" | "dark" | "system">("dark");

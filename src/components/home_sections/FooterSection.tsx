@@ -1,9 +1,10 @@
-"use client"
-
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Github, Linkedin, Instagram, ArrowUp } from "lucide-react"
+import {  ArrowUp } from "lucide-react"
 // import { SiX } from "react-icons/si"
+import { FiGithub as Github } from "react-icons/fi";
+import { FiLinkedin as Linkedin } from "react-icons/fi";
+import { FaInstagram as Instagram } from "react-icons/fa";
 
 export function FooterSection() {
     const scrollToTop = () => {
