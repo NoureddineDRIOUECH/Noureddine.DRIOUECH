@@ -49,7 +49,9 @@
     "zod": "^3.25.76"
   },
   "devDependencies": {
+    "astro-compress": "^2.2.8",
     "npm-force-resolutions": "^0.0.10",
+    "terser": "^5.29.2",
     "tw-animate-css": "^1.3.5"
   }
 }

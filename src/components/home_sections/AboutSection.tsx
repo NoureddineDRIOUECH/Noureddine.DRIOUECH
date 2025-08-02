@@ -359,13 +359,12 @@ export function AboutSection() {
                             I'm <span className="text-primary">Noureddine DRIOUECH</span>
                         </h3>
                         <p className="text-muted-foreground px-10">
-                            Software Engineer From Morocco 🇲🇦 with 3+ years of experience building robust applications through clean, maintainable code.
-                            I specialize in transforming complex requirements into efficient software solutions using modern architectures.
-                        </p>
+                            I'm Noureddine DRIOUECH, a Moroccan 🇲🇦 software engineer who turns ideas into interactive, scalable applications. I specialize in building modern SaaS tools using React, Next.js, Laravel, and Python. I’ve built dashboards for startups, scraped thousands of records from e-commerce platforms, and represented Morocco at GITEX Africa through a restaurant SaaS platform I helped develop.
+                               </p>
 
 
                         <p className="text-muted-foreground mt-4">
-                            I deliver solutions focused on scalability, maintainability, and user value - not just functionality.
+                            I love building things that work — fast, clean, and with purpose. I’m currently open to freelance work and long-term collaborations where I can bring value through technology.
                         </p>
 
                         <div className="flex justify-center">
