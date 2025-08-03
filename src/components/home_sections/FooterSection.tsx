@@ -5,6 +5,7 @@ import {  ArrowUp } from "lucide-react"
 import { FiGithub as Github } from "react-icons/fi";
 import { FiLinkedin as Linkedin } from "react-icons/fi";
 import { FaInstagram as Instagram } from "react-icons/fa";
+import { SiUpwork as Upwork } from "react-icons/si";
 
 export function FooterSection() {
     const scrollToTop = () => {
@@ -62,6 +63,16 @@ export function FooterSection() {
                         >
                             <Linkedin className="h-5 w-5" />
                             <span className="sr-only">LinkedIn</span>
+                        </motion.a>
+                        <motion.a
+                            href="https://www.upwork.com/freelancers/~01c6fba5436d52831a?mp_source=share"
+                            target="_blank"
+                            className="h-10 w-10 rounded-full bg-muted/80 flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                            whileHover={{ y: -5 }}
+                            rel="noreferrer"
+                        >
+                            <Upwork className="h-5 w-5" />
+                            <span className="sr-only">Upwork</span>
                         </motion.a>
                         {/*<motion.a*/}
                         {/*    href="https://x.com/NoureddineDRIOUECH"*/}

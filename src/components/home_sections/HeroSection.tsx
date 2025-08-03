@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { FiGithub as Github } from "react-icons/fi";
 import { FiLinkedin as Linkedin } from "react-icons/fi";
 import { FaInstagram as Instagram } from "react-icons/fa";
+import { SiUpwork as Upwork } from "react-icons/si";
 import { ProjectButton } from "@/components/ui/glow-effect-button.tsx";
 import { TextLoop } from "@/components/ui/text-loop";
 import { HeroStars } from "@/components/ui/stars";
@@ -79,6 +80,16 @@ export function HeroSection() {
                                 >
                                     <Linkedin className="h-5 w-5" />
                                     <span className="sr-only">LinkedIn</span>
+                                </motion.a>
+                                <motion.a
+                                    href="https://www.upwork.com/freelancers/~01c6fba5436d52831a?mp_source=share"
+                                    target="_blank"
+                                    whileHover={{ y: -5, scale: 1.1 }}
+                                    className="text-muted-foreground hover:text-foreground transition-colors"
+                                    rel="noreferrer"
+                                >
+                                    <Upwork className="h-5 w-5" />
+                                    <span className="sr-only">Upwork</span>
                                 </motion.a>
                                 <motion.a
                                     href="https://www.instagram.com/noureddine.driouech/"
