@@ -48,6 +48,9 @@
     "tailwindcss": "^4.1.11",
     "zod": "^3.25.76"
   },
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "devDependencies": {
     "astro-compress": "^2.2.8",
     "npm-force-resolutions": "^0.0.10",
