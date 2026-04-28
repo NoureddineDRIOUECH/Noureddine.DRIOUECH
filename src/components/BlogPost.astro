@@ -9,7 +9,7 @@ const { post } = Astro.props;
 ---
 
 <li class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-	<a href={`/blog/${post.slug}`}>
+	<a href={`/blog/${post.id}`}>
 		<img src={post.data.heroImage} alt={post.data.title} class="w-full h-48 object-cover" />
 		<div class="p-6">
 			<h2 class="text-2xl font-bold mb-2">{post.data.title}</h2>
