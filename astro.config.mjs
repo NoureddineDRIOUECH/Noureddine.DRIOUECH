@@ -40,18 +40,18 @@ export default defineConfig({
               ) {
                 return "three";
               }
-              if (id.includes("react") || id.includes("react-dom")) {
-                return "react";
-              }
-              if (id.includes("motion")) {
-                return "motion";
-              }
               if (
                 id.includes("lucide-react") ||
                 id.includes("@tabler/icons-react") ||
                 id.includes("react-icons")
               ) {
                 return "icons";
+              }
+              if (id.includes("react") || id.includes("react-dom")) {
+                return "react";
+              }
+              if (id.includes("motion")) {
+                return "motion";
               }
             }
           },

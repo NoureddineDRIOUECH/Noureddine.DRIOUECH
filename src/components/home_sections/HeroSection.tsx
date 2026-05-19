@@ -20,7 +20,7 @@ export function HeroSection() {
                     {/* Text Content - Left Column */}
                     <motion.div
                         className="space-y-6 md:space-y-8  order-1 mt-10 lg:mt-0"
-                        initial={{ opacity: 0, y: 50 }}
+                        initial={false}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
@@ -108,7 +108,7 @@ export function HeroSection() {
                     {/* Graphic - Right Column */}
                     <motion.div
                         className="relative flex justify-center order-2"
-                        initial={{ opacity: 0, scale: 0.8 }}
+                        initial={false}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
                     >
