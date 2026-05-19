@@ -8,16 +8,22 @@ import SplashCursor from "../ui/Animations/SplashCursor/SplashCursor";
 import Analytics from "@vercel/analytics/astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
 
+export interface Props {
+  showEffects?: boolean;
+}
+
+const { showEffects = false } = Astro.props;
+
 // Preload critical resources
 const preloadResources = [
   { as: "image", href: "/Noureddine%20DRIOUECH.jpg", type: "image/jpeg" }
 ];
 
 // SEO constants to avoid duplication
-const SITE_URL = "https://noureddinedriouech.vercel.app/";
+const SITE_URL = "https://noureddinedriouech.me/";
 const SITE_TITLE = "Noureddine DRIOUECH | Software Engineer";
 const SITE_DESCRIPTION = "Portfolio of Noureddine DRIOUECH, a Software Engineer specializing in building modern, full-stack web applications and scalable SaaS solutions. Let's connect and build something amazing.";
-const PROFILE_IMAGE = "https://noureddinedriouech.vercel.app/NoureddineDRIOUECH.jpg";
+const PROFILE_IMAGE = "https://noureddinedriouech.me/NoureddineDRIOUECH.jpg";
 ---
 
 <!doctype html>
@@ -29,7 +35,7 @@ const PROFILE_IMAGE = "https://noureddinedriouech.vercel.app/NoureddineDRIOUECH.
     <meta name="description" content={SITE_DESCRIPTION} />
     <meta
       name="keywords"
-      content="Noureddine DRIOUECH, Software Engineer, Web Developer, Frontend Developer, Full-Stack Developer, React Developer, Astro Developer, SaaS, Portfolio, Casablanca"
+      content="Noureddine DRIOUECH, Noureddine Driouech, noureddine driouech, N. Driouech, n driouech, Software Engineer, Web Developer, Frontend Developer, Full-Stack Developer, React Developer, Astro Developer, SaaS, Portfolio, Casablanca, Morocco, noureddine driouech morocco, noureddine driouech software engineer, noureddine driouech portfolio, noureddine driouech github"
     />
     <style>
       html,
@@ -39,8 +45,9 @@ const PROFILE_IMAGE = "https://noureddinedriouech.vercel.app/NoureddineDRIOUECH.
       }
     </style>
     <meta name="author" content="Noureddine DRIOUECH" />
-    <link rel="canonical" href={SITE_URL} />
-    <link rel="icon" type="image/svg+xml" href="/Noureddine%20DRIOUECH.jpg" />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" href="/Noureddine%20DRIOUECH.jpg" type="image/jpeg" />
     <meta name="generator" content={Astro.generator} />
     
     <!-- Preload critical resources -->
@@ -71,11 +78,22 @@ const PROFILE_IMAGE = "https://noureddinedriouech.vercel.app/NoureddineDRIOUECH.
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Noureddine DRIOUECH",
-        "url": "https://noureddinedriouech.vercel.app/",
-        "image": "https://noureddinedriouech.vercel.app/NoureddineDRIOUECH.jpg",
+        "alternateName": [
+          "Noureddine Driouech",
+          "noureddine driouech",
+          "Noureddine DRIOUECH",
+          "N. Driouech",
+          "n driouech",
+          "Noureddine",
+          "Driouech"
+        ],
+        "url": "https://noureddinedriouech.me/",
+        "image": "https://noureddinedriouech.me/NoureddineDRIOUECH.jpg",
         "sameAs": [
           "https://www.linkedin.com/in/noureddinedriouech/",
-          "https://github.com/NoureddineDRIOUECH"
+          "https://github.com/NoureddineDRIOUECH",
+          "https://www.instagram.com/noureddine.driouech/",
+          "https://www.upwork.com/freelancers/~01c6fba5436d52831a"
         ],
         "jobTitle": "Software Engineer",
         "worksFor": {
@@ -83,10 +101,16 @@ const PROFILE_IMAGE = "https://noureddinedriouech.vercel.app/NoureddineDRIOUECH.
           "name": "Freelance"
         },
         "description": "Software Engineer specializing in building modern, full-stack web applications and scalable SaaS solutions using technologies like React, Astro, and Node.js.",
-        "alumniOf": {
-          "@type": "CollegeOrUniversity",
-          "name": "ENSIASD"
-        },
+        "alumniOf": [
+          {
+            "@type": "CollegeOrUniversity",
+            "name": "ENSIASD"
+          },
+          {
+            "@type": "CollegeOrUniversity",
+            "name": "EST Sidi Bennour"
+          }
+        ],
         "knowsAbout": [
           "Software Development",
           "Frontend Development",
@@ -97,7 +121,13 @@ const PROFILE_IMAGE = "https://noureddinedriouech.vercel.app/NoureddineDRIOUECH.
           "JavaScript",
           "TypeScript",
           "Node.js",
+          "Python",
+          "Laravel",
           "Tailwind CSS",
+          "Docker",
+          "Kubernetes",
+          "Automation",
+          "Web Scraping",
           "SEO"
         ],
         "address": {
@@ -134,12 +164,27 @@ const PROFILE_IMAGE = "https://noureddinedriouech.vercel.app/NoureddineDRIOUECH.
         });
       }
     </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E4HT3W4JFD" is:inline></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-E4HT3W4JFD');
+    </script>
   </head>
   <body>
     <DockBar client:visible />
     <slot />
-    <StarsCanvas client:idle />
-    <SplashCursor client:idle />
+    {
+      showEffects && (
+        <>
+          <StarsCanvas client:idle />
+          <SplashCursor client:idle />
+        </>
+      )
+    }
     <ScrollProgress client:visible />
     <Toaster client:idle />
 

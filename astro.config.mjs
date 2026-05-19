@@ -7,10 +7,22 @@ import tailwindcss from "@tailwindcss/vite";
 
 import sitemap from "@astrojs/sitemap";
 
+import compress from "astro-compress";
+
 // https://astro.build/config
 export default defineConfig({
-  site: "https://noureddinedriouech.vercel.app/",
-  integrations: [react(), sitemap()],
+  site: "https://noureddinedriouech.me/",
+  integrations: [
+    react(),
+    sitemap(),
+    compress({
+      CSS: true,
+      HTML: true,
+      JavaScript: true,
+      Image: true,
+      SVG: true,
+    }),
+  ],
 
   vite: {
     plugins: [tailwindcss()],

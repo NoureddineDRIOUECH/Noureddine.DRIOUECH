@@ -24,7 +24,7 @@ import {
     SiSelenium,
     SiPhp,
     SiHtml5,
-    SiCss3,
+    SiCss,
     SiClerk,
     SiShadcnui,
     SiScrapy,
@@ -86,7 +86,7 @@ export function ProjectSection() {
     const tagIcons: Record<string, JSX.Element> = {
         JavaScript: <SiJavascript className="text-yellow-400" />,
         "HTML" : <SiHtml5 className="text-red-500" />,
-        "CSS" : <SiCss3 className="text-blue-500" />,
+        "CSS" : <SiCss className="text-blue-500" />,
         "PHP" : <SiPhp className="text-purple-500" />,
         "Selenium" : <SiSelenium className="text-green-500" />,
         "Clerk" : <SiClerk className="text-yellow-500" />,
@@ -207,6 +207,7 @@ export function ProjectSection() {
                                                 src={`/${project.image}`}
                                                 alt={project.title}
                                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                                loading="lazy"
                                             />
                                         </Lens>
                                     </div>

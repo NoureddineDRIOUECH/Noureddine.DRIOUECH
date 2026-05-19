@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /*.js.map
 Disallow: /*.css.map
-Sitemap: https://noureddinedriouech.vercel.app/sitemap-index.xml
+Sitemap: https://noureddinedriouech.me/sitemap-index.xml

@@ -320,6 +320,7 @@ export function AboutSection() {
                                 src="/NoureddineDRIOUECH.png"
                                 alt="Noureddine DRIOUECH"
                                 className="w-full px-5 h-auto rounded-full object-contain"
+                                loading="lazy"
                             />
                         </div>
 
