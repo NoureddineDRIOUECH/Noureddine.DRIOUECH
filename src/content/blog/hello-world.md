@@ -3,7 +3,7 @@ title: 'Hello World: My First Blog Post'
 description: 'This is the first post on my new blog. Welcome!'
 pubDate: 2025-07-21
 heroImage: '/blog/hello-world.jpg'
-tags: ['astro', 'blogging', 'success']
+tags: ['astro', 'blogging', 'getting-started']
 ---
 
 Welcome to my new blog! I'm excited to start sharing my journey as a software engineer.
