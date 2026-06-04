@@ -67,6 +67,14 @@ const hasToc = headings.filter((h) => h.depth > 1).length > 0;
 	})}>
 	</script>
 
+	<!-- Reading progress bar -->
+	<div
+		id="reading-progress"
+		class="fixed top-0 left-0 z-50 h-[2px] w-0 bg-gradient-to-r from-primary via-primary/80 to-primary/40 transition-none"
+		role="progressbar"
+		aria-label="Reading progress"
+	/>
+
 	<main>
 		<div class="relative overflow-hidden">
 			<BGPattern variant="dots" mask="fade-edges" size={24} fill="hsl(var(--foreground) / 0.04)" />
@@ -75,151 +83,196 @@ const hasToc = headings.filter((h) => h.depth > 1).length > 0;
 				<div class="absolute top-40 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
 				<div class="absolute -bottom-20 left-1/4 w-72 h-72 bg-pink-500/5 rounded-full blur-3xl" />
 			</div>
+
 			<div class="max-w-3xl mx-auto px-5 pt-32 pb-12">
-				<Button variant="ghost" class="mb-8 -ml-2 group" asChild>
-					<a href="/blog">
-						<ArrowLeft class="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
-						Back to blog
-					</a>
-				</Button>
+				<a
+					href="/blog"
+					class="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 mb-8 group"
+				>
+					<ArrowLeft class="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-0.5" />
+					Back to blog
+				</a>
 
 				<article>
 					<header class="mb-10">
+						<!-- Tags -->
 						{post.data.tags && post.data.tags.length > 0 && (
 							<div class="flex flex-wrap gap-2 mb-5">
 								{post.data.tags.map((tag) => (
-									<Badge variant="secondary" class="rounded-full px-3 py-1">
+									<Badge
+										variant="secondary"
+										class="rounded-full px-3 py-1 text-xs font-medium bg-secondary/60 hover:bg-secondary transition-colors duration-150 cursor-default select-none"
+									>
 										{tag}
 									</Badge>
 								))}
 							</div>
 						)}
 
-						<h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-5 leading-tight">
+						<!-- Title -->
+						<h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-5 leading-[1.15] tracking-tight bg-gradient-to-br from-foreground via-foreground to-foreground/60 bg-clip-text text-transparent">
 							{post.data.title}
 						</h1>
 
+						<!-- Description -->
 						<p class="text-lg text-muted-foreground mb-8 max-w-2xl leading-relaxed">
 							{post.data.description}
 						</p>
 
-						<div class="flex flex-wrap items-center gap-5 text-sm">
-                <div class="flex items-center gap-3">
-                    <div class="relative">
-                        <img
-                            src="/NoureddineDRIOUECH.webp"
-                            alt="Noureddine DRIOUECH"
-                            class="w-11 h-11 rounded-full object-cover ring-2 ring-border"
-                            width={44}
-                            height={44}
-                        />
-                        <div class="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-green-500 rounded-full border-2 border-background" />
-                    </div>
-                    <div>
-                        <span class="font-medium text-foreground text-sm leading-tight block">Noureddine DRIOUECH</span>
-                        <time datetime={post.data.pubDate.toISOString()} class="text-xs text-muted-foreground">
-                            {formatDate(post.data.pubDate)}
-                        </time>
-                    </div>
-                </div>
-							<span class="hidden sm:inline text-muted-foreground/30" aria-hidden="true">·</span>
+						<!-- Author + Meta row -->
+						<div class="flex flex-wrap items-center justify-between gap-5 text-sm">
+							<div class="flex items-center gap-3">
+								<div class="relative shrink-0">
+									<img
+										src="/NoureddineDRIOUECH.webp"
+										alt="Noureddine DRIOUECH"
+										class="w-11 h-11 rounded-full object-cover ring-2 ring-border"
+										width={44}
+										height={44}
+									/>
+									<div class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-emerald-500 rounded-full border-2 border-background shadow-sm" />
+								</div>
+								<div>
+									<span class="font-semibold text-foreground text-sm leading-tight block">Noureddine DRIOUECH</span>
+									<time datetime={post.data.pubDate.toISOString()} class="text-xs text-muted-foreground">
+										{formatDate(post.data.pubDate)}
+									</time>
+								</div>
+							</div>
+
+							<span class="hidden sm:inline text-muted-foreground/20" aria-hidden="true">·</span>
+
 							<div class="flex items-center gap-4 text-muted-foreground">
 								<span class="flex items-center gap-1.5 text-xs">
-									<Clock class="w-3.5 h-3.5" />
+									<Clock class="w-3.5 h-3.5 opacity-70" />
 									{readingTime} min read
 								</span>
 								{post.data.updatedDate && (
 									<>
-										<span class="text-muted-foreground/30" aria-hidden="true">·</span>
+										<span class="text-muted-foreground/20" aria-hidden="true">·</span>
 										<span class="flex items-center gap-1.5 text-xs">
-											<RefreshCw class="w-3.5 h-3.5" />
+											<RefreshCw class="w-3.5 h-3.5 opacity-70" />
 											Updated {formatDate(post.data.updatedDate)}
 										</span>
 									</>
 								)}
 							</div>
 						</div>
-						<Separator class="my-8" />
+
+						<Separator class="my-8 opacity-60" />
 					</header>
 
-                    {post.data.heroImage && (
-                        <div class="mb-12 rounded-2xl overflow-hidden border shadow-sm">
-                            <img
-                                src={post.data.heroImage}
-                                alt={post.data.title}
-                                class="w-full aspect-video object-cover"
-                                loading="eager"
-                                width={768}
-                                height={432}
-                            />
-                        </div>
-                    )}
+					<!-- Hero image -->
+					{post.data.heroImage && (
+						<div class="mb-12 rounded-2xl overflow-hidden border border-border/50 shadow-md">
+							<img
+								src={post.data.heroImage}
+								alt={post.data.title}
+								class="w-full aspect-video object-cover"
+								loading="eager"
+								width={768}
+								height={432}
+							/>
+						</div>
+					)}
 
-					<div class="lg:grid lg:grid-cols-[1fr_220px] lg:gap-10">
+					<div class="lg:grid lg:grid-cols-[1fr_220px] lg:gap-12">
+						<!-- Main content -->
 						<div class="min-w-0">
+							<!-- Mobile TOC -->
 							{hasToc && (
-								<div class="mb-10 p-5 rounded-xl border bg-secondary/30 lg:hidden">
-									<h2 class="text-sm font-semibold mb-3 flex items-center gap-2">
-										<BookOpen class="w-4 h-4" />
-										Table of Contents
-									</h2>
-									<nav class="space-y-1">
+								<details class="mb-10 rounded-xl border border-border/60 bg-secondary/20 lg:hidden group">
+									<summary class="flex items-center justify-between gap-2 px-5 py-4 cursor-pointer select-none list-none text-sm font-semibold">
+										<span class="flex items-center gap-2">
+											<BookOpen class="w-4 h-4 text-muted-foreground" />
+											Table of Contents
+										</span>
+										<svg
+											class="w-4 h-4 text-muted-foreground transition-transform duration-200 group-open:rotate-180"
+											fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+										>
+											<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+										</svg>
+									</summary>
+									<nav class="px-5 pb-4 space-y-1 border-t border-border/40 pt-3">
 										{headings.filter((h) => h.depth > 1).map((heading) => (
 											<a
 												href={`#${heading.slug}`}
-												class="block text-sm text-muted-foreground hover:text-foreground transition-colors py-0.5"
-												style={{ paddingLeft: `${(heading.depth - 2) * 1}rem` }}
+												class="block text-sm text-muted-foreground hover:text-foreground transition-colors duration-150 py-1 leading-snug"
+												style={{ paddingLeft: `${(heading.depth - 2) * 0.875}rem` }}
 											>
 												{heading.text}
 											</a>
 										))}
 									</nav>
-								</div>
+								</details>
 							)}
 
-							<div class="prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:scroll-mt-24 prose-a:text-primary prose-img:rounded-xl prose-pre:bg-muted prose-pre:border prose-pre:border-border/50 prose-code:text-primary prose-code:bg-secondary/50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-normal prose-blockquote:border-primary prose-blockquote:not-italic prose-blockquote:bg-primary/5 prose-blockquote:py-0.5 prose-blockquote:px-4 prose-blockquote:rounded-r-xl prose-li:marker:text-muted-foreground prose-headings:tracking-tight">
+							<!-- Article body -->
+							<div class="prose prose-lg dark:prose-invert max-w-none
+								prose-headings:font-bold prose-headings:scroll-mt-28 prose-headings:tracking-tight
+								prose-h2:text-2xl prose-h2:mt-14 prose-h2:mb-5 prose-h2:pb-2 prose-h2:border-b prose-h2:border-border/10
+								prose-h3:text-xl prose-h3:mt-10 prose-h3:mb-4
+								prose-p:leading-[1.75] prose-p:text-[1.0625rem] prose-p:my-5
+								prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-a:underline-offset-2 prose-a:decoration-primary/30
+								prose-img:rounded-xl prose-img:shadow-md
+								prose-pre:bg-[#0d1117] dark:prose-pre:bg-[#0d1117] prose-pre:border-0 prose-pre:shadow-sm prose-pre:rounded-xl prose-pre:text-sm prose-pre:leading-relaxed
+								prose-code:text-[0.875em] prose-code:bg-secondary/60 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:font-normal
+								prose-code:before:content-none prose-code:after:content-none
+								prose-blockquote:border-l-[3px] prose-blockquote:border-primary/30 prose-blockquote:not-italic
+								prose-blockquote:bg-primary/[0.03] prose-blockquote:py-0.5 prose-blockquote:px-5 prose-blockquote:rounded-r-lg
+								prose-li:marker:text-muted-foreground/30
+								prose-hr:border-border/20
+								prose-strong:text-foreground prose-strong:font-semibold
+								prose-table:border-collapse prose-th:bg-secondary/30 prose-th:font-semibold prose-th:px-4 prose-th:py-2.5 prose-td:px-4 prose-td:py-2.5">
 								<Content />
 							</div>
 						</div>
 
+						<!-- Desktop TOC -->
 						{hasToc && (
-							<div class="hidden lg:block">
-								<div class="sticky top-28">
-									<h2 class="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-4 flex items-center gap-2">
+							<aside class="hidden lg:block">
+								<div class="sticky top-28 space-y-1">
+									<h2 class="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground/70 mb-4 flex items-center gap-2">
 										<BookOpen class="w-3.5 h-3.5" />
 										On this page
 									</h2>
-									<nav class="space-y-1.5 border-l border-border/50 pl-4">
+									<nav id="toc-nav" class="space-y-0.5 border-l border-border/40 pl-0">
 										{headings.filter((h) => h.depth > 1).map((heading) => (
 											<a
 												href={`#${heading.slug}`}
-												class="block text-sm text-muted-foreground hover:text-foreground transition-colors py-0.5 border-l-2 border-transparent hover:border-foreground/30 -ml-4 pl-4"
-												style={{ paddingLeft: `${(heading.depth - 1) * 0.75}rem` }}
+												data-heading={heading.slug}
+												class="toc-link block text-[13px] text-muted-foreground hover:text-foreground transition-all duration-150 py-1 pl-4 -ml-px border-l-2 border-transparent hover:border-foreground/20 leading-snug"
+												style={{ paddingLeft: `${0.75 + (heading.depth - 2) * 0.625}rem` }}
 											>
 												{heading.text}
 											</a>
 										))}
 									</nav>
 								</div>
-							</div>
+							</aside>
 						)}
 					</div>
 
-					<Separator class="my-16" />
+					<Separator class="my-16 opacity-50" />
 
-					<footer class="space-y-12">
-						<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 p-6 rounded-2xl border bg-card/50 backdrop-blur-sm">
-                    <div class="flex items-center gap-4">
-                        <img
-                            src="/NoureddineDRIOUECH.webp"
-                            alt="Noureddine DRIOUECH"
-                            class="w-14 h-14 rounded-full object-cover ring-2 ring-border"
-                            width={56}
-                            height={56}
-                        />
+					<footer class="space-y-16">
+						<!-- Author / Share card -->
+						<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 p-6 rounded-2xl border border-border/60 bg-gradient-to-br from-card/80 to-secondary/20 backdrop-blur-sm shadow-sm">
+							<div class="flex items-center gap-4">
+								<div class="relative shrink-0">
+									<img
+										src="/NoureddineDRIOUECH.webp"
+										alt="Noureddine DRIOUECH"
+										class="w-14 h-14 rounded-full object-cover ring-2 ring-border shadow-sm"
+										width={56}
+										height={56}
+									/>
+									<div class="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-emerald-500 rounded-full border-2 border-background" />
+								</div>
 								<div>
-									<p class="font-semibold text-sm">Noureddine DRIOUECH</p>
-									<p class="text-sm text-muted-foreground leading-relaxed max-w-xs">
+									<p class="font-semibold text-sm text-foreground">Noureddine DRIOUECH</p>
+									<p class="text-sm text-muted-foreground leading-relaxed max-w-xs mt-0.5">
 										Software Engineer building modern web apps and SaaS solutions.
 									</p>
 								</div>
@@ -227,89 +280,125 @@ const hasToc = headings.filter((h) => h.depth > 1).length > 0;
 							<BlogShareButton client:visible title={post.data.title} url={postUrl} />
 						</div>
 
+						<!-- Related posts -->
 						{relatedPosts.length > 0 && (
 							<div>
-								<h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
-									<svg class="w-5 h-5 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-										<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-									</svg>
+								<h2 class="text-xl font-bold mb-6 flex items-center gap-2.5 text-foreground">
+									<span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-secondary/70">
+										<svg class="w-4 h-4 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+											<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+										</svg>
+									</span>
 									Related Articles
 								</h2>
 								<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 									{relatedPosts.map(({ post: related }) => (
 										<a
 											href={`/blog/${related.id}`}
-											class="group relative overflow-hidden rounded-xl border bg-card text-card-foreground shadow-sm transition-all duration-500 hover:shadow-lg hover:-translate-y-1 hover:border-primary/20 cursor-pointer"
+											class="group block overflow-hidden rounded-2xl border border-border/60 bg-card text-card-foreground shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-1 hover:border-primary/20"
 										>
-											{related.data.heroImage ? (
-												<div class="aspect-[16/9] overflow-hidden">
-                                                    <img
-                                                        src={related.data.heroImage}
-                                                        alt={related.data.title}
-                                                        class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                                                        loading="lazy"
-                                                        width={400}
-                                                        height={225}
-                                                    />
-												</div>
-											) : (
-												<div class="aspect-[16/9] bg-gradient-to-br from-primary/5 via-purple-500/5 to-pink-500/5" />
-											)}
-											<div class="p-4">
-												{related.data.tags && related.data.tags.length > 0 && (
-													<div class="flex flex-wrap gap-1 mb-2">
-														{related.data.tags.slice(0, 2).map((tag) => (
-															<span class="inline-flex items-center rounded-full bg-secondary/50 px-2 py-0.5 text-[10px] font-medium text-secondary-foreground">
-																#{tag}
-															</span>
-														))}
-													</div>
-												)}
-												<h3 class="font-semibold text-sm group-hover:text-primary transition-colors line-clamp-2 leading-snug">
-													{related.data.title}
-												</h3>
-												<p class="text-xs text-muted-foreground mt-1.5 line-clamp-2 leading-relaxed">
-													{related.data.description}
-												</p>
-												<div class="flex items-center gap-2 mt-3 text-xs text-muted-foreground">
-													<time datetime={related.data.pubDate.toISOString()}>
-														{formatDate(related.data.pubDate)}
-													</time>
-													<span class="text-border/50">·</span>
-													<span>{getReadingTime(related.body ?? "")} min read</span>
+										{related.data.heroImage ? (
+											<div class="relative aspect-[16/9] overflow-hidden">
+												<img
+													src={related.data.heroImage}
+													alt={related.data.title}
+													class="h-full w-full object-cover object-center transition-transform duration-800 ease-out group-hover:scale-[1.06]"
+													loading="lazy"
+													width={400}
+													height={225}
+												/>
+												<div class="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
+												<div class="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+													<div class="absolute inset-0 bg-gradient-to-br from-primary/[0.02] via-transparent to-purple-500/[0.025]" />
 												</div>
 											</div>
+										) : (
+											<div class="relative aspect-[16/9] overflow-hidden bg-gradient-to-br from-primary/5 via-purple-500/5 to-pink-500/5">
+												<div class="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+													<div class="absolute inset-0 bg-gradient-to-br from-primary/[0.02] via-transparent to-purple-500/[0.025]" />
+												</div>
+											</div>
+										)}
+										<div class="p-5 pt-0 flex flex-col flex-1 gap-4">
+											{related.data.tags && related.data.tags.length > 0 && (
+												<div class="flex flex-wrap gap-1 mb-2">
+													{related.data.tags.slice(0, 2).map((tag) => (
+														<span class="inline-flex items-center rounded-full bg-secondary/50 px-2.5 py-0.5 text-[10px] font-medium text-secondary-foreground hover:bg-secondary/60 transition-colors duration-200">
+															{tag}
+														</span>
+													))}
+												</div>
+											)}
+											<h3 class="font-semibold text-sm group-hover:text-primary transition-colors duration-300 line-clamp-2 leading-snug">
+												{related.data.title}
+											</h3>
+											<p class="text-xs text-muted-foreground leading-relaxed">
+												{related.data.description}
+											</p>
+											<div class="flex items-center gap-2 mt-auto text-xs text-muted-foreground">
+												<time datetime={related.data.pubDate.toISOString()} class="whitespace-nowrap">
+													{formatDate(related.data.pubDate)}
+												</time>
+												<span class="mx-1 text-border/40">·</span>
+												<span>{getReadingTime(related.body ?? "")} min read</span>
+											</div>
+										</div>
 										</a>
 									))}
 								</div>
 							</div>
 						)}
-
-						<div class="text-center p-8 rounded-2xl border bg-card/30 backdrop-blur-sm">
-							<svg class="w-8 h-8 text-primary mx-auto mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-							</svg>
-							<h3 class="text-lg font-semibold mb-1">Enjoyed this article?</h3>
-							<p class="text-sm text-muted-foreground mb-4 leading-relaxed max-w-sm mx-auto">
-								Subscribe to get notified about new posts. No spam, just thoughtful content.
-							</p>
-							<form class="flex gap-2 max-w-xs mx-auto" onsubmit="return false;">
-								<input
-									type="email"
-									placeholder="your@email.com"
-									class="flex-1 rounded-lg border bg-background px-3 py-2 text-sm outline-none focus:border-primary transition-colors"
-								/>
-								<button
-									type="submit"
-									class="inline-flex items-center rounded-lg bg-foreground text-background px-4 py-2 text-sm font-medium hover:bg-foreground/90 transition-colors cursor-pointer"
-								>
-									Subscribe
-								</button>
-							</form>
-						</div>
 					</footer>
 				</article>
 			</div>
 		</div>
 	</main>
 </Layout>
+
+<script>
+	// ── Reading progress bar ──────────────────────────────────────────────────
+	const bar = document.getElementById('reading-progress');
+	if (bar) {
+		const update = () => {
+			const scrolled = window.scrollY;
+			const total = document.documentElement.scrollHeight - window.innerHeight;
+			const pct = total > 0 ? Math.min(100, (scrolled / total) * 100) : 0;
+			bar.style.width = `${pct}%`;
+		};
+		window.addEventListener('scroll', update, { passive: true });
+		update();
+	}
+
+	// ── Scroll-spy TOC ────────────────────────────────────────────────────────
+	const tocLinks = document.querySelectorAll<HTMLAnchorElement>('.toc-link');
+	if (tocLinks.length > 0) {
+		const headingEls = Array.from(tocLinks)
+			.map((l) => document.getElementById(l.dataset.heading ?? ''))
+			.filter(Boolean) as HTMLElement[];
+
+		const activate = (slug: string) => {
+			tocLinks.forEach((l) => {
+				const active = l.dataset.heading === slug;
+				l.classList.toggle('text-foreground', active);
+				l.classList.toggle('text-muted-foreground', !active);
+				l.classList.toggle('border-primary', active);
+				l.classList.toggle('border-transparent', !active);
+				l.classList.toggle('font-medium', active);
+			});
+		};
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				for (const e of entries) {
+					if (e.isIntersecting) {
+						activate(e.target.id);
+						break;
+					}
+				}
+			},
+			{ rootMargin: '-20% 0% -70% 0%', threshold: 0 }
+		);
+
+		headingEls.forEach((el) => observer.observe(el));
+	}
+</script>
