@@ -24,7 +24,7 @@ import {
     SiSelenium,
     SiPhp,
     SiHtml5,
-    SiCss3 as SiCss,
+    SiCss,
     SiClerk,
     SiShadcnui,
     SiScrapy,
