@@ -7,13 +7,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "email-preview": "email dev",
-    "preinstall": "npx npm-force-resolutions"
-  },
-  "resolutions": {
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "react-reconciler": "0.31.0"
+    "email-preview": "email dev"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.4",
