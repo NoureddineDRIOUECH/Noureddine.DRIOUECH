@@ -20,12 +20,14 @@ const readingTime = post.body
 	<a href={`/blog/${post.id}`} class="block">
 		{data.heroImage ? (
 			<div class="relative aspect-[16/10] overflow-hidden">
-				<img
-					src={data.heroImage}
-					alt={data.title}
-					class="h-full w-full object-cover object-center transition-all duration-700 group-hover:scale-110"
-					loading="lazy"
-				/>
+                <img
+                    src={data.heroImage}
+                    alt={data.title}
+                    class="h-full w-full object-cover object-center transition-all duration-700 group-hover:scale-110"
+                    loading="lazy"
+                    width={400}
+                    height={250}
+                />
 				<div class="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent" />
 				<div class="absolute top-3 right-3">
 					<span class="inline-flex items-center rounded-full bg-background/80 backdrop-blur-sm px-2.5 py-1 text-[11px] font-medium text-foreground shadow-xs">

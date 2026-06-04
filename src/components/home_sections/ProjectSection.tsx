@@ -1,5 +1,5 @@
 import { useState, type JSX } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
@@ -24,7 +24,7 @@ import {
     SiSelenium,
     SiPhp,
     SiHtml5,
-    SiCss3,
+    SiCss,
     SiClerk,
     SiShadcnui,
     SiScrapy,
@@ -55,7 +55,7 @@ export function ProjectSection() {
             id: 3,
             title: "Fast Food Ordering",
             description: "This is a mobile application for ordering fast food, built with React Native and Expo. It allows users to browse a menu, add items to their cart, and place orders. The app uses Appwrite for its backend services and Zustand for state management.",
-            image: "fastFoodMobileApp.svg",
+            image: "fastFoodMobileApp.webp",
             category: "Mobile",
             tags: ["Figma", "UI/UX", "React Native", "Appwrite" ,"Git"],
             liveUrl: "",
@@ -86,7 +86,7 @@ export function ProjectSection() {
     const tagIcons: Record<string, JSX.Element> = {
         JavaScript: <SiJavascript className="text-yellow-400" />,
         "HTML" : <SiHtml5 className="text-red-500" />,
-        "CSS" : <SiCss3 className="text-blue-500" />,
+        "CSS" : <SiCss className="text-blue-500" />,
         "PHP" : <SiPhp className="text-purple-500" />,
         "Selenium" : <SiSelenium className="text-green-500" />,
         "Clerk" : <SiClerk className="text-yellow-500" />,
@@ -100,13 +100,15 @@ export function ProjectSection() {
         MongoDB: <SiMongodb className="text-green-500" />,
         "Tailwind CSS": <SiTailwindcss className="text-sky-400" />,
         Git: <SiGit className="text-orange-500" />,
-        "Framer Motion": (
-            <img
-                src="/framerMotion.svg"
-                alt="Framer Motion"
-                className="w-4 h-4"
-            />
-        ),
+                                        "Framer Motion": (
+                                            <img
+                                                src="/framerMotion.svg"
+                                                alt="Framer Motion"
+                                                className="w-4 h-4"
+                                                width={16}
+                                                height={16}
+                                            />
+                                        ),
         MySQL: <SiMysql className="text-blue-700" />,
         Python: <SiPython className="text-blue-600" />,
         GraphQL: <SiMongodb className="text-pink-500" />,
@@ -208,6 +210,8 @@ export function ProjectSection() {
                                                 alt={project.title}
                                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                                 loading="lazy"
+                                                width={400}
+                                                height={225}
                                             />
                                         </Lens>
                                     </div>

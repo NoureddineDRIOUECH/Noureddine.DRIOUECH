@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
-import { motion, AnimatePresence } from 'framer-motion';
-import type { Transition, Variants, AnimatePresenceProps } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
+import type { Transition, Variants, AnimatePresenceProps } from 'motion/react';
 
 import React, { useState, useEffect, Children } from 'react';
 

@@ -127,6 +127,7 @@
   * {
     @apply border-border outline-ring/50;
     font-family: 'Poppins', sans-serif;
+    font-display: swap;
   }
   body {
     @apply bg-background text-foreground;

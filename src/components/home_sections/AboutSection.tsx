@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Download, Award, BookOpen,  Clock, Code,  Briefcase, Cpu, Smartphone, Cloud, GraduationCap as GraduationCapIcon,
@@ -317,10 +317,12 @@ export function AboutSection() {
                         <AboutStars />
                         <div className="relative p-5 w-full aspect-square">
                             <img
-                                src="/NoureddineDRIOUECH.png"
+                                src="/NoureddineDRIOUECH.webp"
                                 alt="Noureddine DRIOUECH"
                                 className="w-full px-5 h-auto rounded-full object-contain"
                                 loading="lazy"
+                                width={400}
+                                height={400}
                             />
                         </div>
 

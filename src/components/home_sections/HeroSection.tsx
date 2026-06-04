@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { FiGithub as Github } from "react-icons/fi";
 import { FiLinkedin as Linkedin } from "react-icons/fi";
 import { FaInstagram as Instagram } from "react-icons/fa";
@@ -121,6 +121,8 @@ export function HeroSection() {
                                     className="w-full h-auto object-contain mx-auto block dark:hidden"
                                     loading="eager"
                                     fetchPriority="high"
+                                    width={400}
+                                    height={400}
                                 />
                                 <img
                                     src="/mainIconsdark.svg"
@@ -128,6 +130,8 @@ export function HeroSection() {
                                     className="w-full h-auto object-contain mx-auto hidden dark:block"
                                     loading="eager"
                                     fetchPriority="high"
+                                    width={400}
+                                    height={400}
                                 />
                             </div>
                         </div>
