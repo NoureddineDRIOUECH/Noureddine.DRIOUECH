@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
 import { formatDate, getReadingTime } from '@/lib/reading-time';
 import BlogPost from '@/components/BlogPost.astro';
+import Ad from '@/components/Ad.astro';
 import { BGPattern } from '@/components/ui/bg-pattern';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
@@ -175,6 +176,10 @@ const hasToc = headings.filter((h) => h.depth > 1).length > 0;
 							/>
 						</div>
 					)}
+
+					<div class="flex justify-center my-8">
+						<Ad slot="6669309146" format="auto" />
+					</div>
 
 					<div class="lg:grid lg:grid-cols-[1fr_220px] lg:gap-12">
 						<!-- Main content -->

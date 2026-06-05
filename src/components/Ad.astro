@@ -1,0 +1,32 @@
+---
+interface Props {
+  slot: string;
+  format?: "auto" | "rectangle" | "horizontal" | "vertical";
+  className?: string;
+}
+
+const { slot, format = "auto", className = "" } = Astro.props;
+
+const display = format === "auto" ? "block" : "inline-block";
+const dimensions: Record<string, { width: string; height: string } | null> = {
+  auto: null,
+  rectangle: { width: "300", height: "250" },
+  horizontal: { width: "728", height: "90" },
+  vertical: { width: "160", height: "600" },
+};
+const size = dimensions[format];
+---
+
+<div class={`ad-container ${className}`}>
+  <ins
+    class="adsbygoogle"
+    style={`display:${display}${size ? `;width:${size.width}px;height:${size.height}px` : ""}`}
+    data-ad-client="ca-pub-9844566788252616"
+    data-ad-slot={slot}
+    data-ad-format={format}
+    data-full-width-responsive={format === "auto" ? "true" : "false"}
+  />
+  <script is:inline>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>

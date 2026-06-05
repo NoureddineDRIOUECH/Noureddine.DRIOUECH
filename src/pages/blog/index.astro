@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
 import BlogPost from '@/components/BlogPost.astro';
+import Ad from '@/components/Ad.astro';
 import { BGPattern } from '@/components/ui/bg-pattern';
 
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
@@ -96,6 +97,10 @@ const totalReadingTime = posts.reduce((acc, post) => {
 						))}
 					</div>
 				)}
+
+				<div class="flex justify-center my-8">
+					<Ad slot="4067196534" format="horizontal" />
+				</div>
 
 				<div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
 					{posts.map((post, index) => (
