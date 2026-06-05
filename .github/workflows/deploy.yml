@@ -21,11 +21,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: pnpm
 
       - name: Install dependencies
         run: |
           corepack enable
+          corepack prepare pnpm@9.15.9 --activate
           corepack pnpm install --frozen-lockfile --config.strict-dep-builds=false
 
       - name: Build
