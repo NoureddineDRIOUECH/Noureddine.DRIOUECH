@@ -18,7 +18,7 @@ This portfolio showcases my skills, projects, and experience in full-stack devel
 
 ## 🚀 Live Demo
 
-Explore the live version of my portfolio here: [https://noureddinedriouech.vercel.app/](https://noureddine-driouech.vercel.app/)
+Explore the live version of my portfolio here: [https://noureddinedriouech.me/](https://noureddinedriouech.me/)
 
 ## 🛠️ Technologies Used
 
