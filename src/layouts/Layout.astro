@@ -14,11 +14,7 @@ export interface Props {
 
 const { showEffects = false } = Astro.props;
 
-// Preload above-the-fold hero images instead of below-fold profile pic
-const preloadResources = [
-  { as: "image", href: "/mainIcons.svg", type: "image/svg+xml" },
-  { as: "image", href: "/mainIconsdark.svg", type: "image/svg+xml" }
-];
+// Preloading moved to inline theme script for theme-aware single load
 
 // SEO constants to avoid duplication
 const SITE_URL = "https://noureddinedriouech.me/";
@@ -51,13 +47,7 @@ const PROFILE_IMAGE = "https://noureddinedriouech.me/NoureddineDRIOUECH.jpg";
     <link rel="alternate icon" href="/Noureddine%20DRIOUECH.jpg" type="image/jpeg" />
     <meta name="generator" content={Astro.generator} />
     
-    <!-- Preload critical resources -->
-    {preloadResources.map(resource => (
-      <link rel="preload" href={resource.href} as={resource.as} type={resource.type}  />
-    ))}
-    
     <!-- Preconnect to external domains -->
-    <link rel="preconnect" href="https://cdn.simpleicons.org" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
@@ -153,6 +143,14 @@ const PROFILE_IMAGE = "https://noureddinedriouech.me/NoureddineDRIOUECH.jpg";
       const isDark = getThemePreference() === "dark";
       document.documentElement.classList[isDark ? "add" : "remove"]("dark");
 
+      // Theme-aware preload — only the used theme's hero image
+      const preload = document.createElement("link");
+      preload.rel = "preload";
+      preload.as = "image";
+      preload.href = isDark ? "/mainIconsdark.svg" : "/mainIcons.svg";
+      preload.type = "image/svg+xml";
+      document.head.appendChild(preload);
+
       // Defer the observer setup to after page load
       if (typeof window !== "undefined") {
         window.addEventListener("DOMContentLoaded", () => {
@@ -188,7 +186,7 @@ const PROFILE_IMAGE = "https://noureddinedriouech.me/NoureddineDRIOUECH.jpg";
       showEffects && (
         <>
           <StarsCanvas client:idle />
-          <SplashCursor client:idle />
+          <SplashCursor DYE_RESOLUTION={512} SHADING={false} client:idle />
         </>
       )
     }

@@ -40,11 +40,7 @@ export default defineConfig({
               ) {
                 return "three";
               }
-              if (
-                id.includes("lucide-react") ||
-                id.includes("@tabler/icons-react") ||
-                id.includes("react-icons")
-              ) {
+              if (id.includes("lucide-react") || id.includes("@tabler/icons-react")) {
                 return "icons";
               }
               if (id.includes("react") || id.includes("react-dom")) {
