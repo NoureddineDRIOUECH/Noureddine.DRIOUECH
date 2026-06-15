@@ -14,6 +14,8 @@ export interface Props {
 
 const { showEffects = false } = Astro.props;
 
+const isAdPage = Astro.url.pathname.startsWith("/blog");
+
 // Preloading moved to inline theme script for theme-aware single load
 
 // SEO constants to avoid duplication
@@ -169,8 +171,9 @@ const PROFILE_IMAGE = "https://noureddinedriouech.me/NoureddineDRIOUECH.jpg";
     </script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E4HT3W4JFD" is:inline></script>
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9844566788252616" crossorigin="anonymous" is:inline></script>
+    {isAdPage && (
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9844566788252616" crossorigin="anonymous" is:inline></script>
+    )}
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}

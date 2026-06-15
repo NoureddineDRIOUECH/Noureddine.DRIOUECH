@@ -41,6 +41,9 @@ export function FooterSection() {
                         <a href="#contact" className="text-muted-foreground hover:text-foreground transition-colors">
                             Contact
                         </a>
+                        <a href="/privacy-policy" className="text-muted-foreground hover:text-foreground transition-colors">
+                            Privacy
+                        </a>
                     </div>
 
                     <div className="flex gap-4 mb-8">
