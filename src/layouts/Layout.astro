@@ -14,7 +14,7 @@ export interface Props {
 
 const { showEffects = false } = Astro.props;
 
-const isAdPage = Astro.url.pathname.startsWith("/blog");
+const isAdPage = Astro.url.pathname.match(/^\/blog\/.+/);
 
 // Preloading moved to inline theme script for theme-aware single load
 
