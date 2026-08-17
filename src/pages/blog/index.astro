@@ -1,8 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
-import BlogPost from '@/components/BlogPost.astro';
-import { BGPattern } from '@/components/ui/bg-pattern';
+import { FooterSection } from '@/components/home_sections/FooterSection';
+import { formatDate, getReadingTime } from '@/lib/reading-time';
+import { ArrowUpRight, Clock, Sparkles, Search, Layers, BookOpen, Bot } from 'lucide-react';
 
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
 
@@ -10,211 +11,250 @@ const posts = allPosts.sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
-const allTags = [...new Set(posts.flatMap((post) => post.data.tags))].sort();
-const totalReadingTime = posts.reduce((acc, post) => {
-	return acc + (post.body ? Math.max(1, Math.ceil(post.body.trim().split(/\s+/).length / 200)) : 3);
-}, 0);
+const featuredPost = posts[0];
+const standardPosts = posts.slice(1);
+
+// Curated primary category taxonomy
+const categories = [
+	{ id: "all", label: "All Publications" },
+	{ id: "ai-rag", label: "AI & RAG Systems", filterTag: "RAG" },
+	{ id: "saas", label: "SaaS Architecture", filterTag: "SaaS" },
+	{ id: "automation", label: "Web Automation", filterTag: "Automation" },
+	{ id: "fullstack", label: "TypeScript & Full-Stack", filterTag: "TypeScript" }
+];
 ---
 
 <Layout
-	title="Engineering Blog & AI Insights"
-	description="Technical articles and architecture guides on Artificial Intelligence, Local RAG pipelines, Next.js SaaS systems, and Python web automation by Noureddine Driouech."
+	title="Publications & Engineering Insights"
+	description="In-depth technical publications, AI architecture blueprints, and engineering notes on Local RAG, LLMs, Next.js SaaS, and automation by Noureddine Driouech."
 	breadcrumbs={[
 		{ name: "Home", url: "/" },
 		{ name: "Blog", url: "/blog/" }
 	]}
+	keywords="AI Engineering Blog, Local RAG Systems, AI Agents, Next.js Architecture, Python Automation, Noureddine Driouech Publications"
 >
-	<main>
-		<section class="relative pt-28 pb-16 px-5 ">
-			<BGPattern variant="dots" mask="fade-edges" size={20} fill="hsl(var(--foreground) / 0.04)" />
-			<div class="absolute inset-0 -z-10">
-				<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-primary/8 rounded-full blur-3xl" />
-				<div class="absolute top-40 right-1/4 w-72 h-72 bg-purple-500/5 rounded-full blur-3xl" />
-				<div class="absolute bottom-0 left-1/3 w-96 h-48 bg-primary/5 rounded-full blur-3xl" />
-			</div>
-			<div class="max-w-4xl mx-auto text-center">
-				<div class="inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-medium mb-6 bg-secondary/50 text-secondary-foreground backdrop-blur-sm">
-					<span class="relative flex h-2 w-2">
-						<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
-						<span class="relative inline-flex rounded-full h-2 w-2 bg-primary" />
-					</span>
-					{posts.length} {posts.length === 1 ? 'article' : 'articles'} published
+	<main class="w-full min-h-screen pt-28 pb-16">
+		<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+			{/* Editorial Header */}
+			<div class="space-y-4 pb-10 text-left border-b border-border/50">
+				<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill text-xs font-mono font-semibold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">
+					<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 beacon-pulse inline-block" />
+					<span>Engineering & Systems Research</span>
 				</div>
-				<h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 ">
-					Blogs
+				<h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-foreground">
+					Publications
 				</h1>
-				<p class="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-					Thoughts on software engineering, web development, and building things that matter.
+				<p class="text-base sm:text-lg text-muted-foreground max-w-2xl leading-relaxed">
+					Deep-dive technical blueprints, case studies, and production patterns spanning Local RAG systems, AI agents, full-stack SaaS engineering, and resilient automation.
 				</p>
 			</div>
 
-			<div class="max-w-2xl mx-auto mt-10 grid grid-cols-3 gap-4">
-				<div class="rounded-xl border bg-card/50 backdrop-blur-sm p-4 text-center hover:bg-card/80 transition-colors">
-					<div class="flex items-center justify-center gap-2 mb-1">
-						<svg class="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-						</svg>
-						<span class="text-2xl font-bold text-foreground">{posts.length}</span>
-					</div>
-					<p class="text-xs text-muted-foreground">Articles</p>
+			{/* Documentation-Grade Filter & Search Console */}
+			<div class="my-8 space-y-4">
+				{/* Search Bar */}
+				<div class="relative flex items-center w-full px-4 py-3 rounded-2xl glass-panel border border-border/70 focus-within:border-foreground/40 transition-all shadow-sm gap-3">
+					<Search class="w-4 h-4 text-muted-foreground flex-shrink-0" />
+					<input
+						type="text"
+						id="pub-search"
+						placeholder="Search publications by keyword, architecture, or technology..."
+						class="w-full bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none border-none p-0"
+					/>
 				</div>
-				<div class="rounded-xl border bg-card/50 backdrop-blur-sm p-4 text-center hover:bg-card/80 transition-colors">
-					<div class="flex items-center justify-center gap-2 mb-1">
-						<svg class="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
-							<path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
-						</svg>
-						<span class="text-2xl font-bold text-foreground">{allTags.length}</span>
-					</div>
-					<p class="text-xs text-muted-foreground">Topics</p>
-				</div>
-				<div class="rounded-xl border bg-card/50 backdrop-blur-sm p-4 text-center hover:bg-card/80 transition-colors">
-					<div class="flex items-center justify-center gap-2 mb-1">
-						<svg class="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2" />
-							<circle cx="12" cy="12" r="10" />
-						</svg>
-						<span class="text-2xl font-bold text-foreground">{totalReadingTime}</span>
-					</div>
-					<p class="text-xs text-muted-foreground">Min read</p>
-				</div>
-			</div>
-		</section>
 
-		<section class="relative pb-24 px-5">
-			<BGPattern variant="grid" mask="fade-top" size={32} fill="hsl(var(--foreground) / 0.03)" />
-			<div class="max-w-6xl mx-auto">
-				{allTags.length > 0 && (
-					<div class="flex flex-wrap justify-center gap-2 mb-12">
+				{/* Category Segmented Bar */}
+				<div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+					{categories.map((cat, idx) => (
 						<button
-							class="tag-filter inline-flex items-center rounded-full border px-4 py-1.5 text-sm font-medium transition-all duration-300 hover:bg-accent hover:text-accent-foreground cursor-pointer data-[active=true]:bg-foreground data-[active=true]:text-background data-[active=true]:border-foreground"
-							data-tag="all"
-							data-active="true"
+							class={`category-tab px-4 py-2 rounded-xl text-xs font-semibold tracking-wide transition-all duration-200 cursor-pointer whitespace-nowrap border ${
+								idx === 0
+									? "bg-foreground text-background border-foreground shadow-sm"
+									: "text-muted-foreground hover:text-foreground border-border/60 glass-pill"
+							}`}
+							data-filter={cat.id}
+							data-tag={cat.filterTag ?? ""}
 						>
-							All Posts
+							{cat.label}
 						</button>
-						{allTags.map((tag) => (
-							<button
-								class="tag-filter inline-flex items-center rounded-full border px-4 py-1.5 text-sm font-medium transition-all duration-300 hover:bg-accent hover:text-accent-foreground cursor-pointer data-[active=true]:bg-foreground data-[active=true]:text-background data-[active=true]:border-foreground"
-								data-tag={tag}
-							>
-								#{tag}
-							</button>
-						))}
-					</div>
-				)}
-
-				<div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-					{posts.map((post, index) => (
-						<div
-							class="blog-card stagger-item"
-							data-tags={post.data.tags.join(",")}
-							style={`view-transition-name: blog-card-${index}`}
-						>
-							<BlogPost post={post} />
-						</div>
 					))}
 				</div>
-
-				<div id="no-results" class="text-center py-32 hidden">
-					<div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-secondary mb-6">
-						<svg class="w-8 h-8 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-						</svg>
-					</div>
-					<p class="text-muted-foreground text-lg font-medium">No posts match this topic</p>
-					<p class="text-muted-foreground/60 text-sm mt-1">Try selecting a different tag</p>
-				</div>
-
-				{posts.length === 0 && (
-					<div class="text-center py-32">
-						<div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-secondary mb-6">
-							<svg class="w-8 h-8 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-							</svg>
-						</div>
-						<p class="text-muted-foreground text-lg font-medium">No posts yet</p>
-						<p class="text-muted-foreground/60 text-sm mt-1">Check back soon for new articles!</p>
-					</div>
-				)}
 			</div>
-		</section>
+
+			{/* Featured Flagship Article */}
+			{featuredPost && (
+				<div id="featured-wrapper" class="mb-12 publication-card" data-tags={(featuredPost.data.tags ?? []).join(",")} data-title={featuredPost.data.title.toLowerCase()} data-desc={featuredPost.data.description.toLowerCase()}>
+					<a
+						href={`/blog/${featuredPost.id}`}
+						class="group relative block rounded-3xl glass-panel p-6 sm:p-8 lg:p-10 border border-border/70 hover:border-foreground/30 transition-all duration-500 hover:shadow-2xl overflow-hidden"
+					>
+						<div class="grid lg:grid-cols-12 gap-8 items-center">
+							{/* Featured Image */}
+							<div class="lg:col-span-6 relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-black/30 border border-border/60 flex items-center justify-center p-3">
+								<img
+									src={featuredPost.data.heroImage || "/NoureddineDRIOUECH.jpg"}
+									alt={featuredPost.data.title}
+									class="w-full h-full object-contain object-center transition-transform duration-700 group-hover:scale-105"
+								/>
+								<div class="absolute top-3 left-3">
+									<span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-emerald-500/90 text-white shadow-sm flex items-center gap-1.5">
+										<Sparkles class="w-3 h-3" />
+										Featured Blueprint
+									</span>
+								</div>
+							</div>
+
+							{/* Featured Content */}
+							<div class="lg:col-span-6 space-y-4">
+								<div class="flex items-center gap-3 text-xs font-mono text-muted-foreground">
+									<time datetime={featuredPost.data.pubDate.toISOString()}>
+										{formatDate(featuredPost.data.pubDate)}
+									</time>
+									<span>·</span>
+									<span class="flex items-center gap-1 text-emerald-500 font-semibold">
+										<Clock class="w-3 h-3" />
+										{getReadingTime(featuredPost.body ?? "")} min read
+									</span>
+								</div>
+
+								<h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors leading-tight">
+									{featuredPost.data.title}
+								</h2>
+
+								<p class="text-sm sm:text-base text-muted-foreground leading-relaxed line-clamp-3">
+									{featuredPost.data.description}
+								</p>
+
+								<div class="pt-4 flex items-center justify-between">
+									<div class="flex flex-wrap gap-1.5">
+										{(featuredPost.data.tags ?? []).slice(0, 3).map((tag) => (
+											<span class="px-2.5 py-1 rounded-lg text-[11px] font-medium bg-muted/60 text-muted-foreground border border-border/40">
+												#{tag}
+											</span>
+										))}
+									</div>
+
+									<div class="inline-flex items-center gap-1 text-xs font-bold text-foreground group-hover:text-primary transition-colors">
+										<span>Read Blueprint</span>
+										<ArrowUpRight class="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+			)}
+
+			{/* Articles Grid */}
+			<div id="posts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+				{standardPosts.map((post) => (
+					<article
+						class="publication-card group relative flex flex-col justify-between rounded-2xl glass-panel p-6 border border-border/70 hover:border-foreground/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+						data-tags={(post.data.tags ?? []).join(",")}
+						data-title={post.data.title.toLowerCase()}
+						data-desc={post.data.description.toLowerCase()}
+					>
+						<a href={`/blog/${post.id}`} class="flex flex-col flex-1 justify-between space-y-4">
+							<div class="space-y-3">
+								<div class="flex items-center justify-between text-xs font-mono text-muted-foreground">
+									<time datetime={post.data.pubDate.toISOString()}>
+										{formatDate(post.data.pubDate)}
+									</time>
+									<span class="flex items-center gap-1">
+										<Clock class="w-3 h-3 text-emerald-500" />
+										{getReadingTime(post.body ?? "")}m
+									</span>
+								</div>
+
+								<h3 class="text-lg font-bold tracking-tight text-foreground group-hover:text-primary transition-colors leading-snug">
+									{post.data.title}
+								</h3>
+
+								<p class="text-xs sm:text-sm text-muted-foreground leading-relaxed line-clamp-3">
+									{post.data.description}
+								</p>
+							</div>
+
+							<div class="pt-4 border-t border-border/40 flex items-center justify-between">
+								<div class="flex flex-wrap gap-1">
+									{(post.data.tags ?? []).slice(0, 2).map((tag) => (
+										<span class="px-2 py-0.5 rounded-md text-[10px] font-medium bg-muted/60 text-muted-foreground">
+											#{tag}
+										</span>
+									))}
+								</div>
+								<span class="text-xs font-semibold text-foreground group-hover:text-primary flex items-center gap-0.5">
+									<span>Read</span>
+									<ArrowUpRight class="w-3.5 h-3.5" />
+								</span>
+							</div>
+						</a>
+					</article>
+				))}
+			</div>
+
+			{/* Empty State */}
+			<div id="empty-state" class="text-center py-20 hidden">
+				<p class="text-base text-muted-foreground">No publications found matching your filter or search query.</p>
+			</div>
+		</div>
+
+		<div class="mt-20">
+			<FooterSection client:visible />
+		</div>
 	</main>
 </Layout>
 
-<style is:global>
-	.tag-filter[data-active="true"] {
-		background-color: hsl(var(--foreground));
-		color: hsl(var(--background));
-		border-color: hsl(var(--foreground));
-	}
-
-	@keyframes stagger-fade-in {
-		from {
-			opacity: 0;
-			transform: translateY(20px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
-	.stagger-item {
-		animation: stagger-fade-in 0.5s ease-out both;
-	}
-
-	.stagger-item:nth-child(1) { animation-delay: 0s; }
-	.stagger-item:nth-child(2) { animation-delay: 0.05s; }
-	.stagger-item:nth-child(3) { animation-delay: 0.1s; }
-	.stagger-item:nth-child(4) { animation-delay: 0.15s; }
-	.stagger-item:nth-child(5) { animation-delay: 0.2s; }
-	.stagger-item:nth-child(6) { animation-delay: 0.25s; }
-	.stagger-item:nth-child(7) { animation-delay: 0.3s; }
-	.stagger-item:nth-child(8) { animation-delay: 0.35s; }
-	.stagger-item:nth-child(9) { animation-delay: 0.4s; }
-	.stagger-item:nth-child(10) { animation-delay: 0.45s; }
-
-	@media (prefers-reduced-motion: reduce) {
-		.stagger-item {
-			animation: none;
-		}
-	}
-</style>
-
 <script>
-	const filters = document.querySelectorAll<HTMLButtonElement>(".tag-filter");
-	const cards = document.querySelectorAll<HTMLElement>(".blog-card");
-	const noResults = document.getElementById("no-results");
-	const grid = document.getElementById("blog-grid");
+	const tabs = document.querySelectorAll<HTMLButtonElement>(".category-tab");
+	const cards = document.querySelectorAll<HTMLElement>(".publication-card");
+	const searchInput = document.getElementById("pub-search") as HTMLInputElement | null;
+	const emptyState = document.getElementById("empty-state");
 
-	function updateFilter(activeTag: string) {
-		filters.forEach((btn) => {
-			const tag = btn.dataset.tag;
-			btn.dataset.active = tag === activeTag ? "true" : "false";
-		});
+	let currentTag = "";
+	let searchQuery = "";
 
-		let visibleCount = 0;
+	function applyFilter() {
+		let matchCount = 0;
+
 		cards.forEach((card) => {
 			const tags = card.dataset.tags?.split(",") ?? [];
-			const shouldShow = activeTag === "all" || tags.includes(activeTag);
-			card.style.display = shouldShow ? "" : "none";
-			if (shouldShow) {
-				visibleCount++;
-				card.style.animation = "none";
-				card.offsetHeight;
-				card.style.animation = "";
-			}
+			const title = card.dataset.title ?? "";
+			const desc = card.dataset.desc ?? "";
+
+			const matchesCategory = currentTag === "" || tags.some(t => t.toLowerCase().includes(currentTag.toLowerCase()));
+			const matchesSearch = searchQuery === "" || title.includes(searchQuery) || desc.includes(searchQuery) || tags.some(t => t.toLowerCase().includes(searchQuery));
+
+			const isVisible = matchesCategory && matchesSearch;
+			card.style.display = isVisible ? "" : "none";
+			if (isVisible) matchCount++;
 		});
 
-		if (noResults && grid) {
-			noResults.style.display = visibleCount === 0 ? "block" : "none";
+		if (emptyState) {
+			emptyState.style.display = matchCount === 0 ? "block" : "none";
 		}
 	}
 
-	filters.forEach((btn) => {
-		btn.addEventListener("click", () => {
-			updateFilter(btn.dataset.tag ?? "all");
+	tabs.forEach((tab) => {
+		tab.addEventListener("click", () => {
+			currentTag = tab.dataset.tag ?? "";
+
+			tabs.forEach((t) => {
+				const isSelected = t === tab;
+				if (isSelected) {
+					t.className = "category-tab px-4 py-2 rounded-xl text-xs font-semibold tracking-wide transition-all duration-200 cursor-pointer whitespace-nowrap border bg-foreground text-background border-foreground shadow-sm";
+				} else {
+					t.className = "category-tab px-4 py-2 rounded-xl text-xs font-medium text-muted-foreground hover:text-foreground border-border/60 glass-pill transition-all duration-200 cursor-pointer whitespace-nowrap border";
+				}
+			});
+
+			applyFilter();
 		});
 	});
+
+	if (searchInput) {
+		searchInput.addEventListener("input", (e) => {
+			searchQuery = (e.target as HTMLInputElement).value.trim().toLowerCase();
+			applyFilter();
+		});
+	}
 </script>

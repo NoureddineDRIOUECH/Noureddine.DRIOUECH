@@ -2,14 +2,17 @@
 import { getCollection, render } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
 import { formatDate, getReadingTime } from '@/lib/reading-time';
-import BlogPost from '@/components/BlogPost.astro';
-import Ad from '@/components/Ad.astro';
-import { BGPattern } from '@/components/ui/bg-pattern';
-import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
-import { Button } from '@/components/ui/button';
+import { FooterSection } from '@/components/home_sections/FooterSection';
 import { BlogShareButton } from '@/components/BlogShareButton';
-import { ArrowLeft, Clock, RefreshCw, BookOpen } from 'lucide-react';
+import { 
+	ArrowLeft, 
+	Clock, 
+	BookOpen, 
+	Sparkles, 
+	ArrowUp,
+	CheckCircle2
+} from 'lucide-react';
+import { FiGithub, FiLinkedin } from 'react-icons/fi';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('blog', ({ data }) => !data.draft);
@@ -27,18 +30,16 @@ const relatedPosts = allPosts
 	.filter((p) => p.id !== post.id)
 	.map((p) => ({
 		post: p,
-		commonTags: p.data.tags.filter((t) => post.data.tags.includes(t)).length,
+		commonTags: (p.data.tags ?? []).filter((t) => (post.data.tags ?? []).includes(t)).length,
 	}))
 	.filter((p) => p.commonTags > 0)
 	.sort((a, b) => b.commonTags - a.commonTags)
 	.slice(0, 3);
 
-const postUrl = `${Astro.site}blog/${post.id}/`;
-const readingTime = getReadingTime(post.body ?? "");
 const siteUrl = "https://noureddinedriouech.me";
-const shareText = encodeURIComponent(post.data.title);
-const shareUrl = encodeURIComponent(postUrl);
-const hasToc = headings.filter((h) => h.depth > 1).length > 0;
+const postUrl = `${siteUrl}/blog/${post.id}/`;
+const readingTime = getReadingTime(post.body ?? "");
+const tocHeadings = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
 ---
 
 <Layout
@@ -48,319 +49,187 @@ const hasToc = headings.filter((h) => h.depth > 1).length > 0;
 	type="article"
 	publishDate={post.data.pubDate}
 	updatedDate={post.data.updatedDate}
-	keywords={post.data.tags?.join(", ")}
+	keywords={(post.data.tags ?? []).join(", ")}
 	breadcrumbs={[
 		{ name: "Home", url: "/" },
 		{ name: "Blog", url: "/blog/" },
 		{ name: post.data.title, url: `/blog/${post.id}/` }
 	]}
 >
-	<script type="application/ld+json" set:html={JSON.stringify({
-		"@context": "https://schema.org",
-		"@type": "Article",
-		"headline": post.data.title,
-		"description": post.data.description,
-		"image": post.data.heroImage ? `${siteUrl}${post.data.heroImage}` : undefined,
-		"author": {
-			"@type": "Person",
-			"name": "Noureddine DRIOUECH",
-			"url": siteUrl
-		},
-		"datePublished": post.data.pubDate.toISOString(),
-		"dateModified": post.data.updatedDate?.toISOString() ?? post.data.pubDate.toISOString(),
-		"mainEntityOfPage": {
-			"@type": "WebPage",
-			"@id": postUrl
-		},
-		"publisher": {
-			"@type": "Person",
-			"name": "Noureddine DRIOUECH",
-			"url": siteUrl
-		},
-		"keywords": post.data.tags.join(", ")
-	})}>
-	</script>
-
-	<!-- Reading progress bar -->
-	<div
-		id="reading-progress"
-		class="fixed top-0 left-0 z-50 h-[2px] w-0 bg-gradient-to-r from-primary via-primary/80 to-primary/40 transition-none"
-		role="progressbar"
-		aria-label="Reading progress"
-	/>
-
-	<main>
-		<div class="relative overflow-hidden">
-			<BGPattern variant="dots" mask="fade-edges" size={24} fill="hsl(var(--foreground) / 0.04)" />
-			<div class="absolute inset-0 -z-10">
-				<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl" />
-				<div class="absolute top-40 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
-				<div class="absolute -bottom-20 left-1/4 w-72 h-72 bg-pink-500/5 rounded-full blur-3xl" />
-			</div>
-
-			<div class="max-w-3xl mx-auto px-5 pt-32 pb-12">
+	<main class="w-full min-h-screen pt-24 pb-16">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			{/* Back Link & Navigation Rail */}
+			<div class="pt-4 pb-6 flex items-center justify-between">
 				<a
 					href="/blog"
-					class="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 mb-8 group"
+					class="inline-flex items-center gap-2 text-xs font-mono text-muted-foreground hover:text-foreground transition-colors group"
 				>
-					<ArrowLeft class="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-0.5" />
-					Back to blog
+					<ArrowLeft class="w-3.5 h-3.5 transition-transform group-hover:-translate-x-1" />
+					<span>Back to Publications</span>
 				</a>
+			</div>
 
-				<article>
-					<header class="mb-10">
-						<!-- Tags -->
-						{post.data.tags && post.data.tags.length > 0 && (
-							<div class="flex flex-wrap gap-2 mb-5">
-								{post.data.tags.map((tag) => (
-									<Badge
-										variant="secondary"
-										class="rounded-full px-3 py-1 text-xs font-medium bg-secondary/60 hover:bg-secondary transition-colors duration-150 cursor-default select-none"
-									>
-										{tag}
-									</Badge>
-								))}
-							</div>
-						)}
+			{/* Documentation Split Layout: Content (Left) + Sticky Section Rail (Right) */}
+			<div class="grid lg:grid-cols-[1fr_280px] gap-10 xl:gap-14 items-start">
+				{/* Main Article Stream */}
+				<article class="min-w-0 max-w-3xl">
+					{/* Article Header */}
+					<header class="space-y-4 pb-8 border-b border-border/50 text-left">
+						{/* Meta: Date & Read Time */}
+						<div class="flex flex-wrap items-center gap-3 text-xs font-mono text-muted-foreground">
+							<time datetime={post.data.pubDate.toISOString()}>
+								{formatDate(post.data.pubDate)}
+							</time>
+							<span>·</span>
+							<span class="flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-semibold">
+								<Clock class="w-3.5 h-3.5" />
+								{readingTime} min read
+							</span>
+						</div>
 
-						<!-- Title -->
-						<h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-5 leading-[1.15] tracking-tight bg-gradient-to-br from-foreground via-foreground to-foreground/60 bg-clip-text text-transparent">
+						{/* Headline */}
+						<h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground leading-[1.14]">
 							{post.data.title}
 						</h1>
 
-						<!-- Description -->
-						<p class="text-lg text-muted-foreground mb-8 max-w-2xl leading-relaxed">
+						{/* Description */}
+						<p class="text-base sm:text-lg text-muted-foreground leading-relaxed">
 							{post.data.description}
 						</p>
 
-						<!-- Author + Meta row -->
-						<div class="flex flex-wrap items-center justify-between gap-5 text-sm">
+						{/* Author Credential Bar */}
+						<div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-border/40">
 							<div class="flex items-center gap-3">
-								<div class="relative shrink-0">
+								<div class="relative w-10 h-10 rounded-full overflow-hidden border border-border/80 shadow-sm">
 									<img
 										src="/NoureddineDRIOUECH.webp"
-										alt="Noureddine DRIOUECH"
-										class="w-11 h-11 rounded-full object-cover ring-2 ring-border"
-										width={44}
-										height={44}
+										alt="Noureddine Driouech"
+										class="w-full h-full object-cover"
 									/>
-									<div class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-emerald-500 rounded-full border-2 border-background shadow-sm" />
+									<div class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-400 rounded-full border border-background" />
 								</div>
 								<div>
-									<span class="font-semibold text-foreground text-sm leading-tight block">Noureddine DRIOUECH</span>
-									<time datetime={post.data.pubDate.toISOString()} class="text-xs text-muted-foreground">
-										{formatDate(post.data.pubDate)}
-									</time>
+									<div class="text-xs font-bold text-foreground">Noureddine Driouech</div>
+									<div class="text-[11px] text-muted-foreground">AI Software Engineer</div>
 								</div>
 							</div>
 
-							<span class="hidden sm:inline text-muted-foreground/20" aria-hidden="true">·</span>
-
-							<div class="flex items-center gap-4 text-muted-foreground">
-								<span class="flex items-center gap-1.5 text-xs">
-									<Clock class="w-3.5 h-3.5 opacity-70" />
-									{readingTime} min read
-								</span>
-								{post.data.updatedDate && (
-									<>
-										<span class="text-muted-foreground/20" aria-hidden="true">·</span>
-										<span class="flex items-center gap-1.5 text-xs">
-											<RefreshCw class="w-3.5 h-3.5 opacity-70" />
-											Updated {formatDate(post.data.updatedDate)}
+							{/* Tag Badges */}
+							{post.data.tags && post.data.tags.length > 0 && (
+								<div class="flex flex-wrap gap-1.5">
+									{post.data.tags.map((tag) => (
+										<span class="px-2.5 py-0.5 rounded-md text-[11px] font-medium bg-muted/60 text-muted-foreground">
+											#{tag}
 										</span>
-									</>
-								)}
-							</div>
+									))}
+								</div>
+							)}
 						</div>
-
-						<Separator class="my-8 opacity-60" />
 					</header>
 
-					<!-- Hero image -->
+					{/* Hero Image */}
 					{post.data.heroImage && (
-						<div class="mb-12 rounded-2xl overflow-hidden border border-border/50 shadow-md">
+						<div class="my-8 rounded-2xl overflow-hidden glass-panel border border-border/60 shadow-xl aspect-[16/9] flex items-center justify-center p-3 bg-black/30">
 							<img
 								src={post.data.heroImage}
 								alt={post.data.title}
-								class="w-full aspect-video object-cover"
-								loading="eager"
-								width={768}
-								height={432}
+								class="w-full h-full object-contain object-center rounded-xl"
 							/>
 						</div>
 					)}
 
-					<div class="flex justify-center my-8">
-						<Ad slot="6669309146" format="auto" />
+					{/* Mobile Collapsible TOC */}
+					{tocHeadings.length > 0 && (
+						<details class="my-6 rounded-2xl glass-panel p-4 lg:hidden border border-border/60 group">
+							<summary class="flex items-center justify-between gap-2 cursor-pointer select-none text-xs font-mono font-bold uppercase tracking-wider text-foreground">
+								<span class="flex items-center gap-2">
+									<BookOpen class="w-4 h-4 text-emerald-400" />
+									<span>Table of Contents</span>
+								</span>
+							</summary>
+							<nav class="mt-3 pt-3 border-t border-border/40 space-y-1.5">
+								{tocHeadings.map((h) => (
+									<a
+										href={`#${h.slug}`}
+										class="block text-xs text-muted-foreground hover:text-foreground transition-colors py-0.5 leading-snug"
+										style={{ paddingLeft: `${(h.depth - 2) * 0.75}rem` }}
+									>
+										{h.text}
+									</a>
+								))}
+							</nav>
+						</details>
+					)}
+
+					{/* Article Body Content with Documentation Rhythm */}
+					<div class="prose prose-lg dark:prose-invert max-w-none pt-4 pb-16
+						prose-headings:font-extrabold prose-headings:tracking-tight prose-headings:text-foreground prose-headings:scroll-mt-28
+						prose-h2:text-2xl sm:prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-4 prose-h2:pb-2 prose-h2:border-b prose-h2:border-border/40
+						prose-h3:text-xl sm:prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-3
+						prose-p:text-base sm:prose-p:text-[17px] prose-p:leading-[1.8] prose-p:text-foreground/85 dark:prose-p:text-zinc-200 prose-p:my-5
+						prose-a:text-foreground prose-a:font-semibold prose-a:underline hover:prose-a:text-primary transition-colors
+						prose-strong:text-foreground prose-strong:font-bold
+						prose-code:text-[0.875em] prose-code:font-mono prose-code:bg-muted/80 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:border prose-code:border-border/60 prose-code:text-foreground
+						prose-code:before:content-none prose-code:after:content-none
+						prose-pre:bg-[#080a0d] prose-pre:border prose-pre:border-border/80 prose-pre:rounded-2xl prose-pre:p-5 prose-pre:shadow-2xl
+						prose-blockquote:border-l-2 prose-blockquote:border-emerald-500 prose-blockquote:bg-emerald-500/[0.04] prose-blockquote:py-2.5 prose-blockquote:px-5 prose-blockquote:rounded-r-2xl prose-blockquote:not-italic prose-blockquote:text-foreground/90
+						prose-li:text-foreground/80 dark:prose-li:text-zinc-300 prose-li:my-1.5
+						prose-table:border-collapse prose-th:bg-muted/60 prose-th:p-3 prose-td:p-3 prose-td:border prose-td:border-border/40">
+						<Content />
 					</div>
 
-					<div class="lg:grid lg:grid-cols-[1fr_220px] lg:gap-12">
-						<!-- Main content -->
-						<div class="min-w-0">
-							<!-- Mobile TOC -->
-							{hasToc && (
-								<details class="mb-10 rounded-xl border border-border/60 bg-secondary/20 lg:hidden group">
-									<summary class="flex items-center justify-between gap-2 px-5 py-4 cursor-pointer select-none list-none text-sm font-semibold">
-										<span class="flex items-center gap-2">
-											<BookOpen class="w-4 h-4 text-muted-foreground" />
-											Table of Contents
-										</span>
-										<svg
-											class="w-4 h-4 text-muted-foreground transition-transform duration-200 group-open:rotate-180"
-											fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
-										>
-											<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-										</svg>
-									</summary>
-									<nav class="px-5 pb-4 space-y-1 border-t border-border/40 pt-3">
-										{headings.filter((h) => h.depth > 1).map((heading) => (
-											<a
-												href={`#${heading.slug}`}
-												class="block text-sm text-muted-foreground hover:text-foreground transition-colors duration-150 py-1 leading-snug"
-												style={{ paddingLeft: `${(heading.depth - 2) * 0.875}rem` }}
-											>
-												{heading.text}
-											</a>
-										))}
-									</nav>
-								</details>
-							)}
-
-							<!-- Article body -->
-							<div class="prose prose-lg dark:prose-invert max-w-none
-								prose-headings:font-bold prose-headings:scroll-mt-28 prose-headings:tracking-tight
-								prose-h2:text-2xl prose-h2:mt-14 prose-h2:mb-5 prose-h2:pb-2 prose-h2:border-b prose-h2:border-border/10
-								prose-h3:text-xl prose-h3:mt-10 prose-h3:mb-4
-								prose-p:leading-[1.75] prose-p:text-[1.0625rem] prose-p:my-5
-								prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-a:underline-offset-2 prose-a:decoration-primary/30
-								prose-img:rounded-xl prose-img:shadow-md
-								prose-pre:bg-[#0d1117] dark:prose-pre:bg-[#0d1117] prose-pre:border-0 prose-pre:shadow-sm prose-pre:rounded-xl prose-pre:text-sm prose-pre:leading-relaxed
-								prose-code:text-[0.875em] prose-code:bg-secondary/60 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:font-normal
-								prose-code:before:content-none prose-code:after:content-none
-								prose-blockquote:border-l-[3px] prose-blockquote:border-primary/30 prose-blockquote:not-italic
-								prose-blockquote:bg-primary/[0.03] prose-blockquote:py-0.5 prose-blockquote:px-5 prose-blockquote:rounded-r-lg
-								prose-li:marker:text-muted-foreground/30
-								prose-hr:border-border/20
-								prose-strong:text-foreground prose-strong:font-semibold
-								prose-table:border-collapse prose-th:bg-secondary/30 prose-th:font-semibold prose-th:px-4 prose-th:py-2.5 prose-td:px-4 prose-td:py-2.5">
-								<Content />
-							</div>
-						</div>
-
-						<!-- Desktop TOC -->
-						{hasToc && (
-							<aside class="hidden lg:block">
-								<div class="sticky top-28 space-y-1">
-									<h2 class="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground/70 mb-4 flex items-center gap-2">
-										<BookOpen class="w-3.5 h-3.5" />
-										On this page
-									</h2>
-									<nav id="toc-nav" class="space-y-0.5 border-l border-border/40 pl-0">
-										{headings.filter((h) => h.depth > 1).map((heading) => (
-											<a
-												href={`#${heading.slug}`}
-												data-heading={heading.slug}
-												class="toc-link block text-[13px] text-muted-foreground hover:text-foreground transition-all duration-150 py-1 pl-4 -ml-px border-l-2 border-transparent hover:border-foreground/20 leading-snug"
-												style={{ paddingLeft: `${0.75 + (heading.depth - 2) * 0.625}rem` }}
-											>
-												{heading.text}
-											</a>
-										))}
-									</nav>
-								</div>
-							</aside>
-						)}
-					</div>
-
-					<Separator class="my-16 opacity-50" />
-
-					<footer class="space-y-16">
-						<!-- Author / Share card -->
-						<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 p-6 rounded-2xl border border-border/60 bg-gradient-to-br from-card/80 to-secondary/20 backdrop-blur-sm shadow-sm">
+					{/* Article Footer & Author Signature */}
+					<footer class="pt-8 border-t border-border/50 space-y-10">
+						<div class="rounded-3xl glass-panel p-6 sm:p-8 border border-border/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
 							<div class="flex items-center gap-4">
-								<div class="relative shrink-0">
+								<div class="relative w-14 h-14 rounded-2xl overflow-hidden border border-border/80 shadow-md flex-shrink-0">
 									<img
 										src="/NoureddineDRIOUECH.webp"
-										alt="Noureddine DRIOUECH"
-										class="w-14 h-14 rounded-full object-cover ring-2 ring-border shadow-sm"
-										width={56}
-										height={56}
+										alt="Noureddine Driouech"
+										class="w-full h-full object-cover"
 									/>
-									<div class="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-emerald-500 rounded-full border-2 border-background" />
 								</div>
-								<div>
-									<p class="font-semibold text-sm text-foreground">Noureddine DRIOUECH</p>
-									<p class="text-sm text-muted-foreground leading-relaxed max-w-xs mt-0.5">
-										Software Engineer building modern web apps and SaaS solutions.
+								<div class="space-y-1">
+									<div class="text-sm font-bold text-foreground">Noureddine Driouech</div>
+									<p class="text-xs text-muted-foreground max-w-sm">
+										AI Software Engineer specializing in Generative AI, Local RAG architectures, and SaaS engineering.
 									</p>
+									<div class="flex items-center gap-3 pt-1">
+										<a href="https://github.com/NoureddineDRIOUECH" target="_blank" rel="noreferrer" class="text-xs text-muted-foreground hover:text-foreground flex items-center gap-1 transition-colors">
+											<FiGithub class="w-3.5 h-3.5" /> GitHub
+										</a>
+										<a href="https://www.linkedin.com/in/noureddinedriouech/" target="_blank" rel="noreferrer" class="text-xs text-muted-foreground hover:text-foreground flex items-center gap-1 transition-colors">
+											<FiLinkedin class="w-3.5 h-3.5" /> LinkedIn
+										</a>
+									</div>
 								</div>
 							</div>
+
 							<BlogShareButton client:visible title={post.data.title} url={postUrl} />
 						</div>
 
-						<!-- Related posts -->
+						{/* Related Publications */}
 						{relatedPosts.length > 0 && (
-							<div>
-								<h2 class="text-xl font-bold mb-6 flex items-center gap-2.5 text-foreground">
-									<span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-secondary/70">
-										<svg class="w-4 h-4 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-											<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-										</svg>
-									</span>
-									Related Articles
-								</h2>
-								<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-									{relatedPosts.map(({ post: related }) => (
+							<div class="space-y-4">
+								<h2 class="text-lg font-bold tracking-tight text-foreground">Related Publications</h2>
+								<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+									{relatedPosts.map(({ post: rel }) => (
 										<a
-											href={`/blog/${related.id}`}
-											class="group block overflow-hidden rounded-2xl border border-border/60 bg-card text-card-foreground shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-1 hover:border-primary/20"
+											href={`/blog/${rel.id}`}
+											class="group rounded-2xl glass-panel p-5 border border-border/60 hover:border-foreground/30 transition-all flex flex-col justify-between space-y-3 hover:-translate-y-1"
 										>
-										{related.data.heroImage ? (
-											<div class="relative aspect-[16/9] overflow-hidden">
-												<img
-													src={related.data.heroImage}
-													alt={related.data.title}
-													class="h-full w-full object-cover object-center transition-transform duration-800 ease-out group-hover:scale-[1.06]"
-													loading="lazy"
-													width={400}
-													height={225}
-												/>
-												<div class="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
-												<div class="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-													<div class="absolute inset-0 bg-gradient-to-br from-primary/[0.02] via-transparent to-purple-500/[0.025]" />
+											<div class="space-y-1.5">
+												<div class="text-[10px] font-mono text-muted-foreground">
+													{formatDate(rel.data.pubDate)}
 												</div>
+												<h3 class="text-sm font-bold text-foreground group-hover:text-primary transition-colors line-clamp-2">
+													{rel.data.title}
+												</h3>
 											</div>
-										) : (
-											<div class="relative aspect-[16/9] overflow-hidden bg-gradient-to-br from-primary/5 via-purple-500/5 to-pink-500/5">
-												<div class="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-													<div class="absolute inset-0 bg-gradient-to-br from-primary/[0.02] via-transparent to-purple-500/[0.025]" />
-												</div>
+											<div class="text-xs font-semibold text-foreground group-hover:text-primary transition-colors flex items-center gap-1 pt-2 border-t border-border/40">
+												<span>Read</span>
+												<span>→</span>
 											</div>
-										)}
-										<div class="p-5 pt-0 flex flex-col flex-1 gap-4">
-											{related.data.tags && related.data.tags.length > 0 && (
-												<div class="flex flex-wrap gap-1 mb-2">
-													{related.data.tags.slice(0, 2).map((tag) => (
-														<span class="inline-flex items-center rounded-full bg-secondary/50 px-2.5 py-0.5 text-[10px] font-medium text-secondary-foreground hover:bg-secondary/60 transition-colors duration-200">
-															{tag}
-														</span>
-													))}
-												</div>
-											)}
-											<h3 class="font-semibold text-sm group-hover:text-primary transition-colors duration-300 line-clamp-2 leading-snug">
-												{related.data.title}
-											</h3>
-											<p class="text-xs text-muted-foreground leading-relaxed">
-												{related.data.description}
-											</p>
-											<div class="flex items-center gap-2 mt-auto text-xs text-muted-foreground">
-												<time datetime={related.data.pubDate.toISOString()} class="whitespace-nowrap">
-													{formatDate(related.data.pubDate)}
-												</time>
-												<span class="mx-1 text-border/40">·</span>
-												<span>{getReadingTime(related.body ?? "")} min read</span>
-											</div>
-										</div>
 										</a>
 									))}
 								</div>
@@ -368,55 +237,126 @@ const hasToc = headings.filter((h) => h.depth > 1).length > 0;
 						)}
 					</footer>
 				</article>
+
+				{/* Right Rail: Documentation-Style Sticky Section Scroll-Spy */}
+				{tocHeadings.length > 0 && (
+					<aside class="hidden lg:block sticky top-28 h-fit max-h-[calc(100vh-8rem)] overflow-y-auto no-scrollbar space-y-4">
+						<div class="p-5 rounded-2xl glass-panel border border-border/70 space-y-4">
+							<div class="flex items-center justify-between pb-3 border-b border-border/40">
+								<span class="text-xs font-mono font-bold uppercase tracking-wider text-foreground flex items-center gap-2">
+									<BookOpen class="w-3.5 h-3.5 text-emerald-400" />
+									<span>On This Page</span>
+								</span>
+								<span id="doc-progress-pct" class="text-[11px] font-mono text-muted-foreground">0% read</span>
+							</div>
+
+							<nav id="doc-toc-nav" class="space-y-1 text-xs border-l border-border/40 pl-3">
+								{tocHeadings.map((h) => (
+									<a
+										href={`#${h.slug}`}
+										data-section-slug={h.slug}
+										class="doc-toc-link block py-1 text-muted-foreground hover:text-foreground transition-all duration-200 leading-snug -ml-[13px] pl-3 border-l-2 border-transparent"
+										style={{ paddingLeft: `${(h.depth - 2) * 0.75 + 0.75}rem` }}
+									>
+										{h.text}
+									</a>
+								))}
+							</nav>
+
+							<div class="pt-3 border-t border-border/40">
+								<button
+									id="scroll-to-top-btn"
+									class="w-full py-1.5 rounded-lg text-xs font-medium text-muted-foreground hover:text-foreground flex items-center justify-center gap-1.5 hover:bg-muted/40 transition-colors"
+								>
+									<ArrowUp class="w-3.5 h-3.5" />
+									<span>Back to top</span>
+								</button>
+							</div>
+						</div>
+					</aside>
+				)}
 			</div>
+		</div>
+
+		<div class="mt-20">
+			<FooterSection client:visible />
 		</div>
 	</main>
 </Layout>
 
 <script>
-	// ── Reading progress bar ──────────────────────────────────────────────────
-	const bar = document.getElementById('reading-progress');
-	if (bar) {
-		const update = () => {
-			const scrolled = window.scrollY;
-			const total = document.documentElement.scrollHeight - window.innerHeight;
-			const pct = total > 0 ? Math.min(100, (scrolled / total) * 100) : 0;
-			bar.style.width = `${pct}%`;
-		};
-		window.addEventListener('scroll', update, { passive: true });
-		update();
+	// ── Documentation Section Scroll-Spy & Reading Progress ──────────────────
+	const tocLinks = document.querySelectorAll<HTMLAnchorElement>('.doc-toc-link');
+	const progressPct = document.getElementById('doc-progress-pct');
+	const scrollTopBtn = document.getElementById('scroll-to-top-btn');
+
+	if (scrollTopBtn) {
+		scrollTopBtn.addEventListener('click', () => {
+			window.scrollTo({ top: 0, behavior: 'smooth' });
+		});
 	}
 
-	// ── Scroll-spy TOC ────────────────────────────────────────────────────────
-	const tocLinks = document.querySelectorAll<HTMLAnchorElement>('.toc-link');
 	if (tocLinks.length > 0) {
-		const headingEls = Array.from(tocLinks)
-			.map((l) => document.getElementById(l.dataset.heading ?? ''))
+		const headings = Array.from(tocLinks)
+			.map((link) => {
+				const slug = link.dataset.sectionSlug;
+				return slug ? document.getElementById(slug) : null;
+			})
 			.filter(Boolean) as HTMLElement[];
 
-		const activate = (slug: string) => {
-			tocLinks.forEach((l) => {
-				const active = l.dataset.heading === slug;
-				l.classList.toggle('text-foreground', active);
-				l.classList.toggle('text-muted-foreground', !active);
-				l.classList.toggle('border-primary', active);
-				l.classList.toggle('border-transparent', !active);
-				l.classList.toggle('font-medium', active);
+		const updateActiveSection = () => {
+			const scrollPos = window.scrollY + 140;
+
+			// Update reading percentage
+			const totalDocHeight = document.documentElement.scrollHeight - window.innerHeight;
+			if (totalDocHeight > 0 && progressPct) {
+				const pct = Math.min(100, Math.max(0, Math.round((window.scrollY / totalDocHeight) * 100)));
+				progressPct.textContent = `${pct}% read`;
+			}
+
+			let activeIndex = -1;
+			for (let i = 0; i < headings.length; i++) {
+				if (headings[i].offsetTop <= scrollPos) {
+					activeIndex = i;
+				} else {
+					break;
+				}
+			}
+
+			tocLinks.forEach((link, idx) => {
+				const isActive = idx === (activeIndex === -1 ? 0 : activeIndex);
+				if (isActive) {
+					link.classList.remove('text-muted-foreground', 'border-transparent');
+					link.classList.add('text-foreground', 'font-bold', 'border-emerald-500');
+				} else {
+					link.classList.remove('text-foreground', 'font-bold', 'border-emerald-500');
+					link.classList.add('text-muted-foreground', 'border-transparent');
+				}
 			});
 		};
 
-		const observer = new IntersectionObserver(
-			(entries) => {
-				for (const e of entries) {
-					if (e.isIntersecting) {
-						activate(e.target.id);
-						break;
-					}
-				}
-			},
-			{ rootMargin: '-20% 0% -70% 0%', threshold: 0 }
-		);
-
-		headingEls.forEach((el) => observer.observe(el));
+		window.addEventListener('scroll', updateActiveSection, { passive: true });
+		updateActiveSection();
 	}
+
+	// ── Copy Code to Clipboard ────────────────────────────────────────────────
+	const preBlocks = document.querySelectorAll('pre');
+	preBlocks.forEach((pre) => {
+		pre.classList.add('relative', 'group');
+
+		const copyBtn = document.createElement('button');
+		copyBtn.className = 'absolute top-3 right-3 px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white/10 hover:bg-white/20 text-white backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-200 cursor-pointer flex items-center gap-1.5';
+		copyBtn.innerHTML = `<span>Copy</span>`;
+
+		copyBtn.addEventListener('click', async () => {
+			const code = pre.querySelector('code')?.innerText || pre.innerText;
+			await navigator.clipboard.writeText(code);
+			copyBtn.innerHTML = `<span class="text-emerald-400 font-bold">✓ Copied</span>`;
+			setTimeout(() => {
+				copyBtn.innerHTML = `<span>Copy</span>`;
+			}, 2000);
+		});
+
+		pre.appendChild(copyBtn);
+	});
 </script>
