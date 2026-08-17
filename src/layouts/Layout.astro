@@ -38,8 +38,10 @@ const {
 
 const SITE_URL = "https://noureddinedriouech.me";
 const pageTitle = title
-  ? `${title} | Noureddine Driouech`
-  : "Noureddine Driouech | AI Software Engineer & Full-Stack Architect";
+  ? title.includes("Noureddine Driouech")
+    ? title
+    : `${title} | Noureddine Driouech`
+  : "Noureddine Driouech | AI Software Engineer";
 const pageDescription =
   description ||
   "Official portfolio of Noureddine Driouech — AI Software Engineer & Full-Stack Systems Architect specializing in Generative AI, Local RAG pipelines, React/Next.js SaaS, and web automation.";
