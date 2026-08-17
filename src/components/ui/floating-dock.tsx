@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { IconLayoutNavbarCollapse } from "@tabler/icons-react";
-import React, {  useState, useEffect, memo } from "react";
+import React, { useState, useEffect, memo } from "react";
 
 // Types
 interface DockItem {
@@ -22,7 +22,6 @@ export const FloatingDock = memo(({
   desktopClassName,
   mobileClassName,
 }: FloatingDockProps) => {
-  // Check if we're on a mobile device
   const [isMobile, setIsMobile] = useState(false);
   
   useEffect(() => {
@@ -30,25 +29,22 @@ export const FloatingDock = memo(({
       setIsMobile(window.innerWidth < 768);
     };
     
-    // Initial check
     checkMobile();
     
-    // Add event listener with debounce
     let resizeTimer: ReturnType<typeof setTimeout>;
     const handleResize = () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(checkMobile, 100);
     };
     
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
       clearTimeout(resizeTimer);
     };
   }, []);
   
-  // Conditionally render based on screen size
   return isMobile ? (
     <FloatingDockMobile items={items} className={mobileClassName} />
   ) : (
@@ -71,7 +67,7 @@ const FloatingDockMobile = memo(({
   return (
     <div className={cn("relative block", className)}>
       {open && (
-        <div className="absolute inset-x-0 bottom-full mb-2 flex flex-col gap-2 transition-all">
+        <div className="absolute inset-x-0 bottom-full mb-3 flex flex-col gap-2 transition-all">
           {items.map((item, idx) => (
             <div
               key={item.title}
@@ -79,24 +75,24 @@ const FloatingDockMobile = memo(({
               style={{
                 opacity: open ? 1 : 0,
                 transform: `translateY(${open ? 0 : 10}px)`,
-                transitionDelay: `${(items.length - 1 - idx) * 50}ms`,
+                transitionDelay: `${(items.length - 1 - idx) * 40}ms`,
               }}
             >
               {item.href ? (
                 <a
                   href={item.href}
                   aria-label={item.title}
-                  className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900"
+                  className="flex h-11 w-11 items-center justify-center rounded-full glass-panel shadow-lg active:scale-95 transition-all text-foreground"
                 >
-                  <div className="h-6 w-6">{item.icon}</div>
+                  <div className="h-5 w-5">{item.icon}</div>
                 </a>
               ) : (
                 <button
                   onClick={item.onClick}
                   aria-label="change theme"
-                  className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900"
+                  className="flex h-11 w-11 items-center justify-center rounded-full glass-panel shadow-lg active:scale-95 transition-all text-foreground"
                 >
-                  <div className="h-6 w-6">{item.icon}</div>
+                  <div className="h-5 w-5">{item.icon}</div>
                 </button>
               )}
             </div>
@@ -105,10 +101,10 @@ const FloatingDockMobile = memo(({
       )}
       <button
         onClick={() => setOpen(!open)}
-        className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-800"
+        className="flex h-11 w-11 items-center justify-center rounded-full glass-panel shadow-xl text-foreground active:scale-95 transition-all border border-border"
         aria-label="toggle menu"
       >
-        <IconLayoutNavbarCollapse className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />
+        <IconLayoutNavbarCollapse className="h-5 w-5" />
       </button>
     </div>
   );
@@ -125,22 +121,22 @@ const FloatingDockDesktop = memo(({
   className?: string;
 }) => {
   return (
-    <div
+    <nav
+      aria-label="Navigation dock"
       className={cn(
-        "mx-auto justify-center h-16 items-center gap-4 rounded-2xl bg-gray-50 px-4 flex dark:bg-neutral-900",
+        "mx-auto justify-center h-16 items-center gap-3 rounded-2xl glass-panel px-3.5 flex shadow-2xl border border-white/10 dark:border-white/[0.08]",
         className,
       )}
     >
       {items.map((item) => (
         <IconContainer key={item.title} {...item} />
       ))}
-    </div>
+    </nav>
   );
 });
 
 FloatingDockDesktop.displayName = "FloatingDockDesktop";
 
-// Optimized icon container with CSS-based hover effects instead of physics simulations
 const IconContainer = memo(({
   title,
   icon,
@@ -148,28 +144,26 @@ const IconContainer = memo(({
   onClick,
 }: Omit<DockItem, 'icon'> & { icon: React.ReactNode }) => {
   const [hovered, setHovered] = useState(false);
-  const [size, setSize] = useState(50); // Default size
+  const [size, setSize] = useState(44);
   
-  // Use CSS transitions instead of physics simulations
   const handleMouseEnter = () => {
     setHovered(true);
-    setSize(100);
+    setSize(52);
   };
   
   const handleMouseLeave = () => {
     setHovered(false);
-    setSize(50);
+    setSize(44);
   };
   
-  // Calculate icon size proportionally
-  const iconSize = size * 0.48; // 48% of container size
+  const iconSize = size * 0.46;
   
   return (
-    <div>
+    <div className="relative">
       <div
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="relative flex items-center justify-center rounded-full bg-gray-200 dark:bg-neutral-800 transition-all duration-300 ease-out"
+        className="relative flex items-center justify-center rounded-xl bg-foreground/[0.05] hover:bg-foreground/[0.1] border border-border/40 hover:border-foreground/20 transition-all duration-300 ease-out"
         style={{
           width: `${size}px`,
           height: `${size}px`,
@@ -177,11 +171,7 @@ const IconContainer = memo(({
       >
         {hovered && (
           <div
-            className="absolute -top-8 left-1/2 w-fit rounded-md border border-gray-200 bg-gray-100 px-2 py-0.5 text-xs whitespace-pre text-neutral-700 dark:border-neutral-900 dark:bg-neutral-800 dark:text-white transition-opacity duration-200"
-            style={{
-              transform: 'translateX(-50%)',
-              opacity: hovered ? 1 : 0,
-            }}
+            className="absolute -top-9 left-1/2 -translate-x-1/2 w-fit rounded-lg border border-border bg-background/90 backdrop-blur-md px-2.5 py-1 text-[11px] font-semibold text-foreground shadow-lg transition-opacity duration-200 pointer-events-none"
           >
             {title}
           </div>
@@ -191,6 +181,7 @@ const IconContainer = memo(({
             href={href} 
             target={title === 'LinkedIn' || title === 'GitHub' ? '_blank' : '_self'} 
             aria-label={title}
+            className="flex items-center justify-center w-full h-full text-foreground"
           >
             <div
               className="flex items-center justify-center transition-all duration-300 ease-out"
@@ -203,7 +194,11 @@ const IconContainer = memo(({
             </div>
           </a>
         ) : (
-          <button onClick={onClick} aria-label="change theme">
+          <button 
+            onClick={onClick} 
+            aria-label="change theme"
+            className="flex items-center justify-center w-full h-full text-foreground"
+          >
             <div
               className="flex items-center justify-center transition-all duration-300 ease-out"
               style={{

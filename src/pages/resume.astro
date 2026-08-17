@@ -1,94 +1,255 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import { 
+  Download, 
+  MapPin, 
+  Mail, 
+  Globe2, 
+  GraduationCap, 
+  Briefcase, 
+  Cpu, 
+  Terminal, 
+  Bot, 
+  CheckCircle2, 
+  Calendar,
+  ExternalLink
+} from 'lucide-react';
+import { FiGithub, FiLinkedin } from 'react-icons/fi';
+import { SiUpwork } from 'react-icons/si';
 ---
 
 <Layout>
-  <main class="container my-24 px-5">
-    <h1 class="text-4xl font-bold mb-8">Noureddine DRIOUECH - Software Engineer</h1>
-    
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold border-b-2 border-gray-300 pb-2 mb-4">Contact Information</h2>
-      <ul class="list-none space-y-2">
-        <li><strong>Email:</strong> <a href="mailto:nourddinedriouech@gmail.com">nourddinedriouech@gmail.com</a></li>
-        <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/noureddinedriouech/" target="_blank">linkedin.com/in/noureddinedriouech</a></li>
-        <li><strong>GitHub:</strong> <a href="https://github.com/NoureddineDRIOUECH" target="_blank">github.com/NoureddineDRIOUECH</a></li>
-        <li><strong>Location:</strong> Casablanca, Morocco</li>
-      </ul>
-    </section>
+  <main class="w-full max-w-5xl mx-auto my-20 px-4 sm:px-6 lg:px-8 space-y-12">
+    {/* Executive Header */}
+    <div class="glass-panel p-8 sm:p-10 rounded-3xl space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-6 border-b border-border/60">
+        <div class="space-y-1">
+          <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-foreground">
+            Noureddine DRIOUECH
+          </h1>
+          <p class="text-lg sm:text-xl font-semibold text-primary/90">
+            AI & Full-Stack Software Engineer
+          </p>
+          <div class="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-muted-foreground pt-2">
+            <span class="flex items-center gap-1.5"><MapPin className="w-4 h-4 text-emerald-500" /> Casablanca, Morocco</span>
+            <span class="flex items-center gap-1.5"><Mail className="w-4 h-4 text-blue-500" /> nourddinedriouech@gmail.com</span>
+          </div>
+        </div>
 
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold border-b-2 border-gray-300 pb-2 mb-4">Summary</h2>
-      <p class="text-lg">
-        Innovative and results-oriented Software Engineer with a strong foundation in full-stack development and a passion for creating scalable, high-performance SaaS applications. Proficient in a wide range of modern technologies including React, Astro, Node.js, and cloud platforms. Seeking to leverage my skills to solve complex problems and contribute to impactful projects.
-      </p>
-    </section>
+        <div class="flex flex-wrap items-center gap-3">
+          <a
+            href="/CV%20Noureddine%20DRIOUECH%20.pdf"
+            download="CV Noureddine DRIOUECH"
+            class="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs font-semibold text-white bg-foreground dark:bg-white dark:text-black hover:opacity-90 active:scale-95 transition-all shadow-md"
+          >
+            <Download className="w-4 h-4" />
+            <span>Download PDF</span>
+          </a>
+        </div>
+      </div>
 
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold border-b-2 border-gray-300 pb-2 mb-4">Skills</h2>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div>
-          <h3 class="text-xl font-semibold mb-2">Frontend</h3>
-          <ul class="list-disc list-inside">
-            <li>JavaScript (ES6+)</li>
-            <li>TypeScript</li>
-            <li>React</li>
-            <li>Astro</li>
-            <li>Next.js</li>
-            <li>HTML5 & CSS3</li>
-            <li>Tailwind CSS</li>
+      {/* Summary */}
+      <div class="space-y-2">
+        <h2 class="text-xs font-bold uppercase tracking-widest text-muted-foreground">Executive Profile</h2>
+        <p class="text-sm sm:text-base text-muted-foreground leading-relaxed">
+          Results-driven Software Engineer with specialized expertise in <strong class="text-foreground">Retrieval-Augmented Generation (RAG)</strong>, <strong class="text-foreground">Local LLMs</strong>, <strong class="text-foreground">React / Next.js SaaS platforms</strong>, and <strong class="text-foreground">high-throughput web automation</strong>. Proven experience delivering production software at <strong class="text-foreground">FEV North Africa</strong>, <strong class="text-foreground">Garista</strong>, and <strong class="text-foreground">VNB-IT France</strong>, alongside representing Moroccan engineering at <strong class="text-foreground">GITEX Africa</strong>.
+        </p>
+      </div>
+
+      {/* Social Links */}
+      <div class="flex flex-wrap items-center gap-3 pt-2">
+        <a href="https://www.linkedin.com/in/noureddinedriouech/" target="_blank" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg glass-pill text-xs font-medium text-muted-foreground hover:text-foreground">
+          <FiLinkedin className="w-3.5 h-3.5" /> LinkedIn
+        </a>
+        <a href="https://github.com/NoureddineDRIOUECH" target="_blank" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg glass-pill text-xs font-medium text-muted-foreground hover:text-foreground">
+          <FiGithub className="w-3.5 h-3.5" /> GitHub
+        </a>
+        <a href="https://www.upwork.com/freelancers/~01c6fba5436d52831a" target="_blank" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg glass-pill text-xs font-medium text-muted-foreground hover:text-foreground">
+          <SiUpwork className="w-3.5 h-3.5" /> Upwork Top Rated
+        </a>
+      </div>
+    </div>
+
+    {/* Experience Section */}
+    <div class="glass-panel p-8 sm:p-10 rounded-3xl space-y-8">
+      <div class="flex items-center gap-3 border-b border-border/60 pb-4">
+        <Briefcase className="w-6 h-6 text-primary" />
+        <h2 class="text-2xl font-bold text-foreground tracking-tight">Professional Experience</h2>
+      </div>
+
+      <div class="space-y-10">
+        {/* FEV */}
+        <div class="space-y-3">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+            <h3 class="text-lg font-bold text-foreground">
+              AI Software Engineer Intern · <a href="https://fev.com" target="_blank" class="text-primary hover:underline">FEV North Africa</a>
+            </h3>
+            <span class="text-xs font-mono text-muted-foreground">Jul 2026 - Sep 2026 · Casablanca, Morocco</span>
+          </div>
+          <p class="text-xs font-mono font-semibold text-emerald-500">Enterprise Local RAG Application · Zero Data Leakage</p>
+          <ul class="list-disc list-inside text-xs sm:text-sm text-muted-foreground space-y-1.5 pl-1">
+            <li>Architected offline Retrieval-Augmented Generation (RAG) system utilizing open-weights LLMs and LangChain/LlamaIndex.</li>
+            <li>Constructed semantic search and vector retrieval pipelines with local embeddings and FAISS/Chroma databases.</li>
+            <li>Trained and benchmarked ML/DL embedding models for technical automotive and engineering specifications.</li>
           </ul>
         </div>
-        <div>
-          <h3 class="text-xl font-semibold mb-2">Backend</h3>
-          <ul class="list-disc list-inside">
-            <li>Node.js</li>
-            <li>Express.js</li>
-            <li>REST APIs</li>
-            <li>GraphQL</li>
+
+        {/* VNB-IT */}
+        <div class="space-y-3 pt-4 border-t border-border/40">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+            <h3 class="text-lg font-bold text-foreground">
+              Mobile Developer (Internship) · <a href="https://universfrancesucces.com/" target="_blank" class="text-primary hover:underline">VNB-IT</a>
+            </h3>
+            <span class="text-xs font-mono text-muted-foreground">Jul 2025 - Sep 2025 · Pontoise, France (Remote)</span>
+          </div>
+          <p class="text-xs font-mono font-semibold text-cyan-500">Univers France Succès (UFS) Mobile App</p>
+          <ul class="list-disc list-inside text-xs sm:text-sm text-muted-foreground space-y-1.5 pl-1">
+            <li>Transformed complex Figma UI/UX designs into pixel-perfect, highly responsive React Native mobile screens.</li>
+            <li>Built cross-platform components with smooth 60fps gesture interactions for iOS and Android.</li>
+            <li>Integrated backend REST APIs and client state ensuring consistent mobile performance.</li>
           </ul>
         </div>
-        <div>
-          <h3 class="text-xl font-semibold mb-2">Databases</h3>
-          <ul class="list-disc list-inside">
-            <li>MongoDB</li>
-            <li>PostgreSQL</li>
-            <li>Firebase</li>
+
+        {/* Garista */}
+        <div class="space-y-3 pt-4 border-t border-border/40">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+            <h3 class="text-lg font-bold text-foreground">
+              Frontend Developer (Seasonal) · <a href="https://garista.com" target="_blank" class="text-primary hover:underline">Garista</a>
+            </h3>
+            <span class="text-xs font-mono text-muted-foreground">Jul 2024 - Aug 2025 · Casablanca, Morocco (Remote)</span>
+          </div>
+          <p class="text-xs font-mono font-semibold text-purple-500">Restaurant SaaS Platform · GITEX Africa Conference</p>
+          <ul class="list-disc list-inside text-xs sm:text-sm text-muted-foreground space-y-1.5 pl-1">
+            <li>Architected component system using React.js and Shadcn UI, reducing initial render latency by 35%.</li>
+            <li>Employed Redux Toolkit and TanStack React Query to boost client state efficiency and responsiveness.</li>
+            <li>Integrated payment gateways, authentication, and core SaaS billing workflows.</li>
+            <li>Showcased the live application at GITEX Africa tech conference to industry professionals.</li>
           </ul>
         </div>
-        <div>
-          <h3 class="text-xl font-semibold mb-2">Tools & Platforms</h3>
-          <ul class="list-disc list-inside">
-            <li>Git & GitHub</li>
-            <li>Docker</li>
-            <li>Vercel</li>
-            <li>AWS (EC2, S3)</li>
+
+        {/* WHD Agency */}
+        <div class="space-y-3 pt-4 border-t border-border/40">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+            <h3 class="text-lg font-bold text-foreground">
+              Software Developer (Internship) · <a href="https://whd.agency" target="_blank" class="text-primary hover:underline">WHD Agency</a>
+            </h3>
+            <span class="text-xs font-mono text-muted-foreground">Apr 2024 - Jun 2024 · Casablanca, Morocco</span>
+          </div>
+          <p class="text-xs font-mono font-semibold text-blue-500">Full-Stack E-Commerce & Web Scraping (50k+ records/mo)</p>
+          <ul class="list-disc list-inside text-xs sm:text-sm text-muted-foreground space-y-1.5 pl-1">
+            <li>Constructed automated product management tools reducing manual inventory updates by 80%.</li>
+            <li>Created high-throughput Python web scrapers harvesting 50,000+ catalog listings monthly.</li>
+            <li>Integrated REST APIs connecting Laravel backend services with interactive Next.js interfaces.</li>
+          </ul>
+        </div>
+
+        {/* Digimperial */}
+        <div class="space-y-3 pt-4 border-t border-border/40">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+            <h3 class="text-lg font-bold text-foreground">
+              Developer (Internship) · <a href="https://digimperial.com" target="_blank" class="text-primary hover:underline">Digimperial</a>
+            </h3>
+            <span class="text-xs font-mono text-muted-foreground">Jul 2023 - Aug 2023 · Casablanca, Morocco</span>
+          </div>
+          <p class="text-xs font-mono font-semibold text-amber-500">Web Automation & CAPTCHA Resolution (92% Accuracy)</p>
+          <ul class="list-disc list-inside text-xs sm:text-sm text-muted-foreground space-y-1.5 pl-1">
+            <li>Engineered automated CAPTCHA-solving algorithms with 92% automated success rate.</li>
+            <li>Automated form submission workflows processing 500+ daily forms with Selenium.</li>
           </ul>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold border-b-2 border-gray-300 pb-2 mb-4">Experience</h2>
+    {/* Technical Skills Matrix */}
+    <div class="glass-panel p-8 sm:p-10 rounded-3xl space-y-6">
+      <div class="flex items-center gap-3 border-b border-border/60 pb-4">
+        <Cpu className="w-6 h-6 text-primary" />
+        <h2 class="text-2xl font-bold text-foreground tracking-tight">Technical Skills Matrix</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="p-5 rounded-2xl bg-background/50 border border-border/60 space-y-2">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-emerald-500 flex items-center gap-1.5">
+            <Bot className="w-4 h-4" /> AI, RAG & Machine Learning
+          </h3>
+          <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+            RAG Systems, Local LLMs (Ollama/vLLM), LangChain, LlamaIndex, PyTorch, Deep Learning (DL), Machine Learning (ML), Vector DBs (Chroma/FAISS), Embeddings & Tokenization.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-background/50 border border-border/60 space-y-2">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-cyan-500 flex items-center gap-1.5">
+            <Terminal className="w-4 h-4" /> Frontend & Mobile
+          </h3>
+          <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+            React 19, Next.js 15, React Native, TypeScript, Tailwind CSS v4, Shadcn UI, React Query, Redux Toolkit, React Hook Form, Astro, Figma.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-background/50 border border-border/60 space-y-2">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-blue-500 flex items-center gap-1.5">
+            <Globe2 className="w-4 h-4" /> Backend & Systems
+          </h3>
+          <p class="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+            Python, Node.js, Laravel, PHP, PostgreSQL, MySQL, Redis, RESTful APIs, WebSockets, Microservices Architecture.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    {/* Education & Academic Honors */}
+    <div class="glass-panel p-8 sm:p-10 rounded-3xl space-y-6">
+      <div class="flex items-center gap-3 border-b border-border/60 pb-4">
+        <GraduationCap className="w-6 h-6 text-primary" />
+        <h2 class="text-2xl font-bold text-foreground tracking-tight">Education & Honors</h2>
+      </div>
+
       <div class="space-y-6">
-        <div>
-          <h3 class="text-xl font-bold">Freelance Software Engineer</h3>
-          <p class="text-md text-gray-600">Self-Employed | 2023 - Present</p>
-          <ul class="list-disc list-inside mt-2 space-y-1">
-            <li>Developed and deployed full-stack web applications for various clients, focusing on performance and user experience.</li>
-            <li>Engineered scalable backend systems and RESTful APIs using Node.js and Express.</li>
-            <li>Managed project lifecycle from conception to deployment, ensuring timely delivery and client satisfaction.</li>
-          </ul>
+        <div class="space-y-1">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+            <h3 class="text-base sm:text-lg font-bold text-foreground">
+              State Engineering Degree in AI & Data Science
+            </h3>
+            <span class="text-xs font-mono text-muted-foreground">2024 - Present</span>
+          </div>
+          <p class="text-xs sm:text-sm font-semibold text-primary/90">
+            National Higher School of Artificial Intelligence and Data Sciences (ENSIASD) · Taroudant
+          </p>
+          <p class="text-xs text-muted-foreground">
+            Specialization in Distributed Systems, Deep Learning Architectures, Neural Networks, Cloud Engineering.
+          </p>
+        </div>
+
+        <div class="space-y-1 pt-4 border-t border-border/40">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+            <h3 class="text-base sm:text-lg font-bold text-foreground">
+              University Diploma of Technology (DUT) in Computer Science
+            </h3>
+            <span class="text-xs font-mono text-muted-foreground">2022 - 2024</span>
+          </div>
+          <p class="text-xs sm:text-sm font-semibold text-primary/90">
+            Higher School of Technology (EST Sidi Bennour - Chouaib Doukkali University)
+          </p>
+          <p class="text-xs text-muted-foreground">
+            Graduated with Honors. Core focus: Software Engineering, Database Systems (SQL/UML), Algorithms & Complexity.
+          </p>
+        </div>
+
+        <div class="space-y-1 pt-4 border-t border-border/40">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+            <h3 class="text-base sm:text-lg font-bold text-foreground">
+              Baccalaureate in Mathematical & Physical Sciences
+            </h3>
+            <span class="text-xs font-mono text-muted-foreground">2022</span>
+          </div>
+          <p class="text-xs sm:text-sm font-semibold text-primary/90">
+            National High School Jaafar El Fassi · Casablanca
+          </p>
+          <p class="text-xs text-muted-foreground">
+            Graduated with Distinction in technical & scientific disciplines.
+          </p>
         </div>
       </div>
-    </section>
-
-    <section>
-      <h2 class="text-2xl font-semibold border-b-2 border-gray-300 pb-2 mb-4">Education</h2>
-      <div>
-        <h3 class="text-xl font-bold">National Higher School of Artificial Intelligence and Data Sciences (ENSIASD)</h3>
-        <p class="text-md text-gray-600">Engineering Degree in Artificial Intelligence and Data Science | 2021 - 2024</p>
-      </div>
-    </section>
-
+    </div>
   </main>
 </Layout>

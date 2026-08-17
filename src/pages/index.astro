@@ -8,21 +8,11 @@ import { FooterSection } from "../components/home_sections/FooterSection";
 ---
 
 <Layout showEffects={true}>
-  <main class="px-5 md:px-10">
-    <HeroSection client:visible />
+  <main class="w-full flex flex-col items-center justify-center min-h-screen overflow-x-hidden relative">
+    <HeroSection client:load />
     <ProjectSection client:visible />
     <AboutSection client:visible />
     <ContactSection client:visible />
     <FooterSection client:visible />
   </main>
 </Layout>
-<style>
-  main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    overflow: hidden;
-  }
-</style>

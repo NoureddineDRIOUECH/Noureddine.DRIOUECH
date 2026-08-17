@@ -1,115 +1,101 @@
-import { motion } from "motion/react"
-import { Button } from "@/components/ui/button"
-import {  ArrowUp } from "lucide-react"
-// import { SiX } from "react-icons/si"
-import { FiGithub as Github } from "react-icons/fi";
-import { FiLinkedin as Linkedin } from "react-icons/fi";
-import { FaInstagram as Instagram } from "react-icons/fa";
+import React from "react";
+import { ArrowUp, Sparkles, MapPin } from "lucide-react";
+import { FiGithub as Github, FiLinkedin as Linkedin } from "react-icons/fi";
 import { SiUpwork as Upwork } from "react-icons/si";
 
 export function FooterSection() {
-    const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: "smooth" })
-    }
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
-    return (
-        <footer className=" py-16 w-full relative">
-            <div className="absolute inset-0 w-full -z-10 overflow-hidden">
-                <div className="absolute w-full bottom-0 left-1/4  h-96 bg-primary/5 rounded-full blur-3xl" />
+  return (
+    <footer className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12 relative border-t border-border/60">
+      {/* Subtle ambient backlight */}
+      <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[180px] bg-gradient-to-t from-primary/10 via-emerald-500/5 to-transparent rounded-full blur-[100px]" />
+      </div>
+
+      <div className="flex flex-col space-y-10">
+        {/* Upper Footer Row: Bold WOW Brand Display */}
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 pb-8 border-b border-border/40">
+          <div className="space-y-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill text-xs font-semibold text-emerald-600 dark:text-emerald-400 mb-1">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 beacon-pulse inline-block" />
+              <span>Available for Software & AI Engineering</span>
             </div>
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-[-0.04em] shimmer-text">
+              Noureddine Driouech
+            </h2>
+            <p className="text-sm sm:text-base text-muted-foreground max-w-xl">
+              Architecting intelligent AI platforms, full-stack SaaS ecosystems, and automated data infrastructure.
+            </p>
+          </div>
 
-            <div >
-                <div className="flex flex-col items-center">
-                    <motion.div
-                        className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-500 mb-8"
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    >
-                        Noureddine DRIOUECH
-                    </motion.div>
+          <div className="flex items-center gap-2 px-4 py-2 rounded-2xl glass-pill text-xs font-mono text-muted-foreground border border-border/60">
+            <MapPin className="w-3.5 h-3.5 text-blue-400" />
+            <span>Casablanca, Morocco · GMT+1</span>
+          </div>
+        </div>
 
-                    <div className="flex flex-wrap justify-center gap-8 mb-8">
-                        <a href="#home" className="text-muted-foreground hover:text-foreground transition-colors">
-                            Home
-                        </a>
-                        <a href="#work" className="text-muted-foreground hover:text-foreground transition-colors">
-                            Work
-                        </a>
-                        <a href="#about" className="text-muted-foreground hover:text-foreground transition-colors">
-                            About
-                        </a>
-                        <a href="#contact" className="text-muted-foreground hover:text-foreground transition-colors">
-                            Contact
-                        </a>
-                        <a href="/privacy-policy" className="text-muted-foreground hover:text-foreground transition-colors">
-                            Privacy
-                        </a>
-                    </div>
+        {/* Middle Row: Navigation Links & Social Media */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+          <nav className="flex flex-wrap items-center justify-center sm:justify-start gap-6 text-xs sm:text-sm font-medium text-muted-foreground">
+            <a href="#home" className="hover:text-foreground transition-colors">
+              Home
+            </a>
+            <a href="#work" className="hover:text-foreground transition-colors">
+              Selected Works
+            </a>
+            <a href="#about" className="hover:text-foreground transition-colors">
+              About & Experience
+            </a>
+            <a href="#contact" className="hover:text-foreground transition-colors">
+              Contact
+            </a>
+            <a href="/privacy-policy" className="hover:text-foreground transition-colors">
+              Privacy Policy
+            </a>
+            <a href="/resume" className="hover:text-foreground transition-colors">
+              Resume View
+            </a>
+          </nav>
 
-                    <div className="flex gap-4 mb-8">
-                        <motion.a
-                            href="https://github.com/NoureddineDRIOUECH"
-                            target="_blank"
-                            className="h-10 w-10 rounded-full bg-muted/80 flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-                            whileHover={{ y: -5 }}
-                            rel="noreferrer"
-                        >
-                            <Github className="h-5 w-5" />
-                            <span className="sr-only">GitHub</span>
-                        </motion.a>
-                        <motion.a
-                            href="https://www.linkedin.com/in/noureddinedriouech/"
-                            target="_blank"
-                            className="h-10 w-10 rounded-full bg-muted/80 flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-                            whileHover={{ y: -5 }}
-                            rel="noreferrer"
-                        >
-                            <Linkedin className="h-5 w-5" />
-                            <span className="sr-only">LinkedIn</span>
-                        </motion.a>
-                        <motion.a
-                            href="https://www.upwork.com/freelancers/~01c6fba5436d52831a?mp_source=share"
-                            target="_blank"
-                            className="h-10 w-10 rounded-full bg-muted/80 flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-                            whileHover={{ y: -5 }}
-                            rel="noreferrer"
-                        >
-                            <Upwork className="h-5 w-5" />
-                            <span className="sr-only">Upwork</span>
-                        </motion.a>
-                        {/*<motion.a*/}
-                        {/*    href="https://x.com/NoureddineDRIOUECH"*/}
-                        {/*    target="_blank"*/}
-                        {/*    className="h-10 w-10 rounded-full bg-muted/80 flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"*/}
-                        {/*    whileHover={{ y: -5 }}*/}
-                        {/*    rel="noreferrer"*/}
-                        {/*>*/}
-                        {/*    <SiX className="h-5 w-5" />*/}
-                        {/*    <span className="sr-only">X</span>*/}
-                        {/*</motion.a>*/}
-                        <motion.a
-                            href="https://www.instagram.com/noureddine.driouech/"
-                            target="_blank"
-                            className="h-10 w-10 rounded-full bg-muted/80 flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-                            whileHover={{ y: -5 }}
-                            rel="noreferrer"
-                        >
-                            <Instagram className="h-5 w-5" />
-                            <span className="sr-only">Instagram</span>
-                        </motion.a>
-                    </div>
+          <div className="flex items-center gap-3">
+            {[
+              { href: "https://github.com/NoureddineDRIOUECH", icon: Github, label: "GitHub" },
+              { href: "https://www.linkedin.com/in/noureddinedriouech/", icon: Linkedin, label: "LinkedIn" },
+              { href: "https://www.upwork.com/freelancers/~01c6fba5436d52831a", icon: Upwork, label: "Upwork" },
+            ].map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noreferrer"
+                className="w-9 h-9 rounded-full glass-pill flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/30 hover:scale-110 active:scale-95 transition-all"
+                aria-label={s.label}
+              >
+                <s.icon className="w-4 h-4" />
+              </a>
+            ))}
 
-                    <div className="text-center text-muted-foreground text-sm mb-8">
-                        <p>© {new Date().getFullYear()} Noureddine DRIOUECH. All rights reserved.</p>
-                        <p className="mt-1">Designed and built with passion.</p>
-                    </div>
+            <button
+              onClick={scrollToTop}
+              className="w-9 h-9 rounded-full glass-pill flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/30 hover:scale-110 active:scale-95 transition-all ml-2"
+              aria-label="Back to top"
+            >
+              <ArrowUp className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
 
-                    <Button variant="outline" size="icon" className="rounded-full" onClick={scrollToTop}>
-                        <ArrowUp className="h-4 w-4" />
-                        <span className="sr-only">Back to top</span>
-                    </Button>
-                </div>
-            </div>
-        </footer>
-    )
+        {/* Lower Row: Copyright */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground/80 pt-4 border-t border-border/40 font-mono">
+          <p>© {new Date().getFullYear()} Noureddine Driouech. All rights reserved.</p>
+          <p className="flex items-center gap-1">
+            <span>Crafted with Astro & Tailwind CSS</span>
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
 }

@@ -1,9 +1,20 @@
+import React from "react";
 import { motion } from "motion/react";
-import { ProjectButton } from "@/components/ui/glow-effect-button.tsx";
-import { TextLoop } from "@/components/ui/text-loop";
+import { 
+  ArrowUpRight, 
+  Download,
+  Bot,
+  Layers,
+  Sparkles,
+  MapPin
+} from "lucide-react";
 import { HeroStars } from "@/components/ui/stars";
-import {SparklesText} from "@/components/ui/sparkles-text.tsx";
-import Magnet from "@/ui/Animations/Magnet/Magnet.tsx";
+import { 
+  SiReact, 
+  SiNextdotjs, 
+  SiPython, 
+  SiTypescript 
+} from "react-icons/si";
 
 const Github = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -17,12 +28,6 @@ const Linkedin = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const Instagram = ({ className }: { className?: string }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-  </svg>
-);
-
 const Upwork = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor">
     <path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-.787.025-.1c.254-1.074.406-2.153.406-3.233V4.526h2.893v3.286c0 .823 0 1.679-.153 2.624h.026c.712-.588 1.606-1.025 2.654-1.025 1.872 0 3.36 1.482 3.36 3.744 0 2.288-1.488 3.744-3.36 3.744h-.005zM3.432 13.16c0-2.066 1.566-2.465 2.382-2.465.814 0 2.38.399 2.38 2.465 0 1.536-.74 2.466-2.38 2.466s-2.382-.93-2.382-2.466zm2.382-7.54C2.617 5.62 0 7.21 0 11.48s2.488 5.86 5.814 5.86c1.642 0 3.13-.693 4.024-1.788.15-.176.26-.367.364-.566h.03c.022.26.043.523.064.785h2.832v-4.48c0-1.247-.074-2.43-.595-3.456-.543-1.036-1.538-1.643-2.87-1.643-1.305 0-2.267.569-2.998 1.447l-.388 1.626c.668-.893 1.486-1.567 2.583-1.567.788 0 1.306.381 1.53 1.102.275.815.285 1.771.285 2.625v.251c-.508 1.895-1.977 2.934-3.878 2.934-1.13 0-2.032-.365-2.688-1.132-.93-1.078-1.144-2.352-1.144-3.769v-.076c-.002-2.797 1.325-4.542 3.814-4.542 1.227 0 2.35.5 3.149 1.416l.785-2.122c-.593-.649-1.47-1.466-3.19-1.466z"/>
@@ -30,128 +35,158 @@ const Upwork = ({ className }: { className?: string }) => (
 );
 
 export function HeroSection() {
-    return (
-        <main>
-            <section
-                id="home"
-                className="relative px-4 sm:px-8 md:px-12 lg:px-20 min-h-screen flex items-center py-10"
+  return (
+    <section
+      id="home"
+      className="relative min-h-[90vh] w-full max-w-7xl mx-auto flex items-center justify-center pt-24 pb-16 px-4 sm:px-6 lg:px-8"
+    >
+      {/* Ambient background atmosphere */}
+      <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[320px] bg-gradient-to-tr from-emerald-500/10 via-indigo-500/10 to-purple-500/10 rounded-full blur-[120px] opacity-70" />
+      </div>
+
+      <div className="w-full grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        {/* Left Column - Editorial Hero Content */}
+        <motion.div
+          className="lg:col-span-7 flex flex-col items-start text-left space-y-6 sm:space-y-8"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
+          {/* Availability Radar Beacon */}
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full glass-pill border border-emerald-500/30 bg-emerald-500/[0.05] dark:bg-emerald-500/[0.08]">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 beacon-pulse inline-block" />
+            <span className="text-xs sm:text-sm font-medium text-emerald-700 dark:text-emerald-300 tracking-wide">
+              Available for Software & AI Engineering Projects
+            </span>
+          </div>
+
+          {/* Luxury Main Display Headline */}
+          <div className="space-y-2">
+            <h1 className="text-3xl sm:text-5xl lg:text-[4.4rem] font-extrabold tracking-[-0.04em] leading-[1.08] text-foreground">
+              Architecting <br />
+              <span className="shimmer-text">AI & Full-Stack Systems</span>
+            </h1>
+          </div>
+
+          {/* Value Proposition Editorial Statement */}
+          <p className="text-sm sm:text-lg lg:text-xl text-muted-foreground font-normal leading-relaxed max-w-xl">
+            Hi, I’m <span className="text-foreground font-semibold">Noureddine Driouech</span> — a Software Engineer specializing in building scalable web platforms, local RAG / AI applications, and high-performance mobile software.
+          </p>
+
+          {/* Action Triggers & Buttons */}
+          <div className="flex flex-wrap items-center gap-3 pt-2 w-full">
+            <a
+              href="#work"
+              className="group relative inline-flex items-center justify-center gap-2.5 px-6 py-3.5 sm:px-7 rounded-full font-medium text-xs sm:text-sm text-white bg-foreground dark:bg-white dark:text-black shadow-lg shadow-black/10 dark:shadow-white/5 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 w-full sm:w-auto"
             >
-                <div className="container grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
-                    {/* Text Content - Left Column */}
-                    <motion.div
-                        className="space-y-6 md:space-y-8  order-1 mt-10 lg:mt-0"
-                        initial={false}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <div className="inline-block whitespace-pre-wrap text-sm md:text-base rounded-full bg-transparent px-4 py-1.5 font-semibold text-gray-900 dark:text-gray-100 border border-gray-300 dark:border-gray-700">
-                            Hello, You, I'm{" "}
-                            <TextLoop
-                                transition={{
-                                    type: "spring",
-                                    stiffness: 900,
-                                    damping: 80,
-                                    mass: 10,
-                                }}
-                                variants={{
-                                    initial: { y: 20, rotateX: 90, opacity: 0, filter: "blur(4px)" },
-                                    animate: { y: 0, rotateX: 0, opacity: 1, filter: "blur(0px)" },
-                                    exit: { y: -20, rotateX: -90, opacity: 0, filter: "blur(4px)" },
-                                }}
-                            >
-                                <span>Engineer 🧑‍💻</span>
-                                <span>Gamer 🎮</span>
-                            </TextLoop>
-                        </div>
+              <span>Explore Selected Work</span>
+              <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
 
-                        <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight drop-shadow-[0_0_13px_rgba(59,59,59,1)] dark:drop-shadow-[0_0_20px_rgba(200,200,200,1)] leading-tight">
-                            Noureddine DRIOUECH
-                        </h1>
+            <a
+              href="#contact"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3.5 sm:px-6 rounded-full font-medium text-xs sm:text-sm text-foreground bg-muted/80 hover:bg-muted border border-border/80 hover:border-foreground/20 backdrop-blur-md transition-all duration-300 w-full sm:w-auto"
+            >
+              <span>Get In Touch</span>
+            </a>
 
-                        <p >
-                            <SparklesText className="text-lg md:text-2xl text-muted-foreground max-w-full">Software Engineer</SparklesText>
+            <a
+              href="/CV%20Noureddine%20DRIOUECH%20.pdf"
+              download="CV Noureddine DRIOUECH"
+              className="inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-full text-xs font-medium text-muted-foreground hover:text-foreground glass-pill transition-colors w-full sm:w-auto"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>Resume</span>
+            </a>
+          </div>
 
-                        </p>
+          {/* Social Network Glass Links */}
+          <div className="flex items-center gap-3 pt-2">
+            <span className="text-xs uppercase tracking-widest text-muted-foreground/70 font-semibold mr-1">
+              Connect:
+            </span>
+            {[
+              { label: "GitHub", href: "https://github.com/NoureddineDRIOUECH", icon: Github },
+              { label: "LinkedIn", href: "https://www.linkedin.com/in/noureddinedriouech/", icon: Linkedin },
+              { label: "Upwork", href: "https://www.upwork.com/freelancers/~01c6fba5436d52831a", icon: Upwork },
+            ].map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                className="w-9 h-9 rounded-full glass-pill flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/30 hover:scale-110 active:scale-95 transition-all duration-200"
+                aria-label={social.label}
+              >
+                <social.icon className="w-4 h-4" />
+              </a>
+            ))}
+          </div>
+        </motion.div>
 
-                        <div className="flex justify-center items-center gap-6 pt-2">
-                            <Magnet padding={50} disabled={false} magnetStrength={5}>
+        {/* Right Column - Clean Editorial Portrait & Tech Stack Showcase */}
+        <motion.div
+          className="lg:col-span-5 relative flex justify-center w-full"
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="relative w-full max-w-sm">
+            <HeroStars />
 
+            {/* Ambient Portrait Card */}
+            <div className="relative z-10 rounded-3xl glass-panel p-6 sm:p-7 shadow-2xl border border-white/10 dark:border-white/[0.08] flex flex-col items-center text-center space-y-5">
+              {/* Portrait Image with subtle frame */}
+              <div className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-2xl overflow-hidden border-2 border-border/80 shadow-xl group">
+                <img
+                  src="/NoureddineDRIOUECH.webp"
+                  alt="Noureddine Driouech"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="eager"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+              </div>
 
-                            <ProjectButton />
-                            </Magnet>
+              {/* Identity & Current Focus */}
+              <div className="space-y-1">
+                <h2 className="text-xl font-bold text-foreground">Noureddine Driouech</h2>
+                <p className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 flex items-center justify-center gap-1.5">
+                  <Bot className="w-3.5 h-3.5" />
+                  <span>AI & Software Engineer @ FEV North Africa</span>
+                </p>
+                <p className="text-xs text-muted-foreground flex items-center justify-center gap-1 pt-0.5">
+                  <MapPin className="w-3 h-3" /> Casablanca, Morocco
+                </p>
+              </div>
 
-                            <div className="flex gap-6">
-                                <motion.a
-                                    href="https://github.com/NoureddineDRIOUECH"
-                                    target="_blank"
-                                    whileHover={{ y: -5, scale: 1.1 }}
-                                    className="text-muted-foreground hover:text-foreground transition-colors"
-                                    rel="noreferrer"
-                                >
-                                    <Github className="h-5 w-5" />
-                                    <span className="sr-only">GitHub</span>
-                                </motion.a>
-                                <motion.a
-                                    href="https://www.linkedin.com/in/noureddinedriouech/"
-                                    target="_blank"
-                                    whileHover={{ y: -5, scale: 1.1 }}
-                                    className="text-muted-foreground hover:text-foreground transition-colors"
-                                    rel="noreferrer"
-                                >
-                                    <Linkedin className="h-5 w-5" />
-                                    <span className="sr-only">LinkedIn</span>
-                                </motion.a>
-                                <motion.a
-                                    href="https://www.upwork.com/freelancers/~01c6fba5436d52831a?mp_source=share"
-                                    target="_blank"
-                                    whileHover={{ y: -5, scale: 1.1 }}
-                                    className="text-muted-foreground hover:text-foreground transition-colors"
-                                    rel="noreferrer"
-                                >
-                                    <Upwork className="h-5 w-5" />
-                                    <span className="sr-only">Upwork</span>
-                                </motion.a>
-                                <motion.a
-                                    href="https://www.instagram.com/noureddine.driouech/"
-                                    target="_blank"
-                                    whileHover={{ y: -5, scale: 1.1 }}
-                                    className="text-muted-foreground hover:text-foreground transition-colors"
-                                    rel="noreferrer"
-                                >
-                                    <Instagram className="h-5 w-5" />
-                                    <span className="sr-only">Instagram</span>
-                                </motion.a>
-                            </div>
-                        </div>
-                    </motion.div>
-
-                    {/* Graphic - Right Column */}
-                    <motion.div
-                        className="relative flex justify-center order-2"
-                        initial={false}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                    >
-                        <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md">
-                            <HeroStars />
-                            <div className="relative z-10">
-                            <picture>
-                                <source srcSet="/mainIconsdark.svg" media="(prefers-color-scheme: dark)" />
-                                <img
-                                    src="/mainIcons.svg"
-                                    alt="Illustration"
-                                    className="w-full h-auto object-contain mx-auto"
-                                    loading="eager"
-                                    fetchPriority="high"
-                                    width={400}
-                                    height={400}
-                                />
-                            </picture>
-                            </div>
-                        </div>
-                    </motion.div>
+              {/* Core Stack Badges */}
+              <div className="w-full pt-3 border-t border-border/60">
+                <div className="text-[11px] uppercase tracking-wider font-semibold text-muted-foreground/80 mb-2">
+                  Core Technologies
                 </div>
-            </section>
-        </main>
-    );
+                <div className="flex flex-wrap items-center justify-center gap-1.5">
+                  {[
+                    { name: "Local RAG", icon: <Bot className="text-emerald-400" /> },
+                    { name: "Python", icon: <SiPython className="text-blue-400" /> },
+                    { name: "React 19", icon: <SiReact className="text-cyan-400" /> },
+                    { name: "Next.js 15", icon: <SiNextdotjs className="text-foreground" /> },
+                    { name: "TypeScript", icon: <SiTypescript className="text-blue-500" /> },
+                  ].map((tech) => (
+                    <span
+                      key={tech.name}
+                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-medium bg-background/60 border border-border/60"
+                    >
+                      <span className="text-xs">{tech.icon}</span>
+                      <span>{tech.name}</span>
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
 }

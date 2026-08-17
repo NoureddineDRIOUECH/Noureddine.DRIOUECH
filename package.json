@@ -54,5 +54,8 @@
     "npm-force-resolutions": "^0.0.10",
     "terser": "^5.29.2",
     "tw-animate-css": "^1.3.5"
+  },
+  "overrides": {
+    "vite": "^7.3.6"
   }
 }

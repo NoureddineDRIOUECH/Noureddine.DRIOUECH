@@ -1,355 +1,281 @@
-import { useState, type JSX } from "react";
-import { motion } from "motion/react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import {  ExternalLink } from "lucide-react";
+import React, { useState, type JSX } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { Layers, ArrowUpRight, CheckCircle2, TrendingUp } from "lucide-react";
 import { FaGithub as Github } from "react-icons/fa";
 import { TbSettingsAutomation } from "react-icons/tb";
 import {
-    SiJavascript,
-    SiTypescript,
-    SiReact,
-    SiMysql,
-    SiPython,
-    SiNodedotjs,
-    SiMongodb,
-    SiTailwindcss,
-    SiGit,
-    SiFigma,
-    SiGooglemaps,
-    SiSocketdotio,
-    SiStripe,
-    SiNextdotjs,
-    SiSelenium,
-    SiPhp,
-    SiHtml5,
-    SiCss,
-    SiClerk,
-    SiShadcnui,
-    SiScrapy,
-    SiAppwrite
+  SiJavascript,
+  SiTypescript,
+  SiReact,
+  SiMysql,
+  SiPython,
+  SiNodedotjs,
+  SiMongodb,
+  SiTailwindcss,
+  SiGit,
+  SiFigma,
+  SiNextdotjs,
+  SiSelenium,
+  SiPhp,
+  SiHtml5,
+  SiCss,
+  SiShadcnui,
+  SiScrapy,
+  SiAppwrite,
+  SiStripe,
+  SiRedux
 } from "react-icons/si";
-import {Lens} from "@/components/ui/lens.tsx";
-// import Component from "@/components/achievement-card.tsx";
-import SplitText from "@/ui/TextAnimations/SplitText/SplitText.tsx";
-import {AchievementCard} from "@/components/achievement-card.tsx";
 
 export function ProjectSection() {
-    const [activeFilter, setActiveFilter] = useState("All");
-    const filters = ["All", "Web", "Mobile", "Scripts"];
+  const [activeFilter, setActiveFilter] = useState("All");
+  const filters = ["All", "SaaS & Web", "Mobile Apps", "Automation & AI"];
 
-    const projects = [
+  const projects = [
+    {
+      id: "garista",
+      title: "Garista SaaS Platform",
+      category: "SaaS & Web",
+      badge: "Flagship Enterprise",
+      metric: "GITEX Africa 2024",
+      description:
+        "Led frontend engineering of a restaurant management & analytics platform. Built high-throughput real-time dashboards reducing interface latency by 35%.",
+      impact: "Presented at GITEX Africa & UN World Forum on Gastronomy Tourism",
+      image: "garista_team.jpg",
+      tags: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Shadcn UI", "Redux", "Stripe"],
+      liveUrl: "https://garista.com",
+      githubUrl: "",
+      featured: true,
+    },
+    {
+      id: "companions-ai",
+      title: "Companions AI",
+      category: "Automation & AI",
+      badge: "AI Ecosystem",
+      metric: "Personalized AI",
+      description:
+        "A platform where you can create, manage, and interact with personalized AI-powered companions designed to help you learn and explore various subjects.",
+      impact: "Interactive conversational AI with streaming responses and custom persona configuration",
+      image: "companions.webp",
+      tags: ["Next.js", "TypeScript", "Tailwind CSS", "Shadcn UI", "Figma", "UI/UX", "Git"],
+      liveUrl: "https://companions-nine.vercel.app/",
+      githubUrl: "https://github.com/NoureddineDRIOUECH/Companions",
+      featured: true,
+    },
+    {
+      id: "fast-food",
+      title: "Fast Food Mobile Application",
+      category: "Mobile Apps",
+      badge: "Cross-Platform Mobile",
+      metric: "Fluid Gestures",
+      description:
+        "Cross-platform mobile ordering application with instant menu discovery, real-time cart state management, and backend authentication via Appwrite.",
+      impact: "Engineered with React Native & Expo for smooth 60fps animations across iOS & Android",
+      image: "fastFoodMobileApp.webp",
+      tags: ["React Native", "Appwrite", "Figma", "Git"],
+      liveUrl: "",
+      githubUrl: "https://github.com/NoureddineDRIOUECH/Fast-Food.git",
+      featured: false,
+    },
+    {
+      id: "automation-engine",
+      title: "Data Scraping & Automation Suite",
+      category: "Automation & AI",
+      badge: "High-Throughput ETL",
+      metric: "50k+ Records / Mo",
+      description:
+        "Automated data extraction and pipeline suite capable of harvesting 50,000+ catalog listings monthly with 92% CAPTCHA solving accuracy.",
+      impact: "Cut manual data entry workflows by 80% for e-commerce client operations",
+      image: "dataScraping.webp",
+      tags: ["Python", "Selenium", "Scrapy", "Automation"],
+      liveUrl: "",
+      githubUrl: "https://github.com/NoureddineDRIOUECH/-wordpress-product-automation",
+      featured: false,
+    },
+  ];
 
-        {
-            id: 2,
-            title: "Companions AI",
-            description: "a platform where you can create, manage, and interact with personalized AI-powered companions designed to help you learn and explore various subjects.",
-            image: "companions.webp",
-            category: "Web",
-            tags: ["Next.js", "TypeScript", "Tailwind CSS","Shadcn UI", "Git", "Figma","UI/UX"],
-            liveUrl: "https://companions-nine.vercel.app/",
-            githubUrl: "https://github.com/NoureddineDRIOUECH/Companions",
-        },
-        {
-            id: 3,
-            title: "Fast Food Ordering",
-            description: "This is a mobile application for ordering fast food, built with React Native and Expo. It allows users to browse a menu, add items to their cart, and place orders. The app uses Appwrite for its backend services and Zustand for state management.",
-            image: "fastFoodMobileApp.webp",
-            category: "Mobile",
-            tags: ["Figma", "UI/UX", "React Native", "Appwrite" ,"Git"],
-            liveUrl: "",
-            githubUrl: "https://github.com/NoureddineDRIOUECH/Fast-Food.git",
-        },
-        {
-            id: 1,
-            title: "Coffee Store WebSite",
-            description: "A Coffee Store Website with an E-commerce Platform that allows customers to browse coffee products, add items to their cart, place orders, and track them. The website should also include an Admin Panel to manage products, inventory, and customer orders.",
-            image: "cofeeStore.webp",
-            category: "Web",
-            tags: ["HTML", "CSS", "JavaScript", "MySQL","PHP", "Git"],
-            liveUrl: "",
-            githubUrl: "https://github.com/NoureddineDRIOUECH/DRCoofee---Coffee-Srore",
-        },
-        {
-            id: 4,
-            title: "Data Scraping &  Automation",
-            description: "Hands-on experience in automation and data scraping using tools like Python and Selenium. Skilled in building efficient scripts to extract, process, and manage web data.",
-            image: "dataScraping.webp",
-            category: "Scripts",
-            tags: ["Python", "Selenium", "Scrapy", "Automation"],
-            liveUrl: "",
-            githubUrl: "https://github.com/NoureddineDRIOUECH/-wordpress-product-automation",
-        },
-    ];
+  const tagIcons: Record<string, JSX.Element> = {
+    JavaScript: <SiJavascript className="text-yellow-400" />,
+    HTML: <SiHtml5 className="text-orange-500" />,
+    CSS: <SiCss className="text-blue-500" />,
+    PHP: <SiPhp className="text-purple-400" />,
+    Selenium: <SiSelenium className="text-green-400" />,
+    "Next.js": <SiNextdotjs className="text-foreground" />,
+    "Shadcn UI": <SiShadcnui className="text-foreground" />,
+    Scrapy: <SiScrapy className="text-emerald-500" />,
+    TypeScript: <SiTypescript className="text-blue-400" />,
+    React: <SiReact className="text-cyan-400" />,
+    "React Native": <SiReact className="text-cyan-400" />,
+    "Node.js": <SiNodedotjs className="text-green-500" />,
+    MongoDB: <SiMongodb className="text-green-500" />,
+    "Tailwind CSS": <SiTailwindcss className="text-sky-400" />,
+    Git: <SiGit className="text-orange-500" />,
+    MySQL: <SiMysql className="text-blue-500" />,
+    Python: <SiPython className="text-blue-400" />,
+    Stripe: <SiStripe className="text-indigo-400" />,
+    Redux: <SiRedux className="text-purple-500" />,
+    Figma: <SiFigma className="text-pink-400" />,
+    Appwrite: <SiAppwrite className="text-red-400" />,
+    Automation: <TbSettingsAutomation className="text-emerald-400" />,
+  };
 
-    const tagIcons: Record<string, JSX.Element> = {
-        JavaScript: <SiJavascript className="text-yellow-400" />,
-        "HTML" : <SiHtml5 className="text-red-500" />,
-        "CSS" : <SiCss className="text-blue-500" />,
-        "PHP" : <SiPhp className="text-purple-500" />,
-        "Selenium" : <SiSelenium className="text-green-500" />,
-        "Clerk" : <SiClerk className="text-yellow-500" />,
-        "Next.js" : <SiNextdotjs className="text-black-500" />,
-        "Shadcn UI" : <SiShadcnui className="text-black-500" />,
-        "Scrapy" : <SiScrapy className="text-black-500" />,
-        TypeScript: <SiTypescript className="text-blue-500" />,
-        React: <SiReact className="text-cyan-400" />,
-        "React Native" : <SiReact className="text-cyan-400" />,
-        "Node.js": <SiNodedotjs className="text-green-600" />,
-        MongoDB: <SiMongodb className="text-green-500" />,
-        "Tailwind CSS": <SiTailwindcss className="text-sky-400" />,
-        Git: <SiGit className="text-orange-500" />,
-                                        "Framer Motion": (
-                                            <img
-                                                src="/framerMotion.svg"
-                                                alt="Framer Motion"
-                                                className="w-4 h-4"
-                                                width={16}
-                                                height={16}
-                                            />
-                                        ),
-        MySQL: <SiMysql className="text-blue-700" />,
-        Python: <SiPython className="text-blue-600" />,
-        GraphQL: <SiMongodb className="text-pink-500" />,
-        Stripe: <SiStripe className="text-indigo-500" />,
-        "Google Maps API": <SiGooglemaps className="text-red-500" />,
-        "Socket.io": <SiSocketdotio className="text-black dark:text-white" />,
-        Figma: <SiFigma className="text-pink-600" />,
-        "UI/UX": <SiTailwindcss className="text-sky-400" />,
-        "Design System": <SiTailwindcss className="text-sky-400" />,
-        Appwrite: <SiAppwrite className="text-red-500" />,
-        Automation: <TbSettingsAutomation className="text-green-500" />,
-    };
+  const filteredProjects =
+    activeFilter === "All"
+      ? projects
+      : projects.filter((p) => {
+          if (activeFilter === "SaaS & Web") return p.category === "SaaS & Web";
+          if (activeFilter === "Mobile Apps") return p.category === "Mobile Apps";
+          if (activeFilter === "Automation & AI") return p.category === "Automation & AI";
+          return true;
+        });
 
-    const filteredProjects =
-        activeFilter === "All"
-            ? projects
-            : projects.filter(project => project.category === activeFilter);
+  return (
+    <section id="work" className="py-28 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      {/* Section Header */}
+      <motion.div
+        className="max-w-3xl mx-auto text-center space-y-4 mb-16"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass-pill text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+          <Layers className="w-3.5 h-3.5 text-foreground" />
+          <span>Selected Work & Systems</span>
+        </div>
 
-    return (
-        <>
-        <section id="work" className="py-24 relative">
-            <div className="absolute inset-0 -z-10 overflow-hidden">
-                <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-            </div>
+        <h2 className="text-3xl sm:text-5xl font-extrabold tracking-[-0.035em] text-foreground">
+          Engineered for <span className="shimmer-text">Scale & Reliability</span>
+        </h2>
 
-            <div className="container px-4 sm:px-6">
-                <motion.div
-                    className="max-w-3xl mx-auto text-center flex flex-col gap-3 items-center justify-center md:mb-12 mb-10"
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                >
-                    <Badge className=" mb-4 px-4 py-1 text-sm" variant="secondary">
-                        Projects
-                    </Badge>
+        <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+          A showcase of production SaaS platforms, AI-driven applications, high-throughput web automation, and cross-platform mobile software.
+        </p>
 
-                    <SplitText
+        {/* Filter Switcher Pills */}
+        <div className="flex flex-wrap items-center justify-center gap-2 pt-4">
+          {filters.map((filter) => (
+            <button
+              key={filter}
+              onClick={() => setActiveFilter(filter)}
+              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
+                activeFilter === filter
+                  ? "bg-foreground text-background shadow-md scale-105"
+                  : "glass-pill text-muted-foreground hover:text-foreground hover:bg-muted"
+              }`}
+            >
+              {filter}
+            </button>
+          ))}
+        </div>
+      </motion.div>
 
-                        text="Featured Projects"
+      {/* Projects Bento & Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <AnimatePresence mode="popLayout">
+          {filteredProjects.map((project, idx) => (
+            <motion.div
+              key={project.id}
+              layout
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.4, delay: idx * 0.05 }}
+              className={`group flex flex-col rounded-2xl glass-panel overflow-hidden transition-all duration-500 hover:border-foreground/20 hover:shadow-2xl ${
+                project.featured && idx === 0 ? "md:col-span-2 lg:col-span-2" : ""
+              }`}
+            >
+              {/* Media Thumbnail Container */}
+              <div className="relative aspect-[16/9] w-full overflow-hidden bg-black/20 dark:bg-black/40 border-b border-border/60 flex items-center justify-center p-2">
+                <img
+                  src={encodeURI(`/${project.image}`)}
+                  alt={project.title}
+                  className="w-full h-full object-contain object-center transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent pointer-events-none" />
 
-                        className="text-3xl drop-shadow-[0_0_13px_rgba(59,59,59,1)] dark:drop-shadow-[0_0_20px_rgba(200,200,200,1)] sm:text-4xl md:text-5xl font-bold tracking-tight mb-4"
+                {/* Top Badge Overlay */}
+                <div className="absolute top-3 left-3 flex items-center gap-2">
+                  <span className="px-2.5 py-1 rounded-full text-[11px] font-semibold tracking-wide uppercase bg-background/90 backdrop-blur-md text-foreground border border-border/80 shadow-sm">
+                    {project.badge}
+                  </span>
+                </div>
 
-                        delay={100}
+                {/* Metric Overlay */}
+                <div className="absolute top-3 right-3">
+                  <span className="px-2.5 py-1 rounded-full text-[11px] font-mono font-bold bg-emerald-500/90 text-white shadow-sm flex items-center gap-1">
+                    <TrendingUp className="w-3 h-3" />
+                    {project.metric}
+                  </span>
+                </div>
+              </div>
 
-                        duration={0.6}
+              {/* Content Body */}
+              <div className="p-5 sm:p-7 flex-1 flex flex-col justify-between space-y-4">
+                <div className="space-y-2.5">
+                  <div className="flex items-start justify-between gap-2">
+                    <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
+                      {project.title}
+                    </h3>
+                  </div>
 
-                        ease="power3.out"
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {project.description}
+                  </p>
 
-                        splitType="chars"
+                  {/* Impact Highlight */}
+                  <div className="flex items-center gap-2 text-xs font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-500/[0.06] p-2.5 rounded-xl border border-emerald-500/10">
+                    <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
+                    <span className="line-clamp-1">{project.impact}</span>
+                  </div>
+                </div>
 
-                        from={{ opacity: 0, y: 40 }}
-
-                        to={{ opacity: 1, y: 0 }}
-
-                        threshold={0.1}
-
-                        rootMargin="-100px"
-
-                        textAlign="center"
-
-
-                    />
-                    <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
-                        Explore my recent work and discover how I bring ideas to life through code and design.
-                    </p>
-
-                    <div className="flex flex-wrap justify-center gap-2 mt-8">
-                        {filters.map((filter) => (
-                            <Button
-                                key={filter}
-                                variant={activeFilter === filter ? "default" : "outline"}
-                                size="sm"
-                                className="rounded-full transition-all"
-                                onClick={() => setActiveFilter(filter)}
-                            >
-                                {filter}
-                            </Button>
-                        ))}
-                    </div>
-                </motion.div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    {filteredProjects.map((project, index) => (
-                        <motion.div
-                            key={project.id}
-                            className="flex"
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            transition={{ duration: 0.6, delay: index * 0.1 }}
-                        >
-                            <Card className="flex flex-col h-full dark:bg-background/5 backdrop-blur-sm dark:border-white/10 border-neutral-300 shadow-lg transition-all duration-300 hover:shadow-xl">
-                                <CardContent className="flex-1 px-5">
-                                    <div className="aspect-video bg-muted rounded-xl overflow-hidden">
-                                        <Lens defaultPosition={{ x: 260, y: 150 }}>
-                                            <img
-                                                src={`/${project.image}`}
-                                                alt={project.title}
-                                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                                loading="lazy"
-                                                width={400}
-                                                height={225}
-                                            />
-                                        </Lens>
-                                    </div>
-
-                                    <h3 className="text-xl font-bold mt-4 line-clamp-1">
-                                        {project.title}
-                                    </h3>
-
-                                    {/* Enhanced description area */}
-                                    <p className="mt-3 text-base text-muted-foreground line-clamp-3 min-h-[72px]">
-                                        {project.description}
-                                    </p>
-
-                                    <div className="flex flex-wrap gap-1.5 mt-4">
-                                        {project.tags.map((tag) => (
-                                            <Badge
-                                                key={tag}
-                                                variant="secondary"
-                                                className="bg-background/30 backdrop-blur-sm border-white/10 flex items-center gap-1 text-xs font-normal px-2 py-1"
-                                            >
-                                                <span className="flex-shrink-0">
-                                                    {tagIcons[tag] || null}
-                                                </span>
-                                                <span className="truncate max-w-[70px]">{tag}</span>
-                                            </Badge>
-                                        ))}
-                                    </div>
-                                </CardContent>
-
-                                <CardFooter className="px-5 pb-2 gap-2 flex-wrap">
-
-                                    {project.githubUrl !== "" &&
-                                        <Button
-                                            size="sm"
-                                            variant="outline"
-                                            className="flex-1 min-w-[120px] border-neutral-800 dark:border-white/20 hover:bg-neutral-100 dark:hover:bg-white/5 text-neutral-800 dark:text-white"
-                                            asChild
-                                        >
-                                            <a
-                                                href={project.githubUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="flex items-center gap-2 justify-center"
-                                            >
-                                                <Github className="h-4 w-4 flex-shrink-0" />
-                                                <span>Code</span>
-                                            </a>
-                                        </Button>
-                                    }
-
-                                    {project.liveUrl !== "" &&
-                                        <Button
-                                            size="sm"
-                                            variant="outline"
-                                            className="flex-1 min-w-[120px] border-neutral-800 dark:border-white/20 hover:bg-neutral-100 dark:hover:bg-white/5 text-neutral-800 dark:text-white"
-                                            asChild
-                                        >
-                                            <a
-                                                href={project.liveUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="flex items-center gap-2 justify-center"
-                                            >
-                                                <ExternalLink className="h-4 w-4 flex-shrink-0" />
-                                                <span>Live Demo</span>
-                                            </a>
-                                        </Button>
-                                    }
-
-                                </CardFooter>
-                            </Card>
-                        </motion.div>
+                <div className="space-y-4 pt-2 border-t border-border/60">
+                  {/* Tech Stack Chips */}
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="inline-flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg text-[10px] sm:text-[11px] font-medium bg-muted/60 text-muted-foreground border border-border/40"
+                      >
+                        {tagIcons[tag] && <span className="flex-shrink-0">{tagIcons[tag]}</span>}
+                        <span>{tag}</span>
+                      </span>
                     ))}
+                  </div>
+
+                  {/* Action Link Buttons */}
+                  <div className="flex flex-wrap items-center gap-2.5 pt-1">
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold text-white bg-foreground dark:bg-white dark:text-black hover:opacity-90 active:scale-95 transition-all"
+                      >
+                        <span>Live Platform</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold text-foreground glass-pill hover:bg-muted active:scale-95 transition-all"
+                      >
+                        <Github className="w-3.5 h-3.5" />
+                        <span>Source Code</span>
+                      </a>
+                    )}
+                  </div>
                 </div>
-
-                {/*<div className="flex justify-center mt-16">*/}
-                {/*    <Button*/}
-                {/*        variant="outline"*/}
-                {/*        size="lg"*/}
-                {/*        className="rounded-full px-8 group border-neutral-800 dark:border-white/20 hover:bg-neutral-100 dark:hover:bg-white/5"*/}
-                {/*    >*/}
-                {/*        View All Projects*/}
-                {/*        <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />*/}
-                {/*    </Button>*/}
-                {/*</div>*/}
-            </div>
-        </section>
-            <section id="industry-contributions" className="py-16">
-                <div className="container px-4 sm:px-6">
-                    <div className="max-w-3xl flex flex-col items-center justify-center mx-auto text-center mb-12">
-                        <Badge className="mb-4 px-4 py-1 text-sm" variant="secondary">
-                            Industry Recognition
-                        </Badge>
-
-                        <SplitText
-
-                            text="Professional Contributions"
-
-                            className="text-3xl drop-shadow-[0_0_13px_rgba(59,59,59,1)] dark:drop-shadow-[0_0_20px_rgba(200,200,200,1)] sm:text-4xl md:text-5xl font-bold tracking-tight mb-4"
-
-                            delay={100}
-
-                            duration={0.6}
-
-                            ease="power3.out"
-
-                            splitType="chars"
-
-                            from={{ opacity: 0, y: 40 }}
-
-                            to={{ opacity: 1, y: 0 }}
-
-                            threshold={0.1}
-
-                            rootMargin="-100px"
-
-                            textAlign="center"
-
-
-                        />
-                        <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
-                            Key solutions I helped build as part of professional teams
-                        </p>
-
-                    </div>
-
-                    <div className="max-w-4xl mx-auto">
-                        <AchievementCard
-                            title="Garista SaaS Platform"
-                            description="Cloud-based restaurant management. Contributed as a core developer building real-time analytics."
-                            badges={["Next.js", "TypeScript","React.js", "Laravel", "MySQL", "Stripe", "Real-time Analytics"]}
-                            impact="UN World Forum on Gastronomy Tourism ,SelectUSA Investment Summit"
-                            link="https://garista.com"
-                        />
-                        {/*<Component />*/}
-                    </div>
-                </div>
-            </section>
-   </>
-    );
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </div>
+    </section>
+  );
 }
