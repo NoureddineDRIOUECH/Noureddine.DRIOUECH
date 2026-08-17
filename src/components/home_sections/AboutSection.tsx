@@ -42,7 +42,8 @@ import {
   SiShadcnui,
   SiPytorch,
   SiRedux,
-  SiFigma
+  SiFigma,
+  SiSpringboot
 } from "react-icons/si";
 
 export function AboutSection() {
@@ -163,6 +164,7 @@ export function AboutSection() {
     ],
     backend: [
       { name: "Python", icon: <SiPython className="text-blue-400" />, level: "Expert" },
+      { name: "Spring Boot", icon: <SiSpringboot className="text-emerald-500" />, level: "Advanced" },
       { name: "Node.js", icon: <SiNodedotjs className="text-green-500" />, level: "Advanced" },
       { name: "Laravel", icon: <SiLaravel className="text-red-500" />, level: "Advanced" },
       { name: "PHP", icon: <SiPhp className="text-purple-400" />, level: "Advanced" },

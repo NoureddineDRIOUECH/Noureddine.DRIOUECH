@@ -92,7 +92,7 @@ export function FooterSection() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground/80 pt-4 border-t border-border/40 font-mono">
           <p>© {new Date().getFullYear()} Noureddine Driouech. All rights reserved.</p>
           <p className="flex items-center gap-1">
-            <span>Crafted with Astro & Tailwind CSS</span>
+            <span>Built by Noureddine Driouech</span>
           </p>
         </div>
       </div>

@@ -207,8 +207,10 @@ const isAdPage = Astro.url.pathname.match(/^\/blog\/.+/);
     <link rel="canonical" href={pageCanonical} />
 
     <!-- Favicon & Icons -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="alternate icon" href="/NoureddineDRIOUECH.webp" type="image/webp" />
+    <link rel="icon" type="image/webp" href="/NoureddineDRIOUECH.webp" />
+    <link rel="shortcut icon" href="/NoureddineDRIOUECH.webp" />
+    <link rel="apple-touch-icon" href="/NoureddineDRIOUECH.webp" />
+    <link rel="alternate icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- AI & LLM Machine-Readable Endpoint Links -->
