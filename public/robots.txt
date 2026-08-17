@@ -1,5 +1,40 @@
+# robots.txt for noureddinedriouech.me
+# Optimized for Web Search Engines, AI Crawlers & Answer Engines
+
 User-agent: *
 Allow: /
 Disallow: /*.js.map
 Disallow: /*.css.map
+
+# AI Search & Retrieval Crawlers (Explicitly Allowed)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemap & LLM Context File
 Sitemap: https://noureddinedriouech.me/sitemap-index.xml
+Sitemap: https://noureddinedriouech.me/sitemap-0.xml
+# LLM Context: https://noureddinedriouech.me/llms.txt

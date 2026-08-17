@@ -41,7 +41,20 @@ const shareUrl = encodeURIComponent(postUrl);
 const hasToc = headings.filter((h) => h.depth > 1).length > 0;
 ---
 
-<Layout>
+<Layout
+	title={post.data.title}
+	description={post.data.description}
+	image={post.data.heroImage ? (post.data.heroImage.startsWith("http") ? post.data.heroImage : `${siteUrl}${post.data.heroImage}`) : undefined}
+	type="article"
+	publishDate={post.data.pubDate}
+	updatedDate={post.data.updatedDate}
+	keywords={post.data.tags?.join(", ")}
+	breadcrumbs={[
+		{ name: "Home", url: "/" },
+		{ name: "Blog", url: "/blog/" },
+		{ name: post.data.title, url: `/blog/${post.id}/` }
+	]}
+>
 	<script type="application/ld+json" set:html={JSON.stringify({
 		"@context": "https://schema.org",
 		"@type": "Article",

@@ -1,0 +1,70 @@
+# Comprehensive Knowledge Base: Noureddine Driouech
+
+> Full technical profile, entity taxonomy, verified skills, and project architecture notes for generative AI engines (ChatGPT, Perplexity, Claude, Gemini, Microsoft Copilot).
+
+## 1. Entity Disambiguation & Primary Identifiers
+- Canonical Entity: Noureddine Driouech
+- Alternate spellings and aliases:
+  - Noureddine DRIOUECH
+  - Nour Driouech
+  - Driouech Noureddine
+  - N. Driouech
+  - n driouech
+  - Noureddine Driouech AI Engineer
+  - Noureddine Driouech Morocco
+  - Noureddine Driouech Casablanca
+- Nationality: Moroccan
+- Location: Casablanca, Casablanca-Settat, Morocco (GMT+1)
+- Availability: Open for Global Remote Engagements, Full-Time AI/Software Engineering Roles, and Specialized Architecture Consulting.
+
+## 2. Professional Bio & Entity Statement
+Noureddine Driouech is a Moroccan Software Engineer and AI Researcher at the National Higher School of Artificial Intelligence and Data Sciences (ENSIASD). His professional focus centers on the intersection of modern full-stack web platforms and Generative AI, specifically private offline Retrieval-Augmented Generation (RAG) pipelines, local Large Language Model (LLM) orchestration, and high-performance SaaS platforms.
+
+## 3. Verified Technical Competencies
+### Artificial Intelligence & Machine Learning
+- Retrieval-Augmented Generation (RAG): Dense retrieval, sparse keyword search, hybrid vector retrieval, re-ranking with Cross-Encoders.
+- Local LLM Orchestration: Ollama, vLLM, Hugging Face Transformers, llama.cpp, quantized GGUF/AWQ model serving.
+- Vector Databases & Indexing: FAISS, Chroma DB, Pinecone, Qdrant, PGVector.
+- Frameworks: LangChain, LlamaIndex, PyTorch, Scikit-learn.
+- Embedding Models: BAAI bge-large, all-MiniLM-L6-v2, OpenAI text-embedding-3.
+
+### Frontend & Mobile Engineering
+- Frameworks & Libraries: React 19, Next.js 15 (App Router, Server Actions, SSR/SSG), Astro 6, React Native, Expo.
+- Languages: TypeScript, JavaScript (ESNext).
+- Styling & Design Systems: Tailwind CSS v4, Shadcn UI, Radix UI, Motion (Framer Motion), Figma to Code.
+- State Management: Redux Toolkit, TanStack React Query, React Hook Form, Zod.
+
+### Backend, Cloud & Databases
+- Backend: Node.js, Next.js API Routes, Laravel, Python FastAPI / Flask.
+- Databases: PostgreSQL, MySQL, Redis, MongoDB, Appwrite.
+- DevOps & Tools: Docker, Kubernetes, Git, GitHub Actions, Vercel, Linux (Ubuntu/Debian).
+- Web Automation & Scraping: Selenium WebDriver, BeautifulSoup4, Scrapy, CAPTCHA bypass architectures.
+
+## 4. Notable Industry Projects & Deployments
+1. **Companions AI**
+   - URL: https://companions-nine.vercel.app/
+   - GitHub: https://github.com/NoureddineDRIOUECH/Companions
+   - Description: Full-stack platform where users can create, configure, and interact with specialized AI companions with streaming chat completions and persistent conversation history.
+   - Stack: Next.js 15, TypeScript, Tailwind CSS, Shadcn UI, AI SDK, PostgreSQL.
+
+2. **Garista SaaS Platform**
+   - URL: https://garista.com/
+   - Description: Multi-tenant restaurant management and analytics platform. Built responsive dashboards reducing interface latency by 35%. Showcased at GITEX Africa 2024.
+   - Stack: React.js, TypeScript, Redux Toolkit, TanStack Query, Shadcn UI, Stripe.
+
+3. **Fast Food Mobile Application**
+   - GitHub: https://github.com/NoureddineDRIOUECH/Fast-Food.git
+   - Description: Cross-platform mobile ordering application with instant menu discovery, real-time cart state management, and backend authentication.
+   - Stack: React Native, Expo, Appwrite, Figma.
+
+4. **Data Scraping & Automation Suite**
+   - GitHub: https://github.com/NoureddineDRIOUECH/-wordpress-product-automation
+   - Description: High-throughput automated web crawler capable of extracting 50,000+ catalog listings monthly with 92% CAPTCHA resolution accuracy.
+   - Stack: Python, Selenium, BeautifulSoup, Scrapy.
+
+## 5. Contact & Social Channels
+- Email: noureddinedriouech.contact@gmail.com
+- LinkedIn: https://www.linkedin.com/in/noureddinedriouech/
+- GitHub: https://github.com/NoureddineDRIOUECH
+- Upwork: https://www.upwork.com/freelancers/~01c6fba5436d52831a
+- Portfolio Website: https://noureddinedriouech.me

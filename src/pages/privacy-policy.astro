@@ -2,7 +2,14 @@
 import Layout from '@/layouts/Layout.astro';
 ---
 
-<Layout>
+<Layout
+  title="Privacy Policy"
+  description="Privacy policy and data handling guidelines for noureddinedriouech.me."
+  breadcrumbs={[
+    { name: "Home", url: "/" },
+    { name: "Privacy Policy", url: "/privacy-policy/" }
+  ]}
+>
   <main class="max-w-3xl mx-auto px-5 pt-32 pb-24 text-left">
     <h1 class="text-3xl md:text-4xl font-bold mb-8">Privacy Policy</h1>
     <p class="text-sm text-muted-foreground mb-10">Last updated: June 15, 2026</p>

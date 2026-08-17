@@ -9,135 +9,256 @@ import Analytics from "@vercel/analytics/astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
 
 export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalUrl?: string;
+  type?: "website" | "article" | "profile";
+  publishDate?: Date;
+  updatedDate?: Date;
+  keywords?: string;
+  faqs?: Array<{ question: string; answer: string }>;
+  breadcrumbs?: Array<{ name: string; url: string }>;
   showEffects?: boolean;
 }
 
-const { showEffects = false } = Astro.props;
+const {
+  title,
+  description,
+  image,
+  canonicalUrl,
+  type = "website",
+  publishDate,
+  updatedDate,
+  keywords,
+  faqs,
+  breadcrumbs,
+  showEffects = false,
+} = Astro.props;
+
+const SITE_URL = "https://noureddinedriouech.me";
+const pageTitle = title
+  ? `${title} | Noureddine Driouech`
+  : "Noureddine Driouech | AI Software Engineer & Full-Stack Architect";
+const pageDescription =
+  description ||
+  "Official portfolio of Noureddine Driouech — AI Software Engineer & Full-Stack Systems Architect specializing in Generative AI, Local RAG pipelines, React/Next.js SaaS, and web automation.";
+const pageImage = image
+  ? image.startsWith("http")
+    ? image
+    : `${SITE_URL}${image.startsWith("/") ? "" : "/"}${image}`
+  : `${SITE_URL}/NoureddineDRIOUECH.jpg`;
+const pageCanonical = canonicalUrl || new URL(Astro.url.pathname, Astro.site || SITE_URL).href;
+
+const defaultKeywords =
+  "Noureddine Driouech, Noureddine DRIOUECH, Nour Driouech, Driouech Noureddine, N. Driouech, n driouech, AI Software Engineer, AI Engineer Morocco, AI Engineer Casablanca, RAG Engineer, Local LLMs, Full-Stack Developer, React Developer, Next.js, Python Developer, Web Automation, SaaS Architecture, Morocco Software Engineer";
+const pageKeywords = keywords ? `${keywords}, ${defaultKeywords}` : defaultKeywords;
+
+// Build multi-entity Schema.org JSON-LD @graph
+const schemaGraph: any[] = [
+  {
+    "@type": "Person",
+    "@id": `${SITE_URL}/#person`,
+    "name": "Noureddine DRIOUECH",
+    "alternateName": [
+      "Noureddine Driouech",
+      "Nour Driouech",
+      "Driouech Noureddine",
+      "N. Driouech",
+      "n driouech",
+      "Noureddine",
+      "Driouech",
+      "Noureddine Driouech AI Engineer",
+      "Noureddine Driouech Casablanca",
+      "Noureddine Driouech Morocco"
+    ],
+    "url": `${SITE_URL}/`,
+    "image": `${SITE_URL}/NoureddineDRIOUECH.jpg`,
+    "jobTitle": ["AI Software Engineer", "Full Stack Engineer", "Systems Architect"],
+    "description": pageDescription,
+    "email": "mailto:noureddinedriouech.contact@gmail.com",
+    "nationality": "Moroccan",
+    "worksFor": [
+      {
+        "@type": "Organization",
+        "name": "FEV North Africa",
+        "url": "https://fev.com"
+      }
+    ],
+    "alumniOf": [
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "National Higher School of Artificial Intelligence and Data Sciences (ENSIASD)",
+        "url": "http://ensiasd.uiz.ac.ma"
+      },
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "Higher School of Technology (EST Sidi Bennour) - Chouaib Doukkali University",
+        "url": "http://www.estsb.ucd.ac.ma"
+      }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/in/noureddinedriouech/",
+      "https://github.com/NoureddineDRIOUECH",
+      "https://www.upwork.com/freelancers/~01c6fba5436d52831a",
+      "https://www.instagram.com/noureddine.driouech/"
+    ],
+    "knowsAbout": [
+      "Artificial Intelligence",
+      "Retrieval-Augmented Generation (RAG)",
+      "Large Language Models (LLMs)",
+      "Local AI / Offline LLMs",
+      "Machine Learning",
+      "Deep Learning",
+      "PyTorch",
+      "Vector Databases (FAISS, Chroma DB)",
+      "LangChain",
+      "LlamaIndex",
+      "Full-Stack Development",
+      "React.js",
+      "Next.js",
+      "TypeScript",
+      "Python",
+      "Tailwind CSS",
+      "React Native",
+      "SaaS Architecture",
+      "Web Automation",
+      "Selenium",
+      "Technical SEO"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Casablanca",
+      "addressRegion": "Casablanca-Settat",
+      "addressCountry": "MA"
+    }
+  },
+  {
+    "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
+    "url": `${SITE_URL}/`,
+    "name": "Noureddine Driouech Portfolio",
+    "description": pageDescription,
+    "publisher": {
+      "@id": `${SITE_URL}/#person`
+    },
+    "inLanguage": "en-US"
+  },
+  {
+    "@type": "ProfilePage",
+    "@id": `${pageCanonical}#profilepage`,
+    "url": pageCanonical,
+    "name": pageTitle,
+    "isPartOf": {
+      "@id": `${SITE_URL}/#website`
+    },
+    "about": {
+      "@id": `${SITE_URL}/#person`
+    },
+    "mainEntity": {
+      "@id": `${SITE_URL}/#person`
+    }
+  }
+];
+
+// Add FAQPage Schema if faqs prop provided
+if (faqs && faqs.length > 0) {
+  schemaGraph.push({
+    "@type": "FAQPage",
+    "@id": `${pageCanonical}#faq`,
+    "mainEntity": faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  });
+}
+
+// Add BreadcrumbList Schema if breadcrumbs prop provided
+if (breadcrumbs && breadcrumbs.length > 0) {
+  schemaGraph.push({
+    "@type": "BreadcrumbList",
+    "@id": `${pageCanonical}#breadcrumb`,
+    "itemListElement": breadcrumbs.map((crumb, idx) => ({
+      "@type": "ListItem",
+      "position": idx + 1,
+      "name": crumb.name,
+      "item": crumb.url.startsWith("http") ? crumb.url : `${SITE_URL}${crumb.url}`
+    }))
+  });
+}
 
 const isAdPage = Astro.url.pathname.match(/^\/blog\/.+/);
-
-// Preloading moved to inline theme script for theme-aware single load
-
-// SEO constants to avoid duplication
-const SITE_URL = "https://noureddinedriouech.me/";
-const SITE_TITLE = "Noureddine DRIOUECH | Software Engineer";
-const SITE_DESCRIPTION = "Portfolio of Noureddine DRIOUECH, a Software Engineer specializing in building modern, full-stack web applications and scalable SaaS solutions. Let's connect and build something amazing.";
-const PROFILE_IMAGE = "https://noureddinedriouech.me/NoureddineDRIOUECH.jpg";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{SITE_TITLE}</title>
-    <meta name="description" content={SITE_DESCRIPTION} />
-    <meta
-      name="keywords"
-      content="Noureddine DRIOUECH, Noureddine Driouech, noureddine driouech, N. Driouech, n driouech, Software Engineer, Web Developer, Frontend Developer, Full-Stack Developer, React Developer, Astro Developer, SaaS, Portfolio, Casablanca, Morocco, noureddine driouech morocco, noureddine driouech software engineer, noureddine driouech portfolio, noureddine driouech github"
-    />
-    <style>
-      html,
-      body {
-        scroll-behavior: smooth;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-      }
-    </style>
-    <meta name="author" content="Noureddine DRIOUECH" />
-    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <meta name="keywords" content={pageKeywords} />
+    <meta name="author" content="Noureddine Driouech" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href={pageCanonical} />
+
+    <!-- Favicon & Icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="alternate icon" href="/Noureddine%20DRIOUECH.jpg" type="image/jpeg" />
+    <link rel="alternate icon" href="/NoureddineDRIOUECH.webp" type="image/webp" />
     <meta name="generator" content={Astro.generator} />
-    
-    <!-- Preconnect to external domains -->
+
+    <!-- AI & LLM Machine-Readable Endpoint Links -->
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Summary Manifest" />
+    <link rel="alternate" type="text/plain" href="/llms-full.txt" title="Complete LLM Knowledge Base" />
+
+    <!-- Google Fonts Preconnect & Optimized Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={SITE_URL} />
-    <meta property="og:title" content={SITE_TITLE} />
-    <meta property="og:description" content={SITE_DESCRIPTION} />
-    <meta property="og:image" content={PROFILE_IMAGE} />
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={pageCanonical} />
+    <meta property="og:site_name" content="Noureddine Driouech" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content={pageImage} />
+    <meta property="og:image:alt" content="Noureddine Driouech - AI Software Engineer" />
+    <meta property="og:locale" content="en_US" />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={SITE_URL} />
-    <meta property="twitter:title" content={SITE_TITLE} />
-    <meta property="twitter:description" content={SITE_DESCRIPTION} />
-    <meta property="twitter:image" content={PROFILE_IMAGE} />
+    {type === "article" && publishDate && (
+      <meta property="article:published_time" content={publishDate.toISOString()} />
+    )}
+    {type === "article" && updatedDate && (
+      <meta property="article:modified_time" content={updatedDate.toISOString()} />
+    )}
+    {type === "article" && (
+      <meta property="article:author" content="Noureddine Driouech" />
+    )}
 
-    <!-- Structured Data for SEO -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Noureddine DRIOUECH",
-        "alternateName": [
-          "Noureddine Driouech",
-          "noureddine driouech",
-          "Noureddine DRIOUECH",
-          "N. Driouech",
-          "n driouech",
-          "Noureddine",
-          "Driouech"
-        ],
-        "url": "https://noureddinedriouech.me/",
-        "image": "https://noureddinedriouech.me/NoureddineDRIOUECH.jpg",
-        "sameAs": [
-          "https://www.linkedin.com/in/noureddinedriouech/",
-          "https://github.com/NoureddineDRIOUECH",
-          "https://www.instagram.com/noureddine.driouech/",
-          "https://www.upwork.com/freelancers/~01c6fba5436d52831a"
-        ],
-        "jobTitle": "Software Engineer",
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Freelance"
-        },
-        "description": "Software Engineer specializing in building modern, full-stack web applications and scalable SaaS solutions using technologies like React, Astro, and Node.js.",
-        "alumniOf": [
-          {
-            "@type": "CollegeOrUniversity",
-            "name": "ENSIASD"
-          },
-          {
-            "@type": "CollegeOrUniversity",
-            "name": "EST Sidi Bennour"
-          }
-        ],
-        "knowsAbout": [
-          "Software Development",
-          "Frontend Development",
-          "Full-Stack Development",
-          "SaaS Architecture",
-          "React",
-          "Astro",
-          "JavaScript",
-          "TypeScript",
-          "Node.js",
-          "Python",
-          "Laravel",
-          "Tailwind CSS",
-          "Docker",
-          "Kubernetes",
-          "Automation",
-          "Web Scraping",
-          "SEO"
-        ],
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Casablanca",
-          "addressCountry": "MA"
-        }
-      }
-    </script>
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={pageCanonical} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={pageImage} />
+    <meta name="twitter:image:alt" content="Noureddine Driouech - AI Software Engineer" />
+
+    <!-- Unified JSON-LD Schema Graph -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": schemaGraph
+    })} />
+
+    <!-- Zero-Flash Theme Initialization Script -->
     <script is:inline>
-      // Optimized theme script - runs immediately to prevent flash
       const getThemePreference = () => {
         if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
           return localStorage.getItem("theme");
@@ -147,15 +268,6 @@ const PROFILE_IMAGE = "https://noureddinedriouech.me/NoureddineDRIOUECH.jpg";
       const isDark = getThemePreference() === "dark";
       document.documentElement.classList[isDark ? "add" : "remove"]("dark");
 
-      // Theme-aware preload — only the used theme's hero image
-      const preload = document.createElement("link");
-      preload.rel = "preload";
-      preload.as = "image";
-      preload.href = isDark ? "/mainIconsdark.svg" : "/mainIcons.svg";
-      preload.type = "image/svg+xml";
-      document.head.appendChild(preload);
-
-      // Defer the observer setup to after page load
       if (typeof window !== "undefined") {
         window.addEventListener("DOMContentLoaded", () => {
           if (typeof localStorage !== "undefined") {
@@ -171,20 +283,26 @@ const PROFILE_IMAGE = "https://noureddinedriouech.me/NoureddineDRIOUECH.jpg";
         });
       }
     </script>
-    <!-- Google tag (gtag.js) -->
+
+    <!-- Google Analytics (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E4HT3W4JFD" is:inline></script>
-    {isAdPage && (
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9844566788252616" crossorigin="anonymous" is:inline></script>
-    )}
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+      function gtag() { dataLayer.push(arguments); }
       gtag('js', new Date());
-
-      gtag('config', 'G-E4HT3W4JFD');
+      gtag('config', 'G-E4HT3W4JFD', { anonymize_ip: true });
     </script>
+
+    {isAdPage && (
+      <script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9844566788252616"
+        crossorigin="anonymous"
+        is:inline
+      ></script>
+    )}
   </head>
-  <body>
+  <body class="bg-background text-foreground antialiased selection:bg-foreground selection:text-background min-h-screen">
     <DockBar client:visible />
     <slot />
     {
@@ -197,7 +315,6 @@ const PROFILE_IMAGE = "https://noureddinedriouech.me/NoureddineDRIOUECH.jpg";
     }
     <ScrollProgress client:visible />
     <Toaster client:idle />
-
 
     <SpeedInsights />
     <Analytics />

@@ -16,7 +16,14 @@ const totalReadingTime = posts.reduce((acc, post) => {
 }, 0);
 ---
 
-<Layout>
+<Layout
+	title="Engineering Blog & AI Insights"
+	description="Technical articles and architecture guides on Artificial Intelligence, Local RAG pipelines, Next.js SaaS systems, and Python web automation by Noureddine Driouech."
+	breadcrumbs={[
+		{ name: "Home", url: "/" },
+		{ name: "Blog", url: "/blog/" }
+	]}
+>
 	<main>
 		<section class="relative pt-28 pb-16 px-5 ">
 			<BGPattern variant="dots" mask="fade-edges" size={20} fill="hsl(var(--foreground) / 0.04)" />

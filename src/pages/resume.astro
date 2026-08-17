@@ -18,7 +18,14 @@ import { FiGithub, FiLinkedin } from 'react-icons/fi';
 import { SiUpwork } from 'react-icons/si';
 ---
 
-<Layout>
+<Layout
+  title="Resume & Professional Profile"
+  description="Verified career history, AI & RAG systems expertise, technical competencies, and academic credentials of Noureddine Driouech."
+  breadcrumbs={[
+    { name: "Home", url: "/" },
+    { name: "Resume", url: "/resume/" }
+  ]}
+>
   <main class="w-full max-w-5xl mx-auto my-20 px-4 sm:px-6 lg:px-8 space-y-12">
     {/* Executive Header */}
     <div class="glass-panel p-8 sm:p-10 rounded-3xl space-y-6">

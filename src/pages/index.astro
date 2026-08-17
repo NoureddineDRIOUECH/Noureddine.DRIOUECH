@@ -3,15 +3,22 @@ import Layout from "../layouts/Layout.astro";
 import { HeroSection } from "../components/home_sections/HeroSection";
 import { ProjectSection } from "../components/home_sections/ProjectSection";
 import { AboutSection } from "../components/home_sections/AboutSection";
+import { FaqSection, homeFaqs } from "../components/home_sections/FaqSection";
 import { ContactSection } from "../components/home_sections/Contactsection";
 import { FooterSection } from "../components/home_sections/FooterSection";
 ---
 
-<Layout showEffects={true}>
+<Layout
+  title="Noureddine Driouech | AI Software Engineer & Full-Stack Architect"
+  description="Explore the portfolio of Noureddine Driouech — AI Software Engineer specializing in Generative AI, local RAG architectures, full-stack React/Next.js SaaS, and web automation."
+  faqs={homeFaqs}
+  showEffects={true}
+>
   <main class="w-full flex flex-col items-center justify-center min-h-screen overflow-x-hidden relative">
     <HeroSection client:load />
     <ProjectSection client:visible />
     <AboutSection client:visible />
+    <FaqSection client:visible />
     <ContactSection client:visible />
     <FooterSection client:visible />
   </main>
