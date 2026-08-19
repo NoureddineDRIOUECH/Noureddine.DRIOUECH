@@ -74,7 +74,7 @@ export function FooterSection() {
                 className="w-9 h-9 rounded-full glass-pill flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/30 hover:scale-110 active:scale-95 transition-all"
                 aria-label={s.label}
               >
-                <s.icon className="w-4 h-4" />
+                <s.icon className="w-4 h-4" aria-hidden="true" />
               </a>
             ))}
 
@@ -83,7 +83,7 @@ export function FooterSection() {
               className="w-9 h-9 rounded-full glass-pill flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/30 hover:scale-110 active:scale-95 transition-all ml-2"
               aria-label="Back to top"
             >
-              <ArrowUp className="w-4 h-4" />
+              <ArrowUp className="w-4 h-4" aria-hidden="true" />
             </button>
           </div>
         </div>

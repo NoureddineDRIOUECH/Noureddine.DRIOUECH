@@ -181,9 +181,10 @@ export function ContactSection() {
               href="https://www.linkedin.com/in/noureddinedriouech/"
               target="_blank"
               rel="noreferrer"
+              aria-label="LinkedIn Profile"
               className="p-4 rounded-xl glass-panel flex flex-col items-center justify-center gap-2 text-center hover:border-foreground/30 transition-all group"
             >
-              <FiLinkedin className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
+              <FiLinkedin className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" aria-hidden="true" />
               <span className="text-xs font-semibold text-foreground">LinkedIn</span>
             </a>
 
@@ -191,9 +192,10 @@ export function ContactSection() {
               href="https://github.com/NoureddineDRIOUECH"
               target="_blank"
               rel="noreferrer"
+              aria-label="GitHub Profile"
               className="p-4 rounded-xl glass-panel flex flex-col items-center justify-center gap-2 text-center hover:border-foreground/30 transition-all group"
             >
-              <FiGithub className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
+              <FiGithub className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" aria-hidden="true" />
               <span className="text-xs font-semibold text-foreground">GitHub</span>
             </a>
 
@@ -201,9 +203,10 @@ export function ContactSection() {
               href="https://www.upwork.com/freelancers/~01c6fba5436d52831a"
               target="_blank"
               rel="noreferrer"
+              aria-label="Upwork Profile"
               className="p-4 rounded-xl glass-panel flex flex-col items-center justify-center gap-2 text-center hover:border-foreground/30 transition-all group"
             >
-              <SiUpwork className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
+              <SiUpwork className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" aria-hidden="true" />
               <span className="text-xs font-semibold text-foreground">Upwork</span>
             </a>
           </div>
