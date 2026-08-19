@@ -312,8 +312,8 @@ const isAdPage = Astro.url.pathname.match(/^\/blog\/.+/);
     {
       showEffects && (
         <>
-          <StarsCanvas client:idle />
-          <SplashCursor DYE_RESOLUTION={512} SHADING={false} client:idle />
+          <StarsCanvas client:only="react" />
+          <SplashCursor DYE_RESOLUTION={512} SHADING={false} client:only="react" />
         </>
       )
     }
