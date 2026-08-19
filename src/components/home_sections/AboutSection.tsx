@@ -495,7 +495,7 @@ export function AboutSection() {
                     className="p-3.5 rounded-xl bg-background/50 border border-border/60 flex items-center justify-between gap-2 hover:border-foreground/20 transition-all"
                   >
                     <div className="flex items-center gap-2.5">
-                      <span className="text-lg flex-shrink-0">{skill.icon}</span>
+                      <span className="text-lg flex-shrink-0" aria-hidden="true">{skill.icon}</span>
                       <span className="text-xs sm:text-sm font-semibold text-foreground">{skill.name}</span>
                     </div>
                     <span className="text-[10px] px-2 py-0.5 rounded bg-muted text-muted-foreground font-mono font-medium">

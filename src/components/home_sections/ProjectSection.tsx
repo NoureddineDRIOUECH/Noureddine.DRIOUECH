@@ -238,7 +238,7 @@ export function ProjectSection() {
                         key={tag}
                         className="inline-flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg text-[10px] sm:text-[11px] font-medium bg-muted/60 text-muted-foreground border border-border/40"
                       >
-                        {tagIcons[tag] && <span className="flex-shrink-0">{tagIcons[tag]}</span>}
+                        {tagIcons[tag] && <span className="flex-shrink-0" aria-hidden="true">{tagIcons[tag]}</span>}
                         <span>{tag}</span>
                       </span>
                     ))}

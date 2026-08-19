@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import { HeroSection } from "../components/home_sections/HeroSection";
 import { ProjectSection } from "../components/home_sections/ProjectSection";
 import { AboutSection } from "../components/home_sections/AboutSection";
-import { FaqSection, homeFaqs } from "../components/home_sections/FaqSection";
+import { homeFaqs } from "../components/home_sections/FaqSection";
 import { ContactSection } from "../components/home_sections/Contactsection";
 import { FooterSection } from "../components/home_sections/FooterSection";
 ---
@@ -18,7 +18,18 @@ import { FooterSection } from "../components/home_sections/FooterSection";
     <HeroSection client:load />
     <ProjectSection client:visible />
     <AboutSection client:visible />
-    <FaqSection client:visible />
+
+    {/* Machine-readable semantic FAQ section for AI crawlers & search engines (Hidden from human visual layout) */}
+    <section class="sr-only" aria-label="Frequently Asked Questions about Noureddine Driouech">
+      <h2>Frequently Asked Questions about Noureddine Driouech</h2>
+      {homeFaqs.map((faq) => (
+        <article>
+          <h3>{faq.question}</h3>
+          <p>{faq.answer}</p>
+        </article>
+      ))}
+    </section>
+
     <ContactSection client:visible />
     <FooterSection client:visible />
   </main>

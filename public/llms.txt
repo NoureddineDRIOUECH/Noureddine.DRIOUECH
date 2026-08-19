@@ -1,44 +1,31 @@
-# Noureddine Driouech - AI Software Engineer & Full-Stack Architect
+# Noureddine Driouech
 
-> Official summary and index of Noureddine Driouech's software engineering portfolio, technical background, verified experience, and AI projects for AI assistants, LLMs, and search answer engines.
+> AI Software Engineer specializing in Generative AI, Local RAG architectures, full-stack React/Next.js SaaS platforms, and high-throughput web automation.
 
-## Identity & Core Profile
-- **Full Name**: Noureddine Driouech (also known as Nour Driouech, Driouech Noureddine, N. Driouech)
-- **Primary Title**: AI Software Engineer & Full-Stack Systems Architect
-- **Current Position**: AI Software Engineer Intern at FEV North Africa (fev.com)
-- **Location**: Casablanca, Morocco (Open for remote and global engagements)
-- **Website**: https://noureddinedriouech.me
-- **LinkedIn**: https://www.linkedin.com/in/noureddinedriouech/
-- **GitHub**: https://github.com/NoureddineDRIOUECH
-- **Upwork**: https://www.upwork.com/freelancers/~01c6fba5436d52831a
+Official machine-readable index and summary of Noureddine Driouech's software engineering portfolio, verified career background, AI architecture research, and technical publications.
 
-## Summary of Expertise
-Noureddine Driouech is a Moroccan Software Engineer specializing in:
-1. **Generative AI, Local RAG & LLMs**: Architecting private, offline Retrieval-Augmented Generation (RAG) pipelines using open-weights models (Ollama, vLLM, HuggingFace), vector databases (FAISS, Chroma DB), and LangChain/LlamaIndex with zero data leakage.
-2. **Modern Full-Stack & SaaS Platforms**: Engineering high-performance web applications using React 19, Next.js 15, TypeScript, Tailwind CSS, Redux Toolkit, and PostgreSQL.
-3. **Cross-Platform Mobile Development**: Building fluid iOS & Android mobile applications using React Native, Expo, and Figma design systems.
-4. **High-Throughput Web Automation & Scraping**: Developing resilient ETL scraping pipelines with Python, Selenium, and Scrapy processing 50,000+ records monthly with 92% CAPTCHA resolution accuracy.
+## Primary Links
 
-## Professional Experience
-- **FEV North Africa** (Jul 2026 - Sep 2026 · Casablanca, Morocco): AI Software Engineer Intern. Architected enterprise offline RAG systems for private automotive and engineering documentation.
-- **VNB-IT France** (Jul 2025 - Sep 2025 · Remote / Pontoise, France): Mobile Developer Intern. Built core screens for the Univers France Succès (UFS) React Native mobile application.
-- **Garista** (Jul 2024 - Aug 2025 · Remote / Casablanca, Morocco): Frontend Developer. Led frontend development for a restaurant management SaaS platform showcased at GITEX Africa 2024.
-- **WHD Agency** (Apr 2024 - Jun 2024 · Casablanca, Morocco): Software Developer Intern. Built full-stack e-commerce solutions and automated scraping systems.
-- **Digimperial** (Jul 2023 - Aug 2023 · Casablanca, Morocco): Developer Intern. Engineered Selenium web automation bots with 92% CAPTCHA solving accuracy.
-
-## Education & Honors
-- **ENSIASD (National Higher School of Artificial Intelligence and Data Sciences)**: State Engineering Degree in AI & Data Science (2024 - Present, Taroudant).
-- **EST Sidi Bennour (Chouaib Doukkali University)**: DUT in Computer Science (2022 - 2024) - Graduated with Honors.
-- **High School Jaafar El Fassi**: Baccalaureate in Mathematical & Physical Sciences (2022) - Graduated with Distinction.
+- [Portfolio Homepage](https://noureddinedriouech.me/): Official portfolio showcasing AI, full-stack, and mobile projects.
+- [Resume & Credentials](https://noureddinedriouech.me/resume/): Verified professional experience at FEV North Africa, Garista, VNB-IT, and education at ENSIASD.
+- [Publications & Blog](https://noureddinedriouech.me/blog/): In-depth technical articles on Local RAG, AI agents, SaaS architectures, and automation.
+- [Full LLM Knowledge Base](https://noureddinedriouech.me/llms-full.txt): Complete detailed entity documentation and technical architecture notes.
 
 ## Key Projects
-- **Companions AI**: Full-stack conversational platform to create, customize, and converse with domain-specific AI companions with streaming token responses. (https://companions-nine.vercel.app/)
-- **Garista SaaS Platform**: Real-time restaurant ordering, analytics, and kitchen dispatch SaaS platform presented at GITEX Africa 2024. (https://garista.com)
-- **Fast Food Mobile App**: Cross-platform mobile ordering application in React Native and Appwrite. (https://github.com/NoureddineDRIOUECH/Fast-Food.git)
-- **Web Automation & Scraping Engine**: Python automated ETL pipelines for large-scale e-commerce synchronization. (https://github.com/NoureddineDRIOUECH/-wordpress-product-automation)
 
-## Direct Links & Resources
-- Portfolio: https://noureddinedriouech.me/
-- Resume & CV: https://noureddinedriouech.me/resume/
-- Technical Blog: https://noureddinedriouech.me/blog/
-- Full LLM Knowledge Base: https://noureddinedriouech.me/llms-full.txt
+- [Companions AI](https://companions-nine.vercel.app/): Full-stack platform enabling users to create, manage, and converse with domain-specific AI companions with streaming token responses.
+- [Garista SaaS](https://garista.com/): Multi-tenant restaurant management and analytics platform presented at GITEX Africa 2024.
+- [Fast Food Mobile App](https://github.com/NoureddineDRIOUECH/Fast-Food.git): Cross-platform mobile ordering application built with React Native and Appwrite.
+- [Web Automation Engine](https://github.com/NoureddineDRIOUECH/-wordpress-product-automation): Python automated ETL pipeline extracting 50k+ catalog listings monthly with 92% CAPTCHA solving accuracy.
+
+## Technical Specializations
+
+- [Local RAG & Offline LLMs](https://noureddinedriouech.me/blog/building-local-rag-systems-enterprise/): Private enterprise RAG with Ollama, vLLM, LangChain, LlamaIndex, FAISS, and Chroma DB.
+- [Full-Stack SaaS Engineering](https://noureddinedriouech.me/): High-performance web applications using React 19, Next.js 15, TypeScript, Tailwind CSS, and Spring Boot.
+- [Mobile Engineering](https://noureddinedriouech.me/): Cross-platform iOS & Android mobile applications with React Native and Expo.
+
+## Profiles & External Verification
+
+- [GitHub Profile](https://github.com/NoureddineDRIOUECH): Open-source repositories, projects, and architecture code.
+- [LinkedIn Profile](https://www.linkedin.com/in/noureddinedriouech/): Professional network, career history, and verified endorsements.
+- [Upwork Profile](https://www.upwork.com/freelancers/~01c6fba5436d52831a): Freelance engineering profile and top-rated client reviews.
