@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/sonner";
 import SplashCursor from "../ui/Animations/SplashCursor/SplashCursor";
 import Analytics from "@vercel/analytics/astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
+import { ClientRouter } from "astro:transitions";
 
 export interface Props {
   title?: string;
@@ -214,6 +215,9 @@ const isAdPage = Astro.url.pathname.match(/^\/blog\/.+/);
     <link rel="apple-touch-icon" href="/NoureddineDRIOUECH.webp" />
     <link rel="alternate icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Client Router for SPA-like navigation -->
+    <ClientRouter />
 
     <!-- AI & LLM Machine-Readable Endpoint Links -->
     <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Summary Manifest" />
