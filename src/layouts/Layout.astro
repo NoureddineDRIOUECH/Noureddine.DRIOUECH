@@ -5,6 +5,7 @@ import StarsCanvas from "@/components/ui/StarBackground";
 import { DockBar } from "@/components/DockBar";
 import { Toaster } from "@/components/ui/sonner";
 import SplashCursor from "../ui/Animations/SplashCursor/SplashCursor";
+import SplashScreen from "@/components/ui/SplashScreen";
 import Analytics from "@vercel/analytics/astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
 import { ClientRouter } from "astro:transitions";
@@ -311,6 +312,7 @@ const isAdPage = Astro.url.pathname.match(/^\/blog\/.+/);
     )}
   </head>
   <body class="bg-background text-foreground antialiased selection:bg-foreground selection:text-background min-h-screen">
+    <SplashScreen client:only="react" />
     <DockBar client:visible />
     <slot />
     {
