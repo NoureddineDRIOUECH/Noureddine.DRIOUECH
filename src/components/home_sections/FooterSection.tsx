@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { ArrowUp, Sparkles, MapPin } from "lucide-react";
 import { FiGithub as Github, FiLinkedin as Linkedin } from "react-icons/fi";
 import { SiUpwork as Upwork } from "react-icons/si";
 
 export function FooterSection() {
+  const [isHome, setIsHome] = useState(true);
+
+  useEffect(() => {
+    const updatePath = () => {
+      setIsHome(window.location.pathname === "/" || window.location.pathname === "" || window.location.pathname === "/index.html");
+    };
+    updatePath();
+    window.addEventListener("popstate", updatePath);
+    window.addEventListener("astro:page-load", updatePath);
+    return () => {
+      window.removeEventListener("popstate", updatePath);
+      window.removeEventListener("astro:page-load", updatePath);
+    };
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -40,16 +55,16 @@ export function FooterSection() {
         {/* Middle Row: Navigation Links & Social Media */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
           <nav className="flex flex-wrap items-center justify-center sm:justify-start gap-6 text-xs sm:text-sm font-medium text-muted-foreground">
-            <a href="#home" className="hover:text-foreground transition-colors">
+            <a href={isHome ? "#home" : "/#home"} className="hover:text-foreground transition-colors">
               Home
             </a>
-            <a href="#work" className="hover:text-foreground transition-colors">
+            <a href={isHome ? "#work" : "/#work"} className="hover:text-foreground transition-colors">
               Selected Works
             </a>
-            <a href="#about" className="hover:text-foreground transition-colors">
+            <a href={isHome ? "#about" : "/#about"} className="hover:text-foreground transition-colors">
               About & Experience
             </a>
-            <a href="#contact" className="hover:text-foreground transition-colors">
+            <a href={isHome ? "#contact" : "/#contact"} className="hover:text-foreground transition-colors">
               Contact
             </a>
             <a href="/privacy-policy" className="hover:text-foreground transition-colors">

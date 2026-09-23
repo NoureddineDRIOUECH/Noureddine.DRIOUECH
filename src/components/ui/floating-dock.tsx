@@ -6,7 +6,7 @@ import React, { useState, useEffect, memo } from "react";
 interface DockItem {
   title: string;
   icon: React.ReactNode;
-  onClick?: () => void;
+  onClick?: (e?: React.MouseEvent) => void;
   href?: string;
 }
 
@@ -82,6 +82,10 @@ const FloatingDockMobile = memo(({
                 <a
                   href={item.href}
                   aria-label={item.title}
+                  onClick={(e) => {
+                    setOpen(false);
+                    item.onClick?.(e);
+                  }}
                   className="flex h-11 w-11 items-center justify-center rounded-full glass-panel shadow-lg active:scale-95 transition-all text-foreground"
                 >
                   <div className="h-5 w-5">{item.icon}</div>
@@ -181,6 +185,7 @@ const IconContainer = memo(({
             href={href} 
             target={title === 'LinkedIn' || title === 'GitHub' ? '_blank' : '_self'} 
             aria-label={title}
+            onClick={onClick}
             className="flex items-center justify-center w-full h-full text-foreground"
           >
             <div

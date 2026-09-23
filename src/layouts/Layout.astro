@@ -57,6 +57,7 @@ const pageCanonical = canonicalUrl || new URL(Astro.url.pathname, Astro.site || 
 const defaultKeywords =
   "Noureddine Driouech, Noureddine DRIOUECH, Nour Driouech, Driouech Noureddine, N. Driouech, n driouech, AI Software Engineer, Open to Work, AI Engineer Morocco, AI Engineer Casablanca, RAG Engineer, Local LLMs, Ollama, ChromaDB, Next.js, Nest.js, Spring Boot, Python Developer, React Native, DevOps, Full-Stack Developer, React Developer, Web Automation, SaaS Architecture, Morocco Software Engineer";
 const pageKeywords = keywords ? `${keywords}, ${defaultKeywords}` : defaultKeywords;
+const isHomePage = Astro.url.pathname === "/" || Astro.url.pathname === "";
 
 // Build multi-entity Schema.org JSON-LD @graph
 const schemaGraph: any[] = [
@@ -333,8 +334,8 @@ const isAdPage = Astro.url.pathname.match(/^\/blog\/.+/);
     )}
   </head>
   <body class="bg-background text-foreground antialiased selection:bg-foreground selection:text-background min-h-screen">
-    <SplashScreen client:only="react" />
-    <DockBar client:visible />
+    {isHomePage && <SplashScreen client:only="react" />}
+    <DockBar client:visible pathname={Astro.url.pathname} />
     <slot />
     {
       showEffects && (

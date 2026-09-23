@@ -26,10 +26,27 @@ const ThemeIcon = ({ theme }: { theme: string }) => {
   }
 };
 
-export function DockBar() {
+export function DockBar({ pathname = "/" }: { pathname?: string }) {
     const [theme, setTheme] = useState<"light" | "dark">("dark");
     const [isLoaded, setIsLoaded] = useState(false);
     const [icons, setIcons] = useState<any>({});
+    const [currentPath, setCurrentPath] = useState(pathname);
+
+    // Keep active path synchronized across Astro page transitions and history changes
+    useEffect(() => {
+        const updatePath = () => {
+            setCurrentPath(window.location.pathname);
+        };
+        updatePath();
+
+        window.addEventListener("popstate", updatePath);
+        window.addEventListener("astro:page-load", updatePath);
+
+        return () => {
+            window.removeEventListener("popstate", updatePath);
+            window.removeEventListener("astro:page-load", updatePath);
+        };
+    }, []);
 
     // Load icons asynchronously
     useEffect(() => {
@@ -93,12 +110,19 @@ export function DockBar() {
     }
 
     const { IconBrandGithub, IconMail, IconBrandLinkedin } = icons;
+    const isHomePage = currentPath === "/" || currentPath === "" || currentPath === "/index.html";
 
     const items = [
         {
             title: "Home",
             icon: <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
-            href: "#home",
+            href: isHomePage ? "#home" : "/",
+            onClick: isHomePage ? (e?: React.MouseEvent) => {
+                const el = document.getElementById("home");
+                if (el) {
+                    el.scrollIntoView({ behavior: "smooth" });
+                }
+            } : undefined,
         },
         {
             title: "Email",
