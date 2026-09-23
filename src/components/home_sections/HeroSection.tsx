@@ -142,15 +142,17 @@ export function HeroSection() {
             <div className="relative z-10 rounded-3xl glass-panel p-6 sm:p-7 shadow-2xl border border-white/10 dark:border-white/[0.08] flex flex-col items-center text-center space-y-5">
               {/* Portrait Image with subtle frame */}
               <div className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-2xl overflow-hidden border-2 border-border/80 shadow-xl group">
-                <img
-                  src="/NoureddineDRIOUECH.webp"
-                  alt="Noureddine Driouech"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="eager"
-                  width={192}
-                  height={192}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                <div className="w-full h-full -scale-x-100 [transform:scaleX(-1)]">
+                  <img
+                    src="/NoureddineDRIOUECH.webp"
+                    alt="Noureddine Driouech"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="eager"
+                    width={192}
+                    height={192}
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
               </div>
 
               {/* Identity & Current Focus */}
