@@ -98,7 +98,7 @@ export function ContactSection() {
         className="max-w-3xl mx-auto text-center space-y-4 mb-16"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.05 }}
         transition={{ duration: 0.6 }}
       >
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass-pill text-xs font-semibold uppercase tracking-widest text-muted-foreground">
@@ -122,7 +122,7 @@ export function ContactSection() {
           className="lg:col-span-5 space-y-6"
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.05 }}
           transition={{ duration: 0.6 }}
         >
           {/* Direct Email Card */}
@@ -217,7 +217,7 @@ export function ContactSection() {
           className="lg:col-span-7 rounded-2xl glass-panel p-6 sm:p-8 shadow-2xl"
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.05 }}
           transition={{ duration: 0.6 }}
         >
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">

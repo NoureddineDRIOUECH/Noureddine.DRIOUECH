@@ -13,7 +13,10 @@ import {
   SiReact, 
   SiNextdotjs, 
   SiPython, 
-  SiTypescript 
+  SiTypescript,
+  SiSpringboot,
+  SiNestjs,
+  SiDocker
 } from "react-icons/si";
 
 const Github = ({ className }: { className?: string }) => (
@@ -57,7 +60,7 @@ export function HeroSection() {
           <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full glass-pill border border-emerald-500/30 bg-emerald-500/[0.05] dark:bg-emerald-500/[0.08]">
             <span className="w-2 h-2 rounded-full bg-emerald-400 beacon-pulse inline-block" aria-hidden="true" />
             <span className="text-xs sm:text-sm font-medium text-emerald-700 dark:text-emerald-300 tracking-wide">
-              Available for Software & AI Engineering Projects
+              Open to Work · Available for Full-Time Roles & Projects
             </span>
           </div>
 
@@ -155,7 +158,7 @@ export function HeroSection() {
                 <h2 className="text-xl font-bold text-foreground">Noureddine Driouech</h2>
                 <p className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 flex items-center justify-center gap-1.5">
                   <Bot className="w-3.5 h-3.5" aria-hidden="true" />
-                  <span>AI & Software Engineer @ FEV North Africa</span>
+                  <span>AI & Full-Stack Software Engineer · Open to Work</span>
                 </p>
                 <p className="text-xs text-muted-foreground flex items-center justify-center gap-1 pt-0.5">
                   <MapPin className="w-3 h-3" aria-hidden="true" /> Casablanca, Morocco
@@ -169,11 +172,13 @@ export function HeroSection() {
                 </div>
                 <div className="flex flex-wrap items-center justify-center gap-1.5">
                   {[
-                    { name: "Local RAG", icon: <Bot className="text-emerald-400" aria-hidden="true" /> },
+                    { name: "AI", icon: <Bot className="text-emerald-400" aria-hidden="true" /> },
                     { name: "Python", icon: <SiPython className="text-blue-400" aria-hidden="true" /> },
-                    { name: "React 19", icon: <SiReact className="text-cyan-400" aria-hidden="true" /> },
-                    { name: "Next.js 15", icon: <SiNextdotjs className="text-foreground" aria-hidden="true" /> },
-                    { name: "TypeScript", icon: <SiTypescript className="text-blue-500" aria-hidden="true" /> },
+                    { name: "Spring", icon: <SiSpringboot className="text-emerald-500" aria-hidden="true" /> },
+                    { name: "Next.js", icon: <SiNextdotjs className="text-foreground" aria-hidden="true" /> },
+                    { name: "Nest.js", icon: <SiNestjs className="text-red-500" aria-hidden="true" /> },
+                    { name: "React Native", icon: <SiReact className="text-cyan-400" aria-hidden="true" /> },
+                    { name: "DevOps", icon: <SiDocker className="text-blue-400" aria-hidden="true" /> },
                   ].map((tech) => (
                     <span
                       key={tech.name}

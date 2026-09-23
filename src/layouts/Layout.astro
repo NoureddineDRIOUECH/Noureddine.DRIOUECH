@@ -55,7 +55,7 @@ const pageImage = image
 const pageCanonical = canonicalUrl || new URL(Astro.url.pathname, Astro.site || SITE_URL).href;
 
 const defaultKeywords =
-  "Noureddine Driouech, Noureddine DRIOUECH, Nour Driouech, Driouech Noureddine, N. Driouech, n driouech, AI Software Engineer, AI Engineer Morocco, AI Engineer Casablanca, RAG Engineer, Local LLMs, Full-Stack Developer, React Developer, Next.js, Python Developer, Web Automation, SaaS Architecture, Morocco Software Engineer";
+  "Noureddine Driouech, Noureddine DRIOUECH, Nour Driouech, Driouech Noureddine, N. Driouech, n driouech, AI Software Engineer, Open to Work, AI Engineer Morocco, AI Engineer Casablanca, RAG Engineer, Local LLMs, Ollama, ChromaDB, Next.js, Nest.js, Spring Boot, Python Developer, React Native, DevOps, Full-Stack Developer, React Developer, Web Automation, SaaS Architecture, Morocco Software Engineer";
 const pageKeywords = keywords ? `${keywords}, ${defaultKeywords}` : defaultKeywords;
 
 // Build multi-entity Schema.org JSON-LD @graph
@@ -78,15 +78,25 @@ const schemaGraph: any[] = [
     ],
     "url": `${SITE_URL}/`,
     "image": `${SITE_URL}/NoureddineDRIOUECH.jpg`,
-    "jobTitle": ["AI Software Engineer", "Full Stack Engineer", "Systems Architect"],
+    "jobTitle": ["AI Software Engineer", "Full-Stack Engineer", "Backend Developer", "DevOps Engineer"],
     "description": pageDescription,
     "email": "mailto:noureddinedriouech.contact@gmail.com",
     "nationality": "Moroccan",
-    "worksFor": [
+    "hasOccupation": [
       {
-        "@type": "Organization",
-        "name": "FEV North Africa",
-        "url": "https://fev.com"
+        "@type": "Occupation",
+        "name": "AI & Software Engineer",
+        "occupationLocation": {
+          "@type": "City",
+          "name": "Casablanca, Morocco"
+        },
+        "skills": "AI, Local RAG, Python, Next.js, Nest.js, Spring Boot, React Native, DevOps, Ollama, ChromaDB, FastAPI, Docker, Kubernetes"
+      }
+    ],
+    "seeks": [
+      {
+        "@type": "Demand",
+        "name": "Full-Time AI Software Engineering and Full-Stack Roles (Open to Work Worldwide)"
       }
     ],
     "alumniOf": [
@@ -112,19 +122,30 @@ const schemaGraph: any[] = [
       "Retrieval-Augmented Generation (RAG)",
       "Large Language Models (LLMs)",
       "Local AI / Offline LLMs",
+      "Ollama",
+      "ChromaDB",
+      "Hybrid Semantic Search",
+      "BGE-M3",
+      "BM25",
+      "FastAPI",
       "Machine Learning",
       "Deep Learning",
-      "PyTorch",
       "Vector Databases (FAISS, Chroma DB)",
       "LangChain",
       "LlamaIndex",
       "Full-Stack Development",
-      "React.js",
       "Next.js",
+      "Nest.js",
+      "Spring Boot",
+      "React.js",
       "TypeScript",
       "Python",
       "Tailwind CSS",
       "React Native",
+      "DevOps",
+      "Docker",
+      "Kubernetes",
+      "CI/CD",
       "SaaS Architecture",
       "Web Automation",
       "Selenium",

@@ -1,6 +1,6 @@
 # Noureddine Driouech
 
-> AI Software Engineer specializing in Generative AI, Local RAG architectures, full-stack React/Next.js SaaS platforms, and high-throughput web automation.
+> AI Software Engineer & Full-Stack Systems Architect | Open to Work globally for full-time roles and high-impact projects.
 
 Official machine-readable index and summary of Noureddine Driouech's software engineering portfolio, verified career background, AI architecture research, and technical publications.
 
@@ -13,15 +13,16 @@ Official machine-readable index and summary of Noureddine Driouech's software en
 
 ## Key Projects
 
-- [Companions AI](https://companions-nine.vercel.app/): Full-stack platform enabling users to create, manage, and converse with domain-specific AI companions with streaming token responses.
+- [Companions AI](https://companions-nine.vercel.app/): Full-stack Web & AI SaaS platform enabling users to create, configure, and converse with domain-specific AI companions with streaming token responses and persistent conversation history.
 - [Garista SaaS](https://garista.com/): Multi-tenant restaurant management and analytics platform presented at GITEX Africa 2024.
 - [Fast Food Mobile App](https://github.com/NoureddineDRIOUECH/Fast-Food.git): Cross-platform mobile ordering application built with React Native and Appwrite.
 - [Web Automation Engine](https://github.com/NoureddineDRIOUECH/-wordpress-product-automation): Python automated ETL pipeline extracting 50k+ catalog listings monthly with 92% CAPTCHA solving accuracy.
 
 ## Technical Specializations
 
-- [Local RAG & Offline LLMs](https://noureddinedriouech.me/blog/building-local-rag-systems-enterprise/): Private enterprise RAG with Ollama, vLLM, LangChain, LlamaIndex, FAISS, and Chroma DB.
-- [Full-Stack SaaS Engineering](https://noureddinedriouech.me/): High-performance web applications using React 19, Next.js 15, TypeScript, Tailwind CSS, and Spring Boot.
+- [Local RAG & Offline LLMs](https://noureddinedriouech.me/blog/building-local-rag-systems-enterprise/): Private enterprise RAG: Ollama (Open-Weights LLM) + ChromaDB (Vector Store) + Hybrid Semantic Search (BGE-M3 / BM25) + FastAPI + Next.js UI.
+- [Full-Stack SaaS & Backend Engineering](https://noureddinedriouech.me/): Production web architectures using Next.js 15, Nest.js, Spring Boot, React 19, Python, TypeScript, PostgreSQL, and Redis.
+- [DevOps & Cloud Infrastructure](https://noureddinedriouech.me/): Docker, Kubernetes, CI/CD automation pipelines, Linux systems, and cloud deployments.
 - [Mobile Engineering](https://noureddinedriouech.me/): Cross-platform iOS & Android mobile applications with React Native and Expo.
 
 ## Profiles & External Verification

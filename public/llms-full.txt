@@ -15,49 +15,55 @@
   - Noureddine Driouech Casablanca
 - Nationality: Moroccan
 - Location: Casablanca, Casablanca-Settat, Morocco (GMT+1)
-- Availability: Open for Global Remote Engagements, Full-Time AI/Software Engineering Roles, and Specialized Architecture Consulting.
+- Availability: Open to Work · Actively seeking full-time AI Engineering, Full-Stack, and Backend Developer roles, as well as high-impact architecture consulting worldwide.
 
 ## 2. Professional Bio & Entity Statement
-Noureddine Driouech is a Moroccan Software Engineer and AI Researcher at the National Higher School of Artificial Intelligence and Data Sciences (ENSIASD). His professional focus centers on the intersection of modern full-stack web platforms and Generative AI, specifically private offline Retrieval-Augmented Generation (RAG) pipelines, local Large Language Model (LLM) orchestration, and high-performance SaaS platforms.
+Noureddine Driouech is a Moroccan Software Engineer currently pursuing a State Engineering Degree in Software Engineering at the National Higher School of Artificial Intelligence and Data Sciences (ENSIASD), having previously earned his University Diploma of Technology (DUT) in Software Engineering with honors at EST Sidi Bennour. His professional focus centers on the intersection of modern full-stack web platforms, backend systems, and Generative AI, specifically private offline Retrieval-Augmented Generation (RAG) pipelines, local LLM orchestration, and high-performance SaaS platforms. He has completed engineering internships at FEV North Africa, Digimperial, WHD Agency, and contract engineering with Garista and VNB-IT France.
 
 ## 3. Verified Technical Competencies
 ### Artificial Intelligence & Machine Learning
-- Retrieval-Augmented Generation (RAG): Dense retrieval, sparse keyword search, hybrid vector retrieval, re-ranking with Cross-Encoders.
-- Local LLM Orchestration: Ollama, vLLM, Hugging Face Transformers, llama.cpp, quantized GGUF/AWQ model serving.
-- Vector Databases & Indexing: FAISS, Chroma DB, Pinecone, Qdrant, PGVector.
-- Frameworks: LangChain, LlamaIndex, PyTorch, Scikit-learn.
-- Embedding Models: BAAI bge-large, all-MiniLM-L6-v2, OpenAI text-embedding-3.
+- Retrieval-Augmented Generation (RAG): Offline local RAG architectures, dense retrieval, BM25 lexical search, Hybrid Semantic Search (BGE-M3 / BM25), re-ranking with Cross-Encoders.
+- Local LLM Orchestration: Ollama (Open-Weights LLMs), vLLM, quantized model serving, FastAPI endpoints.
+- Vector Databases & Indexing: ChromaDB, FAISS, PGVector.
+- Frameworks: LangChain, LlamaIndex, Scikit-learn.
+- Embedding Models: BGE-M3, BAAI bge-large, all-MiniLM-L6-v2.
 
 ### Frontend & Mobile Engineering
-- Frameworks & Libraries: React 19, Next.js 15 (App Router, Server Actions, SSR/SSG), Astro 6, React Native, Expo.
+- Frameworks & Libraries: React 19, Next.js 15 (App Router, Server Actions, SSR/SSG), Astro, React Native, Expo.
 - Languages: TypeScript, JavaScript (ESNext).
-- Styling & Design Systems: Tailwind CSS v4, Shadcn UI, Radix UI, Motion (Framer Motion), Figma to Code.
+- Styling & Design Systems: Tailwind CSS v4, Shadcn UI, Radix UI, Motion (Framer Motion), Figma.
 - State Management: Redux Toolkit, TanStack React Query, React Hook Form, Zod.
 
-### Backend, Cloud & Databases
-- Backend: Node.js, Next.js API Routes, Laravel, Python FastAPI / Flask.
+### Backend, Cloud & DevOps
+- Backend Frameworks: Next.js, Nest.js, Spring Boot, Node.js, Python FastAPI / Flask, Laravel.
+- Languages: Python, Java, TypeScript, PHP.
 - Databases: PostgreSQL, MySQL, Redis, MongoDB, Appwrite.
-- DevOps & Tools: Docker, Kubernetes, Git, GitHub Actions, Vercel, Linux (Ubuntu/Debian).
+- DevOps & Tools: Docker, Kubernetes, CI/CD Pipelines (GitHub Actions), Git, Linux (Ubuntu/Debian), Vercel.
 - Web Automation & Scraping: Selenium WebDriver, BeautifulSoup4, Scrapy, CAPTCHA bypass architectures.
 
-## 4. Notable Industry Projects & Deployments
-1. **Companions AI**
+## 4. Notable Industry Deployments & Architectures
+1. **Enterprise Local RAG Architecture (FEV North Africa)**
+   - Architecture: Ollama (Open-Weights LLM) + ChromaDB (Vector Store) + Hybrid Semantic Search (BGE-M3 / BM25) + FastAPI + Next.js UI.
+   - Highlights: Private offline technical retrieval for automotive engineering specs with zero external cloud data leakage.
+
+2. **Companions AI**
    - URL: https://companions-nine.vercel.app/
    - GitHub: https://github.com/NoureddineDRIOUECH/Companions
-   - Description: Full-stack platform where users can create, configure, and interact with specialized AI companions with streaming chat completions and persistent conversation history.
+   - Category: Full-Stack Web & AI SaaS Platform
+   - Description: Full-stack SaaS platform where users can create, configure, and interact with specialized AI companions with streaming chat completions and persistent conversation history.
    - Stack: Next.js 15, TypeScript, Tailwind CSS, Shadcn UI, AI SDK, PostgreSQL.
 
-2. **Garista SaaS Platform**
+3. **Garista SaaS Platform**
    - URL: https://garista.com/
    - Description: Multi-tenant restaurant management and analytics platform. Built responsive dashboards reducing interface latency by 35%. Showcased at GITEX Africa 2024.
    - Stack: React.js, TypeScript, Redux Toolkit, TanStack Query, Shadcn UI, Stripe.
 
-3. **Fast Food Mobile Application**
+4. **Fast Food Mobile Application**
    - GitHub: https://github.com/NoureddineDRIOUECH/Fast-Food.git
    - Description: Cross-platform mobile ordering application with instant menu discovery, real-time cart state management, and backend authentication.
    - Stack: React Native, Expo, Appwrite, Figma.
 
-4. **Data Scraping & Automation Suite**
+5. **Data Scraping & Automation Suite (Digimperial & WHD Agency)**
    - GitHub: https://github.com/NoureddineDRIOUECH/-wordpress-product-automation
    - Description: High-throughput automated web crawler capable of extracting 50,000+ catalog listings monthly with 92% CAPTCHA resolution accuracy.
    - Stack: Python, Selenium, BeautifulSoup, Scrapy.

@@ -40,7 +40,7 @@ import {
   SiSocketdotio,
   SiGit,
   SiShadcnui,
-  SiPytorch,
+  SiNestjs,
   SiRedux,
   SiFigma,
   SiSpringboot
@@ -56,18 +56,18 @@ export function AboutSection() {
       role: "AI Software Engineer Intern",
       period: "Jul 2026 - Sep 2026",
       location: "Casablanca, Morocco · On-site",
-      type: "Current Internship",
+      type: "Internship",
       highlight: "Enterprise Local RAG",
       website: "https://fev.com",
       description:
-        "Architecting an enterprise-grade, offline Retrieval-Augmented Generation (RAG) system for proprietary engineering knowledge extraction and intelligent semantic search.",
+        "Architected an enterprise-grade, offline Retrieval-Augmented Generation (RAG) system for proprietary engineering knowledge extraction with zero external cloud data leakage.",
       bullets: [
-        "Constructed a private local RAG pipeline leveraging open-weights LLMs, LangChain/LlamaIndex, and local vector embeddings with zero external cloud data leakage",
-        "Applied Machine Learning (ML) and Deep Learning (DL) embedding models with specialized token chunking for automotive & engineering technical documentation",
-        "Implemented high-accuracy vector retrieval and similarity ranking using local vector databases (FAISS / Chroma)",
-        "Designed and deployed a responsive conversational intelligence UI for internal engineering teams"
+        "Constructed private local RAG pipeline: Ollama (Open-Weights LLM) + ChromaDB (Vector Store) + FastAPI + Next.js UI",
+        "Engineered Hybrid Semantic Search combining dense vector retrieval (BGE-M3 / ChromaDB) and sparse lexical search (BM25) for automotive & engineering specifications",
+        "Implemented high-accuracy vector indexing, semantic chunking, and similarity ranking in ChromaDB vector store",
+        "Designed and deployed a responsive Next.js conversational UI platform for internal engineering teams"
       ],
-      badges: ["Python", "RAG", "Local LLMs", "LangChain", "PyTorch", "Machine Learning", "Deep Learning", "Vector DBs"]
+      badges: ["Python", "FastAPI", "Next.js", "Ollama", "ChromaDB", "BGE-M3", "BM25", "Hybrid Search", "Local RAG"]
     },
     {
       company: "VNB-IT",
@@ -124,7 +124,7 @@ export function AboutSection() {
     },
     {
       company: "Digimperial",
-      role: "Developer",
+      role: "Web Automation Intern",
       period: "Jul 2023 - Aug 2023 · 2 mos",
       location: "Casablanca, Morocco · On-site",
       type: "Internship",
@@ -146,11 +146,11 @@ export function AboutSection() {
       { name: "RAG Architectures", icon: <Bot className="text-emerald-400" />, level: "Specialist" },
       { name: "Local LLMs / Ollama", icon: <Cpu className="text-purple-400" />, level: "Advanced" },
       { name: "Machine Learning (ML)", icon: <Terminal className="text-blue-400" />, level: "Advanced" },
-      { name: "Deep Learning (DL)", icon: <SiPytorch className="text-red-500" />, level: "Advanced" },
+      { name: "Deep Learning (DL)", icon: <Cpu className="text-purple-400" />, level: "Advanced" },
       { name: "LangChain / LlamaIndex", icon: <Bot className="text-amber-400" />, level: "Advanced" },
       { name: "Vector DBs (Chroma/FAISS)", icon: <Layers className="text-cyan-400" />, level: "Advanced" },
       { name: "Embeddings & Chunking", icon: <Sparkles className="text-yellow-400" />, level: "Advanced" },
-      { name: "PyTorch & NumPy", icon: <SiPytorch className="text-orange-500" />, level: "Proficient" },
+      { name: "Hybrid Search (BGE-M3/BM25)", icon: <Sparkles className="text-yellow-400" />, level: "Specialist" },
     ],
     frontend: [
       { name: "React 19", icon: <SiReact className="text-cyan-400" />, level: "Expert" },
@@ -164,6 +164,7 @@ export function AboutSection() {
     ],
     backend: [
       { name: "Python", icon: <SiPython className="text-blue-400" />, level: "Expert" },
+      { name: "Nest.js", icon: <SiNestjs className="text-red-500" />, level: "Advanced" },
       { name: "Spring Boot", icon: <SiSpringboot className="text-emerald-500" />, level: "Advanced" },
       { name: "Node.js", icon: <SiNodedotjs className="text-green-500" />, level: "Advanced" },
       { name: "Laravel", icon: <SiLaravel className="text-red-500" />, level: "Advanced" },
@@ -192,44 +193,44 @@ export function AboutSection() {
 
   const education = [
     {
-      degree: "State Engineering Degree in Artificial Intelligence & Data Science",
+      degree: "State Engineering Degree in Software Engineering",
       institution: "National Higher School of AI and Data Sciences (ENSIASD)",
       period: "2024 - Present",
       location: "Taroudant, Morocco",
-      status: "In Progress (Final Cycle)",
-      badge: "Master's Level Engineering",
-      focus: "Distributed Systems, Deep Learning & Neural Architectures, Machine Learning Engineering, Cloud Infrastructure",
+      status: "In Progress (Engineering Cycle)",
+      badge: "Engineering Cycle",
+      focus: "Software Engineering & Architecture, Software Quality, Big Data, Applied AI, Computer Vision & IoT",
       highlights: [
-        "Advanced research in Retrieval-Augmented Generation (RAG) and Local LLM systems",
-        "Deep exploration of neural networks, mathematical optimization, and computer vision",
-        "Cloud-native microservices architecture and distributed data processing"
+        "In-depth software engineering principles, design patterns, scalable system design, and software quality",
+        "Applied modules in Big Data, Applied AI fundamentals, Computer Vision, and IoT connected systems",
+        "Rigorous engineering methodologies, distributed systems, and collaborative team project lifecycles"
       ]
     },
     {
-      degree: "University Diploma of Technology (DUT) in Computer Science",
+      degree: "University Diploma of Technology (DUT) in Software Engineering",
       institution: "Higher School of Technology (EST Sidi Bennour - Chouaib Doukkali University)",
       period: "2022 - 2024",
       location: "Sidi Bennour, Morocco",
       status: "Graduated with Honors",
-      badge: "Ranked Top Tier",
-      focus: "Software Engineering, Relational Database Modeling (SQL/UML), Algorithms & Complexity, Web & Mobile Architectures",
+      badge: "Associate's Degree · Honors",
+      focus: "Technical Foundations: Frontend, Backend, Relational Databases (SQL/UML), Computer Networks, Data Structures",
       highlights: [
-        "Comprehensive foundations in data structures, algorithms, and OOP paradigm",
-        "Full-stack web application development and database management systems",
-        "Graduated with distinction and academic honors"
+        "Deep technical hands-on training across frontend, backend development, databases, and computer networks",
+        "Comprehensive foundations in data structures, algorithms, and Object-Oriented Programming (OOP)",
+        "Earned Associate's degree (DUT) in software engineering with academic honors"
       ]
     },
     {
-      degree: "Baccalaureate in Mathematical & Physical Sciences",
-      institution: "National High School Jaafar El Fassi",
+      degree: "Baccalaureate in Physical & Mathematical Sciences",
+      institution: "High School Jaafar El Fassi",
       period: "2022",
       location: "Casablanca, Morocco",
-      status: "Graduated with Distinction",
-      badge: "Scientific Honors",
-      focus: "Advanced Mathematics, Analytical Physics, Technical Sciences",
+      status: "Graduated",
+      badge: "Scientific Baccalaureate",
+      focus: "Physics, Mathematics, Life & Earth Sciences, General Subjects",
       highlights: [
-        "Rigorous foundation in calculus, linear algebra, and mechanics",
-        "Strong analytical and scientific problem-solving background"
+        "Standard Moroccan national scientific curriculum focusing on physics, mathematics, and technical reasoning",
+        "Solid analytical problem-solving foundation preparing for higher technical studies"
       ]
     }
   ];
@@ -291,20 +292,23 @@ export function AboutSection() {
             </div>
 
             <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-              I specialize in bridging <strong className="text-foreground font-semibold">Generative AI / Local RAG systems</strong> with <strong className="text-foreground font-semibold">resilient SaaS web & mobile architectures</strong>. Currently engineering local RAG applications at <strong className="text-foreground font-semibold">FEV North Africa</strong>, with a proven track record delivering SaaS at <strong className="text-foreground font-semibold">Garista</strong> and mobile at <strong className="text-foreground font-semibold">VNB-IT France</strong>.
+              I specialize in bridging <strong className="text-foreground font-semibold">Generative AI / Local RAG systems</strong> with <strong className="text-foreground font-semibold">resilient SaaS web & mobile architectures</strong>. Previously engineered enterprise local RAG applications at <strong className="text-foreground font-semibold">FEV North Africa</strong>, with a proven track record delivering SaaS platforms at <strong className="text-foreground font-semibold">Garista</strong> and mobile solutions at <strong className="text-foreground font-semibold">VNB-IT France</strong>.
             </p>
           </div>
 
           <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-border/60">
             <div className="flex flex-wrap items-center gap-2">
               <span className="px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-foreground border border-border">
-                Local RAG & LLMs
+                Local RAG & AI
               </span>
               <span className="px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-foreground border border-border">
-                React & Next.js SaaS
+                Next.js & Nest.js SaaS
               </span>
               <span className="px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-foreground border border-border">
-                React Native Mobile
+                Spring & DevOps
+              </span>
+              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-foreground border border-border">
+                React Native
               </span>
             </div>
 

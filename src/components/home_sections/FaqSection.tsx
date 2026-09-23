@@ -6,27 +6,27 @@ export const homeFaqs = [
   {
     question: "Who is Noureddine Driouech?",
     answer:
-      "Noureddine Driouech (also known as Nour Driouech or Driouech Noureddine) is a Moroccan AI Software Engineer and Full-Stack Systems Architect based in Casablanca, Morocco. He specializes in designing local RAG (Retrieval-Augmented Generation) architectures, high-performance SaaS platforms in React/Next.js, and automated web data pipelines."
+      "Noureddine Driouech (also known as Nour Driouech or Driouech Noureddine) is a Moroccan AI Software Engineer and Full-Stack Systems Architect based in Casablanca, Morocco. He specializes in private Local RAG architectures, high-performance SaaS platforms (Next.js, Nest.js, Spring Boot, React Native), and DevOps automation. He is currently Open to Work for full-time engineering roles and high-impact projects worldwide."
   },
   {
-    question: "What technologies and AI frameworks does Noureddine Driouech specialize in?",
+    question: "What technologies and frameworks does Noureddine Driouech specialize in?",
     answer:
-      "Noureddine specializes in Generative AI (LangChain, LlamaIndex, Local LLMs with Ollama/vLLM, FAISS/Chroma Vector DBs, PyTorch), Modern Web & SaaS (React 19, Next.js 15, TypeScript, Tailwind CSS, Redux Toolkit, PostgreSQL), Cross-Platform Mobile (React Native, Expo), and Web Automation (Python, Selenium, Scrapy)."
+      "Noureddine's core technology stack includes: AI & Local RAG (Ollama, ChromaDB, BGE-M3 / BM25 Hybrid Search, LangChain, LlamaIndex, FastAPI), Core Languages (Python, TypeScript, Java), Backend & DevOps (Next.js, Nest.js, Spring Boot, Node.js, Docker, Kubernetes, CI/CD, PostgreSQL, Redis), Frontend & Mobile (React 19, Next.js 15, React Native / Expo, Tailwind CSS v4, Shadcn UI), and Web Automation (Selenium, BeautifulSoup, Scrapy)."
   },
   {
     question: "What is Noureddine Driouech's experience with Local RAG and LLMs?",
     answer:
-      "At FEV North Africa, Noureddine architected private offline Retrieval-Augmented Generation (RAG) applications that index technical automotive and engineering specifications into local vector databases with zero external data leakage, using open-weights LLMs and hybrid semantic search."
+      "At FEV North Africa, Noureddine architected an enterprise-grade private offline Retrieval-Augmented Generation (RAG) platform with zero external cloud data leakage. The production architecture integrates: Ollama (Open-Weights LLM) + ChromaDB (Vector Store) + Hybrid Semantic Search (BGE-M3 dense embeddings / BM25 lexical search) + FastAPI backend + Next.js UI."
   },
   {
     question: "What notable projects has Noureddine Driouech built?",
     answer:
-      "Key projects include: 1) Companions AI — a full-stack conversational platform with streaming token responses and custom AI personas. 2) Garista — a restaurant management SaaS platform presented at GITEX Africa 2024. 3) Fast Food Mobile App — a React Native cross-platform ordering system. 4) Web Automation Suite — a Python ETL pipeline extracting 50k+ records monthly with 92% CAPTCHA resolution."
+      "Key projects include: 1) Companions AI — a full-stack Web & AI SaaS conversational platform featuring custom AI personas, streaming token responses, and persistent multi-tenant chat. 2) Garista — a restaurant management SaaS platform presented at GITEX Africa 2024. 3) Fast Food Mobile App — a cross-platform React Native ordering system. 4) Data Scraping & Automation Suite — a high-throughput Python ETL pipeline harvesting 50k+ records monthly with 92% CAPTCHA resolution."
   },
   {
     question: "Is Noureddine Driouech available for software engineering roles or consulting?",
     answer:
-      "Yes, Noureddine Driouech is available for full-time engineering positions, high-impact AI/software contract roles, and architecture consulting for global companies and forward-thinking startups."
+      "Yes, Noureddine Driouech is actively Open to Work and available for full-time AI Software Engineering, Full-Stack, and Backend Developer roles, as well as high-impact architecture consulting worldwide."
   }
 ];
 

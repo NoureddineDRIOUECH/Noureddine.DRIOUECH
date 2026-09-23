@@ -49,11 +49,11 @@ export function ProjectSection() {
     {
       id: "companions-ai",
       title: "Companions AI",
-      category: "Automation & AI",
-      badge: "AI Ecosystem",
+      category: ["SaaS & Web", "Automation & AI"],
+      badge: "AI SaaS & Web Platform",
       metric: "Personalized AI",
       description:
-        "A platform where you can create, manage, and interact with personalized AI-powered companions designed to help you learn and explore various subjects.",
+        "A full-stack AI SaaS platform where you can create, manage, and interact with personalized AI-powered companions designed to help you learn and explore various subjects.",
       impact: "Interactive conversational AI with streaming responses and custom persona configuration",
       image: "companions.webp",
       tags: ["Next.js", "TypeScript", "Tailwind CSS", "Shadcn UI", "Figma", "UI/UX", "Git"],
@@ -122,10 +122,8 @@ export function ProjectSection() {
     activeFilter === "All"
       ? projects
       : projects.filter((p) => {
-          if (activeFilter === "SaaS & Web") return p.category === "SaaS & Web";
-          if (activeFilter === "Mobile Apps") return p.category === "Mobile Apps";
-          if (activeFilter === "Automation & AI") return p.category === "Automation & AI";
-          return true;
+          const cats = Array.isArray(p.category) ? p.category : [p.category];
+          return cats.includes(activeFilter);
         });
 
   return (
