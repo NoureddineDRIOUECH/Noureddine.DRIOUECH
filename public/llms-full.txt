@@ -14,7 +14,7 @@
   - Noureddine Driouech Morocco
   - Noureddine Driouech Casablanca
 - Nationality: Moroccan
-- Location: Casablanca, Casablanca-Settat, Morocco (GMT+1)
+- Location: Casablanca, Casablanca-Settat, Morocco (GMT+0)
 - Availability: Open to Work · Actively seeking full-time AI Engineering, Full-Stack, and Backend Developer roles, as well as high-impact architecture consulting worldwide.
 
 ## 2. Professional Bio & Entity Statement

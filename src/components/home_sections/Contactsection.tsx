@@ -167,7 +167,7 @@ export function ContactSection() {
                 <span>Casablanca, Morocco</span>
               </div>
               <span className="text-xs font-mono font-semibold px-2.5 py-1 rounded-full bg-muted text-muted-foreground">
-                GMT+1 Timezone
+                GMT+0 Timezone
               </span>
             </div>
             <p className="text-xs sm:text-sm text-muted-foreground">

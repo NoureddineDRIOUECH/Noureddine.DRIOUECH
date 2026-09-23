@@ -33,7 +33,7 @@ export function FooterSection() {
 
           <div className="flex items-center gap-2 px-4 py-2 rounded-2xl glass-pill text-xs font-mono text-muted-foreground border border-border/60">
             <MapPin className="w-3.5 h-3.5 text-blue-400" />
-            <span>Casablanca, Morocco · GMT+1</span>
+            <span>Casablanca, Morocco · GMT+0</span>
           </div>
         </div>
 
